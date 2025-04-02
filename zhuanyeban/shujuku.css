@@ -1,0 +1,517 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  /* background-image: url("images/睡眠监测背景图.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: linear-gradient(#b5d2f0,
+      #f0f7ff);
+  min-height: 100vh;
+  /* 改为min - height */
+  min-width: 100vw;
+  /* 改为min - width */
+}
+
+
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  height: 50px;
+  /* background-color: pink; */
+  margin-left: 110px;
+  margin-right: 40px;
+}
+
+.moon-icon {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+  /* 月亮图标和英文图片之间的间距 */
+}
+
+.english-icon {
+  height: 60%;
+  max-width: 180px;
+  /* 根据英文图片实际调整合适宽度，避免过大 */
+}
+
+
+
+/* 导航栏 */
+.Container1 {
+  display: inline-flex;
+  /* background-color: #ffbdc9; */
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  /* background: #fff; */
+  background-color: rgb(127, 176, 253);
+  border-radius: 50px;
+  /* padding: 2px; */
+  box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+}
+
+nav ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 5px 20px;
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #f9f7f7;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.5s;
+}
+
+nav ul li::after {
+  content: '';
+  background: rgb(4, 106, 250);
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+  transform: top 0.5s, opacity 0.5s;
+}
+
+nav ul li:hover {
+  color: #fff;
+}
+
+nav ul li:hover::after {
+  top: 50%;
+  opacity: 1;
+}
+
+nav ul li a {
+  color: inherit;
+  /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+  text-decoration: none;
+  /* 去掉下划线 */
+}
+
+/* .huanzheshuju {
+  width: 1180px;
+  margin: 25px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+h2 {
+  color: #333;
+  text-align: left;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.search-bar input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  flex: 1;
+}
+
+.search-bar button {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.search-bar button i {
+  margin-right: 5px;
+}
+
+
+.table-title {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.data-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  overflow: hidden;
+  width: 600px;
+  width: 100%;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 10px;
+  text-align: left;
+  transition: background-color 0.3s ease;
+  border: 1px solid #ccc;
+}
+
+.data-table th {
+  background-color: rgb(18, 177, 246);
+  color: white;
+  font-weight: 500;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.data-table tbody tr:hover {
+  background-color: #eaeaea;
+}
+
+
+.operation-buttons {
+  display: flex;
+  margin-top: 10px;
+}
+
+.operation-buttons button {
+  padding: 8px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.transfer {
+  background-color: #28a745;
+  color: white;
+}
+
+.close {
+  background-color: #dc3545;
+  color: white;
+}
+
+.modify {
+  background-color: #ffc107;
+  color: white;
+} */
+
+.huanzheshuju {
+  width: 1180px;
+  margin: 25px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+h2 {
+  color: #333;
+  text-align: left;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.search-bar input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  flex: 1;
+}
+
+.search-bar button {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.search-bar button i {
+  margin-right: 5px;
+}
+
+.data-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 10px;
+  text-align: left;
+  transition: background-color 0.3s ease;
+  border: 1px solid #ccc;
+}
+
+.data-table th {
+  background-color: rgb(18, 177, 246);
+  /* background-color: rgb(205, 205, 205); */
+  color: white;
+  font-weight: 500;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.data-table tbody tr:hover {
+  background-color: #eaeaea;
+}
+
+.operation-buttons {
+  display: flex;
+  margin-top: 10px;
+}
+
+.operation-buttons button {
+  padding: 8px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.transfer {
+  background-color: #28a745;
+  color: white;
+}
+
+.close {
+  background-color: #dc3545;
+  color: white;
+}
+
+.modify {
+  background-color: #ffc107;
+  color: white;
+}
+
+.delete-row {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* 脑电波实时监测图，睡眠阶段脑电波示意图 */
+
+/* .container1 {
+  width: 1200px;
+  height: 690px;
+  margin: 25px auto;
+}
+
+
+.naodianshishitu {
+  float: left;
+  margin-right: 40px;
+
+  width: 580px;
+  height: 690px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.naodianshishitu1 {
+  width: 570px;
+  height: 312.5px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.naodianshishitu1 img,
+.naodianshishitu2 img {
+  display: inline - block;
+  width: 98%;
+  max-height: 100%;
+}
+
+.naodianshishitu2 {
+  width: 570px;
+  height: 312.5px;
+  text-align: center;
+}
+
+.shuimianjieduannaodianboshiyitu {
+  float: left;
+  width: 580px;
+  height: 690px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.shuimianjieduantu {
+  width: 570px;
+  height: 633px;
+}
+
+.shuimianjieduantu img {
+  display: inline-block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+
+.container2 {
+  width: 1200px;
+  height: 710px;
+  margin: 25px auto;
+  
+}
+
+.Amplitude1 img {
+  display: inline-block;
+  width: 100% !important;
+  height: 100% !important;
+ 
+}
+
+.Amplitude1 {
+  width: 570px;
+  height: 653px;
+
+}
+
+.Amplitude {
+  float: left;
+  margin-right: 40px;
+
+  width: 580px;
+  height: 710px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.Magnitude1 img {
+  display: inline-block;
+  width: 100% !important;
+  height: 100% !important;
+ 
+}
+
+.Magnitude1 {
+  width: 570px;
+  height: 653px;
+ 
+}
+
+.Magnitude {
+  float: left;
+  width: 580px;
+  height: 710px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+.container3 {
+  width: 1200px;
+  height: 710px;
+  margin: 25px auto;
+
+}
+
+.tezhenbo1 img {
+  display: inline-block;
+  width: 100% !important;
+  height: 100% !important;
+
+}
+
+.tezhenbo1 {
+  width: 557px;
+  height: 653px;
+
+}
+
+.tezhenbo {
+  float: left;
+  margin-right: 40px;
+
+  width: 580px;
+  height: 710px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.EEGboxin1 img {
+  display: inline-block;
+  width: 100% !important;
+  height: 100% !important;
+
+}
+
+.EEGboxin1 {
+  width: 543px;
+  height: 622px;
+
+}
+
+.EEGboxin {
+  float: left;
+  width: 580px;
+  height: 710px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+} */
+
+#dataTableBody tr td a {
+  text-decoration: none;
+  color: black;
+}

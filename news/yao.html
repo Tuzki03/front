@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #83B3E3;
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 200px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: #7FB0FD;
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .main {
+      width: 1000px;
+      background-color: white;
+      margin-left: 180px;
+    }
+
+    .fenge {
+      width: 100%;
+      height: 2px;
+      background-color: gray;
+    }
+
+    .hui {
+      color: gray;
+      font-size: 10px;
+    }
+
+    .tupian1,
+    .tupian2,
+    .tupian4,
+    .tupian5,
+    .tupian6,
+    .tupian7,
+    .tupian8,
+    .tupian3 {
+      width: 550px;
+      height: 370px;
+      margin-left: 230px;
+    }
+
+
+
+    .zhujie1,
+    .zhujie2,
+    .zhujie3,
+    .zhujie4,
+    .zhujie5,
+    .zhujie6,
+    .zhujie7,
+    .zhujie8 {
+      font-size: 15px;
+      padding-left: 350px;
+    }
+
+    .main {
+      width: 1000px;
+      background-color: white;
+      margin-left: 180px;
+    }
+
+    .fenge {
+      width: 100%;
+      height: 2px;
+      background-color: gray;
+    }
+
+    .hui {
+      color: gray;
+      font-size: 10px;
+    }
+  </style>
+  <title>DreamWave睡眠与OSA诊断系统</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="../可视化界面2.0.html">返回</a></li>
+        <li><a href="../kepu2.html#naodianbo">大众科普</a></li>
+        <li><a href="../kepu2.html#keyan">媒体聚焦</a></li>
+        <li><a href="../kepu2.html#linchuang">临床技术</a></li>
+        <li><a href="../关于我们.html">关于我们</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <!--
+    段落： <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <br> 
+    空格缩进：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+  -->
+  <!-- 文章主体 -->
+  <div class="main">
+    <br>
+    <h1 style="padding-left: 25px;">植物人治疗的经典用药</h1>
+    <br>
+    <p class="hui" style="padding-left: 25px;">时间：2021-06-03&nbsp;&nbsp;&nbsp;来源：中国神经科学学会意识与意识障碍分会</p>
+    <div class="fenge"></div>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;治疗植物人的基本药物有多巴胺类药物、促进中枢神经细胞代谢药、改善神经营养药, 统称为脑循环代谢改善药。在应用时,
+      这三类药物同时应用比单一用有效。其中比较公认有效的药物主要有促进儿茶酚胺能和胆碱能的药物, 如苯丙胺、左旋多巴、溴隐亭、胞二磷胆碱及抗胆碱酯酶类药物等。</p>
+    <br>
+
+    <div><img src="../images/yao1.png" alt="" class="tupian1"></div>
+    <div><span style="padding-left: 450px;">图一</span></div>
+    <h2 style="padding-left: 25px;">多巴胺类药</h2>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大量的植物状态或昏迷动物模型试验包括监测血浆或脑脊液中一些特殊兴奋性神经递质和它的代谢产物水平,
+      证明了这些递质的效果。一些特殊药物对损伤可起到抑制或促进神经恢复的作用。某些递质具有真正修复神经缺损的趋势。一般认为具有促进作用的是肾上腺素能及多巴胺能中枢兴奋剂 。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Haig 等报道1 例外伤性PVS
+      , 病程6 个月, 用息宁(Sinemet , 含左旋多巴和卡比多巴)治疗后意识恢复。目前较为肯定左旋多巴具有醒觉作用, 有文献报道有2 例经用该药意识恢复 。复方苄丝肼可以抑制左旋多巴在脑外的脱羧作用,
+      使其在脑内转变成多巴胺的效率大大提高，少量的美多巴可以产生与较大剂量左旋多巴相同的效果。</p>
+    <br>
+    <div><img src="../images/yao2.png" alt="" class="tupian2"></div>
+    <div><span style="padding-left: 450px;">图二</span></div>
+    <br>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有文献报道,
+      多巴胺受体的数量及敏感性下降与脑损害有密切关系, 溴隐亭作为多巴胺受体的激动药, 可以提高脑内神经受体递质的敏感性, 从而进一步增加多巴胺的作用效率。耿明亮等也报道, 对30
+      例病人进行复方苄丝肼(含多巴丝肼和美多巴)、溴隐亭与中药联用治疗持续植物状态, 有明显的疗效。
+
+
+    </p>
+    <br>
+
+    <div><img src="../images/yao3.png" alt="" class="tupian3"></div>
+    <div><span style="padding-left: 450px;">图三</span></div>
+    <br><br>
+
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Horiguchi
+      用金刚烷胺治疗1 例PVS , 脑电图与临床均有改善, Zafo nte 等也报道金刚烷胺对脑损伤病人有良好疗效, 但都是个案报道, 缺乏对照, 难以证明其疗效。日本崛口淳等人1987 年对脑梗塞引起的PVS
+      病人使用金刚烷胺和溴隐亭, 并观察了临床症状和脑电图变化,认为对PVS 患者有使用价值。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 颅脑损伤时,
+      血浆、脑脊液中内源性阿片样物质的含量升高, 并参与颅脑损伤的继发损伤, 有抑制前列腺素和儿茶酚胺循环的作用。应用纳络酮可拮抗阿片样物质的影响, 重建前列腺素和儿茶酚胺的循环机制, 并逆转脑缺血引起的功能障碍,
+      促进损伤神经功能的恢复, 增加缺血区的血流量, 维持脑灌注压, 阻断继发性脑损伤, 有助于改善脑代谢和促醒。</p>
+    <br>
+    <div><img src="../images/yao4.png" alt="" class="tupian4"></div>
+    <div><span style="padding-left: 450px;">图四</span></div>
+    <br>
+    <br>
+    <h2 style="padding-left: 25px;">促甲状腺激素释放激素、Ca2 +拮抗剂、脑活素和神经生长因子</h2>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;报道促甲状腺激素释放激素(TRH)、Ca2 +拮抗剂、神经生长因子(NGF)等亦有一定疗效。自80 年代以来, 日本学者发现TRH
+      对迁延性意识障碍有促醒效果。TRH 具有去甲肾上腺素样作用, 拮抗内啡肽, 从而起兴奋中枢, 使皮层觉醒水平提高的作用。有报道, 神经营养药、Ca2 +拮抗剂与低温疗法合用可以减少脑干损伤的死亡率 。脑活素由氨基酸与分子量在1
+      万以下的小分子肽组成, 能透过血脑屏障, 可以增加脑内去甲肾上腺素及多巴胺的含量, 并改善脑细胞代谢和蛋白质合成。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90 年代以来,
+      神经生长因子受到广泛的关注, 特别是国内, 但由于它不能通过血脑屏障, 提纯活性未能达到有效活性度, 因此在国外未被应用于临床。但神经生长因子的发现以及基因工程合成神经生长因子的研究进展, 将给治疗植物状态带来令人鼓舞的前景。
+    </p>
+    <br>
+
+    <h2 style="padding-left: 25px;">避免使用的药物</h2>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;医药治疗中必须掌握一条原则,
+      就是对低水平神经状态病人的治疗首先应无害, 也就是在治疗上切忌应用有碍于神经恢复的措施。在PVS 治疗过程中,应尽量避免或减少使用抗胆碱药、儿茶酚胺拮抗剂、GABA及5-羟色胺能促效药等对神经系统有抑制作用的药物,
+      如抗癫痫药和解痉药等都被认为对PVS 恢复不利。例如, 在抗癫痫的治疗中, 苯妥英钠类及抗痉挛药物均应慎用或忌用。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但也有报道,
+      卡马西平为抗癫痫药物, 有较低的大脑抑制作用, 可以考虑应用。但是也有些报道证明, 在PVS 时, 药物促进神经恢复或组织神经损害发展的作用是很小的。根据少数选择性研究及一般临床实验证明,
+      在低反应状态时某些药物对低清醒具有一定的促醒作用。对于长期植物状态的病人, 药物治疗的效果众说纷纭, 目前尚无特异有效的方法。应该采取药物、物理、营养、护理等多种治疗在内的综合疗法。</p>
+    <br>
+
+    <br>
+    <br>
+  </div>
+
+</body>
+
+</html>

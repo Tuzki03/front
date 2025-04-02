@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <script src="echarts.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      background-image: linear-gradient(#7aade1,
+          #b5d2f0);
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+
+
+
+    }
+
+    li {
+      list-style: none;
+    }
+
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 40px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: rgb(127, 176, 253);
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .bigest {
+      width: 1150px;
+      height: 650px;
+      margin-left: 158px;
+    }
+
+    .middle1 {
+      display: inline-block;
+      vertical-align: top;
+      width: 210px;
+      height: 600px;
+      margin-left: 62px;
+      margin-top: 25px;
+    }
+
+    .middle2 {
+      display: inline-block;
+      vertical-align: top;
+      width: 800px;
+      height: 600px;
+      margin-top: 25px;
+      margin-left: 20px;
+    }
+
+    .small1,
+    .small2,
+    .small3,
+    .small4 {
+      width: 180px;
+      height: 125px;
+      background-color: white;
+      margin-top: 20px;
+      margin-left: 15px;
+    }
+
+    .small5 {
+      display: inline-block;
+      vertical-align: top;
+      width: 230px;
+      height: 230px;
+      background-color: white;
+      margin-top: 20px;
+    }
+
+    .small6 {
+      display: inline-block;
+      vertical-align: top;
+      width: 469px;
+      height: 230px;
+      background-color: white;
+      margin-top: 20px;
+      margin-left: 10px;
+      overflow: visible;
+      /* 允许内容溢出容器 */
+    }
+
+    .small7 {
+      display: inline-block;
+      vertical-align: top;
+      width: 400px;
+      height: 312px;
+      background-color: white;
+      margin-top: 20px;
+    }
+
+    .small8 {
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 10px;
+      width: 300px;
+      height: 312px;
+      margin-top: 20px;
+      background-color: white;
+    }
+
+    .small1 img,
+    .small2 img,
+    .small3 img,
+    .small4 img {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+    .small1 h4,
+    .small2 h4,
+    .small3 h4,
+    .small4 h4 {
+      display: inline-block;
+      color: #94BDE7;
+      font-size: 25px;
+    }
+
+    #shuimianpinfen1,
+    #shuimianxiaolu1 {
+      margin-left: 110px;
+      font-size: 25px;
+      color: #94BDE7;
+    }
+
+    #shengshui1,
+    #qianshui {
+      margin-left: 80px;
+      font-size: 25px;
+      color: #94BDE7;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="首页.html">首页</a></li>
+        <li><a href="登录注册界面.html">登录/注册</a></li>
+        <li><a href="设备链接检测界面.html">设备链接监测</a></li>
+        <li><a href="睡眠监测界面.html">睡眠实时监测</a></li>
+        <li><a href="可视化界面2.0.html">单日报告</a></li>
+        <li><a href="周次报告.html">本周报告</a></li>
+        <li><a href="kepu2.html">科普说明</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- 大盒子装所有中盒子 -->
+  <div class="bigest">
+    <!-- 中盒子1 ，装睡眠评分，睡眠效率，深睡时长，浅睡时长-->
+    <div class="middle1">
+      <!-- 小盒子1 装睡眠评分 -->
+      <div class="small1">
+        <img src="images/评分.svg" alt="">
+        <h4>睡眠评分</h4>
+        <span id="shuimianpinfen1">43</span>
+      </div>
+
+      <!-- 小盒子2 装睡眠效率 -->
+      <div class="small2">
+
+        <img src="images/i-睡眠效率-copy.svg" alt="">
+        <h4>睡眠效率</h4>
+        <span id="shuimianxiaolu1">48%</span>
+
+      </div>
+
+      <!-- 小盒子3 装深睡时长 -->
+      <div class="small3">
+        <img src="images/管理困难.svg" alt="">
+        <h4>深睡时长</h4>
+        <span id="shengshui1">5h32m</span>
+      </div>
+
+      <!-- 小盒子4 装浅睡时长 -->
+      <div class="small4">
+
+        <img src="images/022-sleeping.svg" alt="">
+
+        <h4>浅睡时长</h4>
+
+        <span id="qianshui">9h17m</span>
+
+      </div>
+    </div>
+
+
+    <!-- 中盒子2，放睡眠分期饼状图，纺锤波雷达图，各种波形图，持续时间柱状图 -->
+    <div class="middle2">
+      <!-- 小盒子5 放睡眠分期饼状图 -->
+      <div class="small5">
+        <div id="sleepPieChart" style="width: 270px; height:270px ;"></div>
+      </div>
+
+      <!-- 小盒子6 放各种波形-->
+      <div class="small6">
+        <div id="waveformChart" style="width: 474px; height: 279px;"></div>
+      </div>
+
+      <!-- 小盒子7 放纺锤波箱线图-->
+      <div class="small7">
+        <div id="boxPlot" style="width: 100%; height: 100%;"></div>
+      </div>
+
+      <!-- 小盒子8 放持续时间柱状图 -->
+      <div class="small8">
+        <div id="sleepDurationChart" style="width: 325px; height: 312px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="keshihua.js"></script>
+</body>
+
+</html>

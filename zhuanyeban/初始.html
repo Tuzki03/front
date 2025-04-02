@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <link rel="stylesheet" href="chushi.css">
+  <script src="echarts.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      /* background-image: url("images/睡眠监测背景图.jpg"); */
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: linear-gradient(#b5d2f0,
+          #f0f7ff);
+      min-height: 110vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 110px;
+      margin-right: 40px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 180px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: rgb(127, 176, 253);
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/资源3.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="初始.html">初始</a></li>
+        <!-- <li><a href="检测.html">检测</a></li> -->
+        <li><a href="实时监测.html">实时监测</a></li>
+        <li><a href="数据库.html">数据库</a></li>
+        <li><a href="分析.html">分析</a></li>
+        <li><a href="CRSR.html">CRS - R</a></li>
+        <li><a href="说明.html">说明</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+
+  <div class="container1">
+
+    <div class="container2">
+      <!-- 患者基本信息 -->
+      <div class="huanzhejibenxinxi-container">
+        <h2>患者基本信息</h2>
+        <div class="form-group">
+          <label for="patient-name">姓名</label>
+          <div class="input-container">
+            <input type="text" id="patient-name" placeholder="请输入患者姓名">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="patient-age">年龄</label>
+          <div class="input-container">
+            <input type="number" id="patient-age" placeholder="请输入患者年龄">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="patient-gender">性别</label>
+          <div class="input-container">
+            <select id="patient-gender">
+              <option value="">请选择</option>
+              <option value="男">男</option>
+              <option value="女">女</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="patient-height">身高(cm)</label>
+          <div class="input-container">
+            <input type="number" id="patient-height" placeholder="请输入患者身高">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="patient-weight">体重(kg)</label>
+          <div class="input-container">
+            <input type="number" id="patient-weight" placeholder="请输入患者体重">
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="shenmianhuanjing-container">
+        <h2>睡眠环境参数</h2>
+        <div class="form-group">
+          <label for="temperature">环境温度(℃)</label>
+          <div class="input-button-container">
+            <input type="text" id="temperature" placeholder="请输入温度">
+            <button id="autoTempButton">自动获取</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="humidity">环境湿度(%)</label>
+          <div class="input-button-container">
+            <input type="text" id="humidity" placeholder="请输入湿度">
+            <button id="autoHumidityButton">自动获取</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="noise-level">噪音水平(dB)</label>
+          <div class="input-button-container">
+            <input type="text" id="noise-level" placeholder="请输入噪音水平">
+            <button id="autoNoiseButton">自动获取</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="light-intensity">光照强度(lx)</label>
+          <div class="input-button-container">
+            <input type="text" id="light-intensity" placeholder="请输入光照强度">
+            <button id="autoLightButton">自动获取</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="electromagnetic-radiation">电磁辐射强度(μW/cm²)</label>
+          <div class="input-button-container">
+            <input type="text" id="electromagnetic-radiation" placeholder="请输入电磁辐射强度">
+            <button id="autoRadiationButton">自动获取</button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="chuanganqi-jiaozhun-container">
+        <h2>传感器校准模块</h2>
+        <div class="form-group">
+          <label for="heart-rate">心率传感器</label>
+          <input type="text" id="heart-rate" placeholder="请输入心率传感器校准信息">
+        </div>
+        <div class="form-group">
+          <label for="blood-oxygen">血氧饱和度传感器</label>
+          <input type="text" id="blood-oxygen" placeholder="请输入血氧饱和度传感器校准信息">
+        </div>
+        <div class="form-group">
+          <label for="respiratory-rate">呼吸频率传感器</label>
+          <input type="text" id="respiratory-rate" placeholder="请输入呼吸频率传感器校准信息">
+        </div>
+        <div class="form-group">
+          <label for="body-movement">体动传感器</label>
+          <input type="text" id="body-movement" placeholder="请输入体动传感器校准信息">
+        </div>
+        <div class="form-group">
+          <label for="snore">鼾声传感器</label>
+          <input type="text" id="snore" placeholder="请输入鼾声传感器校准信息">
+        </div>
+      </div>
+    </div>
+
+    <!-- 多类型参数设置 -->
+    <div class="parameter-setting-wrapper">
+      <div class="parameter-setting-container">
+        <h2 class="title">多类型参数设置</h2>
+        <div class="section sleep-monitoring-parameters">
+          <h2 class="section-title">睡眠监测参数</h2>
+          <div class="form-group">
+            <label for="sampling-frequency">采样频率</label>
+            <select id="sampling-frequency">
+              <option value="100Hz">100Hz</option>
+              <option value="256Hz">256Hz</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="electrode-impedance-threshold">电极阻抗阈值</label>
+            <input type="text" id="electrode-impedance-threshold" placeholder="请输入电极阻抗阈值">
+          </div>
+          <div class="subsection">
+            <h3 class="subsection-title">睡眠分期相关参数</h3>
+            <div class="form-group">
+              <label for="w-stage-threshold">清醒（W）阶段判断阈值</label>
+              <input type="text" id="w-stage-threshold" placeholder="请输入判断阈值">
+            </div>
+            <div class="form-group">
+              <label for="w-stage-duration">清醒（W）阶段时长标准</label>
+              <input type="text" id="w-stage-duration" placeholder="请输入时长标准">
+            </div>
+            <div class="form-group">
+              <label for="n1-stage-threshold">浅睡（N1）阶段判断阈值</label>
+              <input type="text" id="n1-stage-threshold" placeholder="请输入判断阈值">
+            </div>
+            <div class="form-group">
+              <label for="n1-stage-duration">浅睡（N1）阶段时长标准</label>
+              <input type="text" id="n1-stage-duration" placeholder="请输入时长标准">
+            </div>
+          </div>
+        </div>
+        <div class="section consciousness-disorder-parameters">
+          <h2 class="section-title">意识障碍筛查参数</h2>
+          <div class="form-group">
+            <label for="filter-parameters">滤波参数</label>
+            <input type="text" id="filter-parameters" placeholder="请输入滤波参数，如频率范围等">
+          </div>
+          <div class="subsection">
+            <h3 class="subsection-title">意识评估模型参数</h3>
+            <div class="form-group">
+              <label for="svm-kernel">SVM核函数类型</label>
+              <select id="svm-kernel">
+                <option value="linear">linear</option>
+                <option value="poly">poly</option>
+                <option value="rbf">rbf</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="svm-penalty">SVM惩罚参数</label>
+              <input type="text" id="svm-penalty" placeholder="请输入SVM惩罚参数">
+            </div>
+          </div>
+        </div>
+        <div class="button-area">
+          <button id="save-button">保存设置</button>
+          <button id="reset-button">重置</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- setup -->
+  <div class="setup-container">
+    <h2>安装配置</h2>
+    <div class="form-group">
+      <label for="amplifier">电极放大器选择</label>
+      <select id="amplifier" onchange="updateAmplifierValue()">
+        <option value="low">低</option>
+        <option value="high">高</option>
+        <option value="medium">中</option>
+      </select>
+    </div>
+    <div class="form-group file-upload-group">
+      <label for="save-location">文件自动保存位置</label>
+      <div class="input-button-container">
+        <input type="text" id="save-location" placeholder="默认为: 我的网盘/脑电" style="margin: 0;">
+        <input type="file" id="file-input" style="display: none;">
+        <button id="upload-button">Upload</button>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label for="filter">滤波选择</label>
+      <input type="text" id="filter-input" placeholder="默认为: 低通滤波与下采样 可供选择: 高通滤波/三频带滤波">
+    </div>
+
+
+    <div class="info-calibration-container">
+      <div class="device-info-section">
+        <h3>设备信息</h3>
+        <div class="info-item">
+          <span class="info-label">设备型号:</span>
+          <span class="info-value">设备型号XYZ</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">序列号:</span>
+          <span class="info-value">123456</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">固件版本:</span>
+          <span class="info-value">1.0.0</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">生产厂家:</span>
+          <span class="info-value">智能科技有限公司</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">生产日期:</span>
+          <span class="info-value">2024-01-01</span>
+        </div>
+      </div>
+      <div class="calibration-section">
+        <h3>电极校准</h3>
+        <p class="calibration-instruction">电极校准是确保设备准确采集脑电信号的重要步骤，请按照以下步骤操作：</p>
+        <ol class="calibration-steps">
+          <li>将电极正确放置在指定的头皮位置。</li>
+          <li>点击“开始校准”按钮。</li>
+          <li>等待校准过程完成，期间请保持静止。</li>
+        </ol>
+        <div class="calibration-progress">
+          <span class="progress-text">校准进度: </span>
+          <span id="progress-value">未开始</span>
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <button id="calibration-button">开始校准</button>
+      </div>
+    </div>
+    <div class="button-group">
+      <button id="submit-button">Submit</button>
+      <button id="cancel-button">Cancel</button>
+    </div>
+  </div>
+
+
+  <div class="chuli-container">
+    <h2>数据处理相关设置</h2>
+    <div class="two-columns">
+      <!-- 第一列内容 -->
+      <div class="column">
+        <!-- 弹性时间窗口设置 -->
+        <div class="form-group">
+          <label for="window-size">弹性时间窗口大小</label>
+          <input type="number" id="window-size" placeholder="请输入窗口大小">
+        </div>
+        <div class="form-group">
+          <label for="step-length">步长</label>
+          <input type="number" id="step-length" placeholder="请输入步长">
+        </div>
+        <!-- 信号预处理设置 -->
+        <div class="form-group">
+          <label for="filter-type">滤波器类型</label>
+          <select id="filter-type">
+            <option value="butterworth">巴特沃斯滤波器</option>
+            <option value="chebyshev">切比雪夫滤波器</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="passband-frequency">通带频率（Hz）</label>
+          <input type="text" id="passband-frequency" placeholder="请输入通带频率，如1-30">
+        </div>
+        <div class="form-group">
+          <label for="stopband-frequency">阻带频率（Hz）</label>
+          <input type="text" id="stopband-frequency" placeholder="请输入阻带频率，如40-60">
+        </div>
+        <div class="form-group">
+          <label for="amplification-factor">信号放大倍数</label>
+          <input type="number" id="amplification-factor" placeholder="请输入放大倍数">
+        </div>
+        <div class="form-group">
+          <label for="baseline-correction-method">基线校正方式</label>
+          <select id="baseline-correction-method">
+            <option value="none">无</option>
+            <option value="linear">线性校正</option>
+            <option value="polynomial">多项式校正</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="feature-types">特征类型</label>
+          <select id="feature-types" multiple>
+            <option value="psd">功率谱密度</option>
+            <option value="mean">均值</option>
+            <option value="variance">方差</option>
+            <option value="wavelet-coefficients">小波变换系数</option>
+          </select>
+        </div>
+      </div>
+      <!-- 第二列内容 -->
+      <div class="column">
+        <!-- 特征提取设置 -->
+
+        <div class="form-group">
+          <label for="fft-window-function">傅里叶变换窗函数类型</label>
+          <select id="fft-window-function">
+            <option value="hamming">汉明窗</option>
+            <option value="hann">汉宁窗</option>
+            <option value="blackman">布莱克曼窗</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fft-points">傅里叶变换点数</label>
+          <input type="number" id="fft-points" placeholder="请输入傅里叶变换点数">
+        </div>
+        <!-- 数据转换设置 -->
+        <div class="form-group">
+          <label for="data-encoding">数据编码方式</label>
+          <select id="data-encoding">
+            <option value="utf8">UTF-8</option>
+            <option value="ascii">ASCII</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="data-precision">数据精度</label>
+          <select id="data-precision">
+            <option value="16-bit">16位</option>
+            <option value="32-bit">32位</option>
+          </select>
+        </div>
+        <!-- 分析模型相关设置 -->
+        <div class="form-group">
+          <label for="learning-rate">学习率</label>
+          <input type="number" id="learning-rate" step="0.0001" placeholder="请输入学习率，如0.001">
+        </div>
+        <div class="form-group">
+          <label for="epochs">迭代次数</label>
+          <input type="number" id="epochs" placeholder="请输入迭代次数">
+        </div>
+        <div class="form-group">
+          <label for="batch-size">批量大小</label>
+          <input type="number" id="batch-size" placeholder="请输入批量大小">
+        </div>
+        <div class="form-group">
+          <label for="normalization-method">归一化方式</label>
+          <select id="normalization-method">
+            <option value="min-max">最小-最大归一化</option>
+            <option value="z-score">Z-分数归一化</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- 数据存储路径设置 -->
+    <div class="form-group file-upload-group">
+      <label for="storage-path">数据存储路径</label>
+      <div class="input-button-wrapper">
+        <input type="text" id="storage-path" placeholder="请指定数据存储路径">
+        <button id="browse-button">浏览</button>
+      </div>
+      <input type="file" id="folder-input" style="display: none;" webkitdirectory>
+    </div>
+    <!-- 自动备份设置 -->
+    <div class="form-group">
+      <label for="backup-interval">自动备份时间间隔（分钟）</label>
+      <input type="number" id="backup-interval" placeholder="请输入备份时间间隔">
+    </div>
+    <div class="form-group">
+      <label for="backup-method">备份方式</label>
+      <select id="backup-method">
+        <option value="full">全量备份</option>
+        <option value="incremental">增量备份</option>
+      </select>
+    </div>
+    <!-- 提交和取消按钮 -->
+    <div class="button-group">
+      <button id="submit-button2">Submit</button>
+      <button id="cancel-button2">Cancel</button>
+    </div>
+  </div>
+
+
+  <script src="chushiscript.js"></script>
+
+
+</body>
+
+</html>

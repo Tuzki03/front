@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #83B3E3;
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 200px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: #7FB0FD;
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .main {
+      width: 1000px;
+      background-color: white;
+      margin-left: 180px;
+    }
+
+    .fenge {
+      width: 100%;
+      height: 2px;
+      background-color: gray;
+    }
+
+    .hui {
+      color: gray;
+      font-size: 10px;
+    }
+
+    .tupian1,
+    .tupian2,
+    .tupian3 {
+      width: 550px;
+      height: 370px;
+      margin-left: 230px;
+    }
+
+    .zhujie1,
+    .zhujie2,
+    .zhujie3 {
+      font-size: 15px;
+      padding-left: 424px;
+    }
+  </style>
+  <title>DreamWave睡眠与OSA诊断系统</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="../可视化界面2.0.html">返回</a></li>
+        <li><a href="../kepu2.html#naodianbo">大众科普</a></li>
+        <li><a href="../kepu2.html#keyan">媒体聚焦</a></li>
+        <li><a href="../kepu2.html#linchuang">临床技术</a></li>
+        <li><a href="../关于我们.html">关于我们</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- 文章主体 -->
+  <div class="main">
+    <br>
+    <h1 style="padding-left: 25px;">5G网络显神通，机器人助力DBS手术“唤醒”植物人！</h1>
+    <br>
+    <p class="hui" style="padding-left: 25px;">时间：2021-10-20&nbsp;&nbsp;&nbsp;来源：中国神经科学学会意识与意识障碍分会</p>
+    <div class="fenge"></div>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机器人通过中国移动5G网络实时传送的高清视频画面,将术中复杂神经电生理的信号成功传给异地专家，进行信号解读定位，再远程指挥机器人臂植入电极……
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个像电影中一样的画面，是由北京天坛医院、北大国际医院、红云通融技术有限公司与华科精准，
+      联合完成的5G机器人脑深部电刺激（DBS）植入手术。结合当前最先进的术前多次精准定位并验证，在一步步毫厘不差的操作下，
+      最终机器人根据术前医生规划的路径，术中5G信号的指导，将两根极细的微电极，精准植入一位脑出血术后昏迷5月的植物人患者的大脑中。</p>
+    <br>
+    <div>
+      <img src="../images/jiqiren.png" alt="" class="tupian1">
+    </div>
+    <div><span class="zhujie1">图一&nbsp;&nbsp;机器人助手定位中</span></div>
+    <br>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“植物人”的学名叫慢性意识障碍，据不完全统计，我国目前“植物人”保有量大概100万人，每年新增患者至少10-15万人。传统的治疗方法如药物、高压氧、康复理疗、感官及环境刺激等均效果欠佳。由于患者病情的特殊性，使整个家庭和社会都承受了巨大的经济和人力负担。
+    </p>
+    <br>
+
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;植物人患者的DBS手术具有一定的难度，对于患者的靶点定位和微电极信号，目前的经验很少。机器人辅助DBS手术的定位精度良好，与头架植入差别不大，且机器人基本上不会出现由于头架长期使用的变形起误差变大的问题；靶点微调也比较方便：可以快速简单实现靶点不变，仅改变入点；或入点不变，仅改变靶点的圆弧式路径微调，这在做SEEG的优势是最大的；同时操作比较容易，不像过去手算或者是其它的一些公式代入，机器人可以自动定位；对于这些重建的技术，包括血管的融合，避免出血等也有很大的好处。整体的稳定性，精度也是很高，为手术成功夯实基础。
+    </p>
+    <br>
+    <div><img src="../images/jiqiren2.png" alt="" class="tupian2"></div>
+    <div><span class="zhujie2">图二&nbsp;&nbsp;机器人助手操作中</span></div>
+
+    <br>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除了精准定位的问题，红云公司5G夹持隔空协助机器人“助手”完成手术，可以解决术中威院及信号解读的实时传递。手术间配备了最先进的医疗设备，实现了5G全覆盖，为整个手术提供更加准确、更加安全、更加高效的工作环境。同时支持远程会诊，实时进行信号的传递，甚至可以远程的操作机器人，为未来的手术方式提供了更高精尖的平台。
+    </p>
+
+    <br>
+    <div><img src="../images/jiqiren3.png" alt="" class="tupian3"></div>
+    <div><span class="zhujie3">图三&nbsp;&nbsp;5G网络实时传输内容</span></div>
+    <br>
+
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;天坛医院神经外科意识障碍病区何江弘主任表示：“此次将最先进的两项技术融合，共同意识障碍患者的手术保驾护航，最大限度提高手术质量，也为未来多项先进技术的融合，以及在精准手术中间的应用搭建了平台，做了很好的示范。”
+    </p>
+    <br><br>
+  </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,708 @@
+/* setup */
+.setup-container {
+  width: 1240px;
+  margin: 25px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+
+}
+
+#upload-button {
+  background-color: #67b3da;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+#filter-upload-button,
+#submit-button {
+  background-color: #67b3da;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#filter-upload-button:hover,
+#upload-button:hover,
+#submit-button:hover {
+  background-color: #3d86b6;
+}
+
+#cancel-button {
+  background-color: #bdc3c7;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#cancel-button:hover {
+  background-color: #95a5a6;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space - between;
+}
+
+.file-upload-group {
+  position: relative;
+}
+
+
+.input-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-button-container input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+
+.info-calibration-container {
+  display: flex;
+}
+
+.device-info-section {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+}
+
+.device-info-section h3,
+.calibration-section h3 {
+  margin-bottom: 15px;
+  color: #666;
+  font-size: 18px;
+}
+
+.device-info-section .info-item {
+  margin-bottom: 10px;
+}
+
+.device-info-section .info-label {
+  font-weight: 500;
+  color: #666;
+  margin-right: 5px;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #67b3da;
+  width: 0%;
+}
+
+.device-info-section .info-value {
+  color: #555;
+}
+
+.device-info-section,
+.calibration-section {
+  flex: 1;
+  margin-right: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+}
+
+.calibration-section {
+  margin-right: 0;
+}
+
+
+.calibration-instruction {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.calibration-steps {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.calibration-steps li {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.calibration-progress {
+  margin-bottom: 20px;
+}
+
+.progress-text {
+  color: #666;
+  font-size: 15px;
+}
+
+#calibration-button {
+  background-color: #67b3da;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#calibration-button:hover {
+  background-color: #3d86b6;
+}
+
+
+
+
+
+/* 患者基本信息容器 */
+.huanzhejibenxinxi-container {
+  /* float: left; */
+  width: 600px;
+  height: 400px;
+  /* 让高度自适应内容 */
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+h2 {
+  color: #333;
+  text-align: left;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.huanzhejibenxinxi-container .form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+
+.huanzhejibenxinxi-container .form-group label {
+  width: 100px;
+  /* 设置标签宽度，让提示词左对齐后有固定位置 */
+  color: #333;
+  font-weight: 500;
+  padding: 8px 15px;
+  background-color: #67b3da;
+  color: white;
+
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  /* 让标签内的内容垂直居中 */
+  align-items: center;
+  /* 让标签内的文字垂直居中 */
+  border-radius: 4px;
+}
+
+.huanzhejibenxinxi-container .input-container {
+  flex: 1;
+  /* margin-left: 10px; */
+  /* 输入框和标签之间的间距 */
+}
+
+.huanzhejibenxinxi-container .input-container input,
+.huanzhejibenxinxi-container .input-container select {
+  width: 100%;
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  /* border-radius: 0 4px 4px 0; */
+  border-radius: 4px;
+  height: auto;
+  /* 让输入框高度自适应内容 */
+  display: flex;
+  /* 方便内部内容垂直居中，虽然对于输入框文本不太明显，但可以保证和标签布局一致 */
+  align-items: center;
+  /* 让输入框内的提示文字在垂直方向上居中 */
+
+}
+
+
+
+/* 睡眠环境参数 */
+.shenmianhuanjing-container {
+  /* float: left; */
+  width: 600px;
+  height: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+h2 {
+  color: #333;
+  text-align: left;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.shenmianhuanjing-container .form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.shenmianhuanjing-container .form-group label {
+  width: 180px;
+  margin-right: 20px;
+  font-size: 16px;
+  color: #555;
+  font-weight: 500;
+}
+
+.shenmianhuanjing-container .input-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.shenmianhuanjing-container .input-button-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 250px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  margin-right: 0;
+}
+
+.shenmianhuanjing-container .input-button-container input:focus {
+  outline: none;
+  border-color: rgb(103, 179, 218);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.shenmianhuanjing-container .input-button-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(103, 179, 218);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.shenmianhuanjing-container .input-button-container button:hover {
+  background-color: rgb(103, 179, 218);
+}
+
+/* 传感器校准模块 */
+.chuanganqi-jiaozhun-container {
+  /* float: left; */
+  width: 600px;
+  height: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+h2 {
+  color: #333;
+  text-align: left;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+
+.chuanganqi-jiaozhun-container .form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chuanganqi-jiaozhun-container .form-group label {
+  width: 180px;
+  /* 适当调整宽度以适配内容 */
+  color: white;
+  font-weight: 500;
+  background-color: #67b3da;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  /* 让文字在标签内水平居中 */
+  align-items: center;
+  /* 让文字在标签内垂直居中 */
+}
+
+#heart-rate,
+#blood-oxygen,
+#respiratory-rate,
+#body-movement,
+#snore {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 0 4px 4px 0;
+}
+
+/* 添加鼠标悬停效果，让按钮样式更具交互感 */
+.chuanganqi-jiaozhun-container .form-group label:hover {
+  background-color: #519fc7;
+  /* 鼠标悬停时背景颜色变深 */
+}
+
+.container2 {
+  float: left;
+  width: 600px;
+  height: 1240px;
+  /* background-color: pink; */
+  margin-right: 40px;
+}
+
+.container1 {
+  margin: 25px auto;
+  /* background-color: blue; */
+  width: 1240px;
+  height: 1240px;
+}
+
+/* 多模型参数设置 */
+.parameter-setting-container {
+  float: left;
+  height: 1240px;
+  width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.parameter-setting-wrapper .title {
+  color: #333;
+  font-size: 18px;
+  /* text-align: center; */
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.parameter-setting-wrapper .section {
+  margin-bottom: 20px;
+}
+
+.parameter-setting-wrapper .section-title {
+  color: #555;
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.parameter-setting-wrapper .subsection {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.parameter-setting-wrapper .subsection-title {
+  color: #777;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.parameter-setting-wrapper .form-group {
+  margin-bottom: 15px;
+}
+
+.parameter-setting-wrapper .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #666;
+}
+
+.parameter-setting-wrapper .form-group select,
+.parameter-setting-wrapper .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.parameter-setting-wrapper .form-group select:focus,
+.parameter-setting-wrapper .form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.parameter-setting-wrapper .file-upload-group {
+  position: relative;
+}
+
+.parameter-setting-wrapper .file-upload-group button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 0 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.parameter-setting-wrapper .info-calibration-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.parameter-setting-wrapper .device-info-section,
+.parameter-setting-wrapper .calibration-section {
+  width: 48%;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.parameter-setting-wrapper .device-info-section h3,
+.parameter-setting-wrapper .calibration-section h3 {
+  color: #555;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.parameter-setting-wrapper .info-item {
+  margin-bottom: 8px;
+}
+
+.parameter-setting-wrapper .calibration-progress {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.parameter-setting-wrapper .calibration-progress span:first-child {
+  margin-right: 5px;
+}
+
+.parameter-setting-wrapper .progress-bar {
+  height: 10px;
+  background-color: #f0f0f0;
+  flex: 1;
+  border-radius: 5px;
+}
+
+.parameter-setting-wrapper .button-area {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.parameter-setting-wrapper #save-button,
+.parameter-setting-wrapper #reset-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  margin-right: 10px;
+}
+
+.parameter-setting-wrapper #save-button {
+  background-color: #67b3da;
+}
+
+.parameter-setting-wrapper #save-button:hover {
+  background-color: #519fc7;
+}
+
+.parameter-setting-wrapper #reset-button {
+  background-color: #ccc;
+}
+
+.parameter-setting-wrapper #reset-button:hover {
+  background-color: #999;
+}
+
+
+/* 数据处理模块 */
+.chuli-container {
+  margin: 25px auto;
+  width: 1240px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.chuli-container h2 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.chuli-container .two-columns {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.chuli-container .column {
+  width: 48%;
+}
+
+.chuli-container .form-group {
+  margin-bottom: 20px;
+}
+
+.chuli-container .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+.chuli-container .form-group input,
+.chuli-container .form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chuli-container .form-group input:focus,
+.chuli-container .form-group select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+.chuli-container .file-upload-group {
+  position: relative;
+}
+
+.chuli-container .input-button-wrapper {
+  display: flex;
+}
+
+.chuli-container .input-button-wrapper input {
+  flex: 1;
+  height: 40px;
+  padding: 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;
+}
+
+.chuli-container .input-button-wrapper button {
+  height: 40px;
+  padding: 0 15px;
+  background-color: #67b3da;
+  color: white;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chuli-container .input-button-wrapper button:hover {
+  background-color: #519fc7;
+}
+
+.chuli-container .button-group {
+  display: flex;
+  /* justify-content: space-between; */
+  margin-top: 30px;
+}
+
+.chuli-container #submit-button2,
+.chuli-container #cancel-button2 {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+  margin-right: 10px
+}
+
+.chuli-container #submit-button2 {
+  background-color: #67b3da;
+}
+
+.chuli-container #submit-button2:hover {
+  background-color: #519fc7;
+}
+
+.chuli-container #cancel-button2 {
+  background-color: #ccc;
+}
+
+.chuli-container #cancel-button2:hover {
+  background-color: #b3b3b3;
+}

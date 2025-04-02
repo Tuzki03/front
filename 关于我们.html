@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #83B3E3;
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 200px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: #7FB0FD;
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+
+    /* word */
+    .word {
+      width: 1000px;
+      height: 333px;
+      margin-left: 167px;
+    }
+
+    .word h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .detail {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .word p {
+      text-indent: 2em;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: white;
+    }
+
+    .biggest {
+      width: 1000px;
+      height: 300px;
+      margin-left: 167px;
+    }
+
+    .one {
+      display: inline-block;
+      vertical-align: top;
+      width: 420px;
+      height: 100%;
+      background-color: white;
+      margin-left: 70px;
+      border-radius: 10px;
+      background-image: url('images/团队.jpg');
+      background-repeat: none;
+    }
+
+    .two {
+      display: inline-block;
+      vertical-align: top;
+      width: 420px;
+      height: 100%;
+      background-color: white;
+      margin-left: 25px;
+      border-radius: 10px;
+    }
+
+    .smallest {
+      margin-left: 25px;
+      margin-top: 25px;
+
+    }
+
+    .smallest h2,
+    .two h2 {
+      color: #83B3E3;
+    }
+
+    .smallest p {
+      color: #83B3E3;
+    }
+
+    .one img {
+      width: 400px;
+      height: 149px;
+      border-radius: 10px;
+    }
+
+    .smallest2 {
+      margin-left: 25px;
+      margin-top: 15px;
+    }
+
+    input,
+    textarea,
+    button {
+      border: 1px solid #83B3E3;
+      /* 设置边框颜色 */
+      border-radius: 5px;
+      /* 可选：设置边框圆角 */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="可视化界面2.0.html">返回</a></li>
+        <li><a href="kepu2.html#naodianbo">大众科普</a></li>
+        <li><a href="kepu2.html#keyan">媒体聚焦</a></li>
+        <li><a href="kepu2.html#linchuang">临床技术</a></li>
+        <li><a href="关于我们.html">关于我们</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <!-- 网站声明 -->
+  <div class="word">
+    <h2>网站申明</h2>
+    <div class="detail">
+      <p>一、本网站为意识障碍跟踪评估系统网站，由XXXX主管，旨在提供多模态睡眠分期和纺锤波检测技术在意识障碍评估与跟踪方面的相关信息与服务。</p>
+      <p>二、本网站所含图片、文字、视频素材部分来自公共领域，仅用于展示和介绍意识障碍评估技术，不涉及其他商业用途或侵权行为。</p>
+      <p>
+        三、XXXX独立拥有或与内容提供者共同拥有本网站相关内容的版权及相关知识产权。未经本网站书面许可，任何媒体、网站、商业机构及个人不得复制、转载、链接或以其他方式使用本网站的内容。对于违反上述声明的行为，我们将依法追究其法律责任。
+      </p>
+      <p>四、本网站所提供的信息仅供参考，不作为诊断或治疗建议。我们尽力确保网站信息的准确性和完整性，但不对其准确性、可靠性或完整性作出保证。用户在使用本系统时应遵循专业医疗人员的指导。</p>
+    </div>
+  </div>
+
+
+  <!-- 联系方式以及留言面板 -->
+  <div class="biggest">
+    <!-- 用于留下我们的联系方式 -->
+    <div class="one">
+      <div class="smallest">
+        <h2>关于我们</h2>
+        <p>欢迎通过以下方式与我们取得联系</p>
+        <p>邮箱：272522****qq.com</p>
+        <p>电话：158166****</p>
+        <p>地址：XXX大学</p>
+      </div>
+
+
+    </div>
+    <!-- 用于给用户留言  留言面板 -->
+    <div class="two">
+      <div class="smallest2">
+        <h2>给我们留言</h2>
+        <span style="color: #83B3E3;">姓名:</span>
+        <input type="text" class="text" style="color: #83B3E3;">
+        <br>
+        <span style="color: #83B3E3;">性别：</span>
+        <input type="radio" name="sex" class="text" style="border-color: #83B3E3;"><span
+          style="color: #83B3E3;">男</span>&nbsp;&nbsp;&nbsp;<input type="radio" name="sex"
+          style="border-color: #83B3E3;"><span style="color: #83B3E3;">女</span>
+        <br>
+        <span style="color: #83B3E3;">电话：</span>
+        <input type="text" class="text" style="color: #83B3E3;">
+        <br>
+        <span style="color: #83B3E3;">邮箱:</span>
+        <input type="text" class="text" style="color: #83B3E3;">
+        <br>
+        <span style="color: #83B3E3;">留言内容:</span>
+        <textarea name="" id="" cols="50" rows="6" class="text" style="color: #83B3E3;">
+      </textarea>
+        <br>
+        <input type="submit" value="发送留言" class="last" style="color: #83B3E3;">
+      </div>
+
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>

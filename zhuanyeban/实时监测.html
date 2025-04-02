@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>脑电波和眼动实时监测</title>
+  <script src="echarts.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: linear-gradient(#b5d2f0,
+          #f0f7ff);
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 110px;
+      margin-right: 40px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 180px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: rgb(127, 176, 253);
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+
+    .monitor-container {
+      margin: 25px auto;
+      width: 800px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .chart {
+      width: 100%;
+      height: 300px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #333;
+      text-align: left;
+      font-size: 16px;
+      padding-left: 10px;
+    }
+
+    /* 新增的顶部综合图表容器样式 */
+    .top-combined-chart-container {
+      width: 800px;
+      margin: 25px auto 0;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #combined-chart {
+      width: 100%;
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/资源3.png" alt="英文图标" class="english-icon">
+  </div>
+
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="初始.html">初始</a></li>
+        <!-- <li><a href="检测.html">检测</a></li> -->
+        <li><a href="实时监测.html">实时监测</a></li>
+        <li><a href="数据库.html">数据库</a></li>
+        <li><a href="分析.html">分析</a></li>
+        <li><a href="CRSR.html">CRS - R</a></li>
+        <li><a href="说明.html">说明</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- 新增的顶部综合图表容器 -->
+  <div class="top-combined-chart-container">
+    <div id="combined-chart"></div>
+  </div>
+
+  <div class="monitor-container">
+    <h2>脑电波</h2>
+    <div id="brainwave-chart" class="chart"></div>
+    <h2>眼动波</h2>
+    <div id="eyemovement-chart" class="chart"></div>
+    <h2>纺锤波</h2>
+    <div id="spindle-chart" class="chart"></div>
+  </div>
+  <script>
+
+
+
+    // 初始化脑电波图表
+    const brainwaveChart = echarts.init(document.getElementById('brainwave-chart'));
+    // 初始化眼动图表
+    const eyemovementChart = echarts.init(document.getElementById('eyemovement-chart'));
+    // 初始化纺锤波图表
+    const spindleChart = echarts.init(document.getElementById('spindle-chart'));
+    // 初始化综合图表
+    const combinedChart = echarts.init(document.getElementById('combined-chart'));
+    // 模拟数据
+    const brainwaveData = [];
+    const eyemovementData = [];
+    const spindleData = [];
+    const xAxisData = [];
+
+    // 初始数据，增加横坐标数据量
+    for (let i = 0; i < 100; i++) {
+      xAxisData.push(i);
+      // 根据PPT，脑电波α波频率8 - 13Hz，这里模拟其振幅波动，范围调整为更符合实际的0 - 100μV
+      const brainwaveValue = Math.random() * 200 - 100;
+      brainwaveData.push(brainwaveValue);
+      // 根据PPT，眼动波包括眨眼（0.5 - 2Hz）、阅读性眼球运动、缓慢眼球运动、快速眼球运动等
+      // 这里模拟快速眼球运动的振幅，范围调整为更符合实际的 -100μV到100μV
+      const eyemovementValue = Math.random() * 80 - 40;
+      eyemovementData.push(eyemovementValue);
+      // 纺锤波检测阈值
+      const spindleThreshold = 30;
+      spindleData.push(brainwaveValue > spindleThreshold ? 1 : 0);
+    }
+
+    // 脑电波图表配置
+    const brainwaveOption = {
+      xAxis: {
+        type: 'category',
+        data: xAxisData
+      },
+      yAxis: {
+        type: 'value',
+        // 根据脑电波实际振幅范围设置纵坐标
+        min: -100,
+        max: 100,
+        name: '脑电波振幅(μV)'
+      },
+      series: [
+        {
+          data: brainwaveData,
+          type: 'line',
+          smooth: false,
+          showSymbol: false,
+          lineStyle: {
+            color: 'red'
+          },
+          itemStyle: {
+            color: 'red'
+          }
+        }
+      ]
+    };
+
+    // 眼动图表配置
+    const eyemovementOption = {
+      xAxis: {
+        type: 'category',
+        data: xAxisData
+      },
+      yAxis: {
+        type: 'value',
+        // 根据眼动波实际振幅范围设置纵坐标
+        min: -100,
+        max: 100,
+        name: '眼动波振幅(μV)'
+      },
+      series: [
+        {
+          data: eyemovementData,
+          type: 'line',
+          smooth: false,
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(14, 159, 255)'
+          },
+          itemStyle: {
+            color: 'rgba(14, 159, 255)'
+          }
+        }
+      ]
+    };
+
+    // 纺锤波图表配置
+    const spindleOption = {
+      xAxis: {
+        type: 'category',
+        data: xAxisData
+      },
+      yAxis: {
+        type: 'value',
+        min: 0,
+        max: 1,
+        name: '纺锤波检测结果(0或1)'
+      },
+      series: [
+        {
+          data: spindleData,
+          type: 'line',
+          smooth: false,
+          showSymbol: false,
+          lineStyle: {
+            color: 'green'
+          },
+          itemStyle: {
+            color: 'green'
+          }
+        }
+      ]
+    };
+
+    // 综合图表配置
+    const combinedOption = {
+      legend: {
+        data: ['脑电波', '眼动波', '纺锤波']
+      },
+      xAxis: {
+        type: 'category',
+        data: xAxisData
+      },
+      yAxis: [
+        {
+          type: 'value',
+          min: -100,
+          max: 100,
+          name: '脑电波/眼动波振幅(μV)'
+        },
+        {
+          type: 'value',
+          min: 0,
+          max: 1,
+          name: '纺锤波检测结果(0或1)',
+          position: 'right'
+        }
+      ],
+      series: [
+        {
+          data: brainwaveData,
+          type: 'line',
+          smooth: false,
+          name: '脑电波',
+          showSymbol: false,
+          lineStyle: {
+            color: 'red'
+          },
+          itemStyle: {
+            color: 'red'
+          },
+          yAxisIndex: 0
+        },
+        {
+          data: eyemovementData,
+          type: 'line',
+          smooth: false,
+          name: '眼动波',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(14, 159, 255)'
+          },
+          itemStyle: {
+            color: 'rgba(14, 159, 255)'
+          },
+          yAxisIndex: 0
+        },
+        {
+          data: spindleData,
+          type: 'line',
+          smooth: false,
+          name: '纺锤波',
+          showSymbol: false,
+          yAxisIndex: 1,
+          lineStyle: {
+            color: 'green'
+          },
+          itemStyle: {
+            color: 'green'
+          },
+          yAxisIndex: 1 // 使用第二个 y 轴
+        }
+      ]
+    };
+
+    // 设置初始图表
+    brainwaveChart.setOption(brainwaveOption);
+    eyemovementChart.setOption(eyemovementOption);
+    spindleChart.setOption(spindleOption);
+    combinedChart.setOption(combinedOption);
+
+    // 模拟实时更新
+    setInterval(() => {
+      // 移除最旧的数据
+      brainwaveData.shift();
+      eyemovementData.shift();
+      spindleData.shift();
+      xAxisData.shift();
+      // 生成新的随机数据
+      const newBrainwaveValue = Math.random() * 200 - 100;
+      const newEyemovementValue = Math.random() * 80 - 40;
+      const newXValue = xAxisData[xAxisData.length - 1] + 1;
+      const spindleThreshold = 30;
+      const newSpindleValue = newBrainwaveValue > spindleThreshold ? 1 : 0;
+      // 添加新数据
+      brainwaveData.push(newBrainwaveValue);
+      eyemovementData.push(newEyemovementValue);
+      spindleData.push(newSpindleValue);
+      xAxisData.push(newXValue);
+      // 更新图表数据
+      brainwaveOption.series[0].data = brainwaveData;
+      brainwaveOption.xAxis.data = xAxisData;
+      eyemovementOption.series[0].data = eyemovementData;
+      eyemovementOption.xAxis.data = xAxisData;
+      spindleOption.series[0].data = spindleData;
+      spindleOption.xAxis.data = xAxisData;
+      combinedOption.series[0].data = brainwaveData;
+      combinedOption.series[1].data = eyemovementData;
+      combinedOption.series[2].data = spindleData;
+      combinedOption.xAxis.data = xAxisData;
+      // 更新图表
+      brainwaveChart.setOption(brainwaveOption);
+      eyemovementChart.setOption(eyemovementOption);
+      spindleChart.setOption(spindleOption);
+      combinedChart.setOption(combinedOption);
+    }, 1000); 
+  </script>
+</body>
+
+</html>

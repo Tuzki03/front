@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <link rel="stylesheet" href="shujuku.css">
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/资源3.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="初始.html">初始</a></li>
+        <!-- <li><a href="检测.html">检测</a></li> -->
+        <li><a href="实时监测.html">实时监测</a></li>
+        <li><a href="数据库.html">数据库</a></li>
+        <li><a href="分析.html">分析</a></li>
+        <li><a href="CRSR.html">CRS - R</a></li>
+        <li><a href="说明.html">说明</a></li>
+      </ul>
+    </nav>
+  </div>
+  <!-- 
+  <div class="container1">
+    <div class="naodianshishitu">
+      <h2>脑电波实时监测图</h2>
+      <div class="naodianshishitu1">
+        <img src="images/脑电波实时监测图1.jpg" alt="示例图片">
+      </div>
+      <div class="naodianshishitu2">
+        <img src="images/脑电波实时监测图2.jpg" alt="示例图片">
+      </div>
+    </div>
+    <div class="shuimianjieduannaodianboshiyitu">
+      <h2>各睡眠阶段脑电波示意图</h2>
+      <div class="shuimianjieduantu">
+        <img src="images/睡眠阶段脑电波示意图.png" alt="示例图片">
+      </div>
+    </div>
+  </div>
+
+  <div class="container2">
+    <div class="Amplitude">
+      <h2>Amplitude</h2>
+      <div class="Amplitude1">
+        <img src="images/Amplitude.png" alt="示例图片">
+      </div>
+    </div>
+    <div class="Magnitude">
+      <h2>Magnitude</h2>
+      <div class="Magnitude1">
+        <img src="images/Magnitude.png" alt="示例图片">
+      </div>
+    </div>
+  </div>
+
+  <div class="container3">
+    <div class="tezhenbo">
+      <h2>脑电特征波</h2>
+      <div class="tezhenbo1">
+        <img src="images/脑电特征波图.png" alt="示例图片">
+      </div>
+    </div>
+    <div class="EEGboxin">
+      <h2>EEG波形</h2>
+      <div class="EEGboxin1">
+        <img src="images/EEG波形图.png" alt="示例图片">
+      </div>
+    </div>
+  </div> -->
+
+
+  <!-- <div class="huanzheshuju">
+    <h2>模型数据</h2>
+
+    <div class="search-bar">
+      <input type="text" id="patientNameSearch" placeholder="患者姓名">
+      <button id="searchButton"><i class="fas fa-search"></i> 搜索</button>
+      <button id="resetButton"><i class="fas fa-redo"></i> 重置</button>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>patient name</th>
+          <th>AHI</th>
+          <th>年龄</th>
+          <th>N1持续时间</th>
+          <th>N2持续时间</th>
+          <th>N3持续时间</th>
+          <th>REM持续时间</th>
+          <th>LSpO₂</th>
+          <th>heart rate</th>
+          <th>类型</th>
+          <th>last day</th>
+        </tr>
+      </thead>
+      <tbody id="dataTableBody">
+        <tr>
+          <td>1</td>
+          <td data-field="patientName">张梓禹</td>
+          <td data-field="AHI">0次/小时</td>
+          <td data-field="age">45</td>
+          <td data-field="N1Duration">5min</td>
+          <td data-field="N2Duration">13min</td>
+          <td data-field="N3Duration">36.1min</td>
+          <td data-field="REMDuration">9.2min</td>
+          <td data-field="LSpO2">92%</td>
+          <td data-field="heartRate">70次/分钟</td>
+          <td data-field="type">MCS</td>
+          <td data-field="lastDay">May 15, 2015</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>王秀</td>
+          <td>0次/小时</td>
+          <td>38</td>
+          <td>7.1min</td>
+          <td>11min</td>
+          <td>40.2min</td>
+          <td>0min</td>
+          <td>90%</td>
+          <td>75次/分钟</td>
+          <td>VS</td>
+          <td>July 1, 2015</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>李顾熙</td>
+          <td>0次/小时</td>
+          <td>27</td>
+          <td>3.2min</td>
+          <td>14min</td>
+          <td>48.3min</td>
+          <td>10.5min</td>
+          <td>88%</td>
+          <td>68次/分钟</td>
+          <td>UWS</td>
+          <td>Apr 12, 2015</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>欧阳武</td>
+          <td>1次/小时</td>
+          <td>25</td>
+          <td>5.1min</td>
+          <td>23min</td>
+          <td>25.0min</td>
+          <td>0min</td>
+          <td>91%</td>
+          <td>71次/分钟</td>
+          <td>MCS</td>
+          <td>May 15, 2015</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>吴泽娜</td>
+          <td>0次/小时</td>
+          <td>45</td>
+          <td>4.9min</td>
+          <td>16.9min</td>
+          <td>19.4min</td>
+          <td>7.4min</td>
+          <td>93%</td>
+          <td>65次/分钟</td>
+          <td>VS</td>
+          <td>May 03, 2015</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>谢晓雪</td>
+          <td>2次/小时</td>
+          <td>33</td>
+          <td>2.4min</td>
+          <td>12.9min</td>
+          <td>24.9min</td>
+          <td>8.6min</td>
+          <td>89%</td>
+          <td>77次/分钟</td>
+          <td>MCS</td>
+          <td>July 07, 2016</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>张柯宇</td>
+          <td>1次/小时</td>
+          <td>41</td>
+          <td>6.1min</td>
+          <td>19.5min</td>
+          <td>30.6min</td>
+          <td>11.3min</td>
+          <td>90%</td>
+          <td>70次/分钟</td>
+          <td>UWS</td>
+          <td>May 12, 2014</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>王耿萱</td>
+          <td>0次/小时</td>
+          <td>30</td>
+          <td>6.3min</td>
+          <td>19.1min</td>
+          <td>51.2min</td>
+          <td>8.7min</td>
+          <td>87%</td>
+          <td>63次/分钟</td>
+          <td>UWS</td>
+          <td>Jan 13, 2015</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>杨燕</td>
+          <td>0次/小时</td>
+          <td>36</td>
+          <td>2.7min</td>
+          <td>15.3min</td>
+          <td>42.8min</td>
+          <td>13.2min</td>
+          <td>94%</td>
+          <td>70次/分钟</td>
+          <td>MCS</td>
+          <td>Apr 01, 2016</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>严紫菀</td>
+          <td>0次/小时</td>
+          <td>43</td>
+          <td>3.6min</td>
+          <td>22.6min</td>
+          <td>29.3min</td>
+          <td>7.4min</td>
+          <td>88%</td>
+          <td>72次/分钟</td>
+          <td>MCS</td>
+          <td>Jan 21, 2015</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>周帆</td>
+          <td>0次/小时</td>
+          <td>48</td>
+          <td>4.1min</td>
+          <td>24.2min</td>
+          <td>16.4min</td>
+          <td>8.4min</td>
+          <td>89%</td>
+          <td>68次/分钟</td>
+          <td>MCS</td>
+          <td>Oct 13, 2015</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>余羽霖</td>
+          <td>1次/小时</td>
+          <td>37</td>
+          <td>4.7min</td>
+          <td>13.6min</td>
+          <td>35.2min</td>
+          <td>10.8min</td>
+          <td>91%</td>
+          <td>69次/分钟</td>
+          <td>VS</td>
+          <td>Jan 12, 2016</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>林潇</td>
+          <td>0次/小时</td>
+          <td>31</td>
+          <td>3.8min</td>
+          <td>16.2min</td>
+          <td>41.9min</td>
+          <td>10.9min</td>
+          <td>92%</td>
+          <td>73次/分钟</td>
+          <td>MCS</td>
+          <td>May 06, 2015</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>陈家鑫</td>
+          <td>0次/小时</td>
+          <td>29</td>
+          <td>6.1min</td>
+          <td>20.4min</td>
+          <td>46.7min</td>
+          <td>12.1min</td>
+          <td>88%</td>
+          <td>70次/分钟</td>
+          <td>UWS</td>
+          <td>Oct 09, 2015</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="operation-buttons">
+      <button class="transfer">转移</button>
+      <button class="close">结案</button>
+      <button class="modify" id="modifyButton">修改</button>
+    </div>
+  </div> -->
+
+
+
+  <div class="huanzheshuju">
+    <h2>测试者数据</h2>
+    <div class="search-bar">
+      <input type="text" id="patientNameSearch" placeholder="患者姓名">
+      <button id="searchButton"><i class="fas fa-search"></i> 搜索</button>
+      <button id="resetButton"><i class="fas fa-redo"></i> 重置</button>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>patient name</th>
+          <th>AHI</th>
+          <th>年龄</th>
+          <th>N1持续时间</th>
+          <th>N2持续时间</th>
+          <th>N3持续时间</th>
+          <th>REM持续时间</th>
+          <th>LSpO₂</th>
+          <th>heart rate</th>
+          <th>类型</th>
+          <th>last day</th>
+        </tr>
+      </thead>
+      <tbody id="dataTableBody">
+        <tr>
+          <td>1</td>
+          <td data-field="patientName"><a href="实时监测.html">张梓禹</a></td>
+          <td data-field="AHI">0次/小时</td>
+          <td data-field="age">45</td>
+          <td data-field="N1Duration">5min</td>
+          <td data-field="N2Duration">13min</td>
+          <td data-field="N3Duration">36.1min</td>
+          <td data-field="REMDuration">9.2min</td>
+          <td data-field="LSpO2">92%</td>
+          <td data-field="heartRate">70次/分钟</td>
+          <td data-field="type">MCS</td>
+          <td data-field="lastDay">May 15, 2015</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td data-field="patientName">王秀</td>
+          <td data-field="AHI">0次/小时</td>
+          <td data-field="age">38</td>
+          <td data-field="N1Duration">7.1min</td>
+          <td data-field="N2Duration">11min</td>
+          <td data-field="N3Duration">40.2min</td>
+          <td data-field="REMDuration">0min</td>
+          <td data-field="LSpO2">90%</td>
+          <td data-field="heartRate">75次/分钟</td>
+          <td data-field="type">VS</td>
+          <td data-field="lastDay">July 1, 2015</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td data-field="patientName">李顾熙</td>
+          <td data-field="AHI">0次/小时</td>
+          <td data-field="age">27</td>
+          <td data-field="N1Duration">3.2min</td>
+          <td data-field="N2Duration">14min</td>
+          <td data-field="N3Duration">48.3min</td>
+          <td data-field="REMDuration">10.5min</td>
+          <td data-field="LSpO2">88%</td>
+          <td data-field="heartRate">68次/分钟</td>
+          <td data-field="type">UWS</td>
+          <td data-field="lastDay">Apr 12, 2015</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td data-field="patientName">欧阳武</td>
+          <td data-field="AHI">1次/小时</td>
+          <td data-field="age">25</td>
+          <td data-field="N1Duration">5.1min</td>
+          <td data-field="N2Duration">23min</td>
+          <td data-field="N3Duration">25.0min</td>
+          <td data-field="REMDuration">0min</td>
+          <td data-field="LSpO2">91%</td>
+          <td data-field="heartRate">71次/分钟</td>
+          <td data-field="type">MCS</td>
+          <td data-field="lastDay">May 15, 2015</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td data-field="patientName">吴泽娜</td>
+          <td data-field="AHI">0次/小时</td>
+          <td data-field="age">45</td>
+          <td data-field="N1Duration">4.9min</td>
+          <td data-field="N2Duration">16.9min</td>
+          <td data-field="N3Duration">19.4min</td>
+          <td data-field="REMDuration">7.4min</td>
+          <td data-field="LSpO2">93%</td>
+          <td data-field="heartRate">65次/分钟</td>
+          <td data-field="type">VS</td>
+          <td data-field="lastDay">May 03, 2015</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td data-field="patientName">谢晓雪</td>
+          <td data-field="AHI">2次/小时</td>
+          <td data-field="age">33</td>
+          <td data-field="N1Duration">2.4min</td>
+          <td data-field="N2Duration">12.9min</td>
+          <td data-field="N3Duration">24.9min</td>
+          <td data-field="REMDuration">8.6min</td>
+          <td data-field="LSpO2">89%</td>
+          <td data-field="heartRate">77次/分钟</td>
+          <td data-field="type">MCS</td>
+          <td data-field="lastDay">July 07, 2016</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td data-field="patientName">张柯宇</td>
+          <td data-field="AHI">1次/小时</td>
+          <td data-field="age">41</td>
+          <td data-field="N1Duration">6.1min</td>
+          <td data-field="N2Duration">19.5min</td>
+          <td data-field="N3Duration">30.6min</td>
+          <td data-field="REMDuration">11.3min</td>
+          <td data-field="LSpO2">90%</td>
+          <td data-field="heartRate">70次/分钟</td>
+          <td data-field="type">UWS</td>
+          <td data-field="lastDay">May 12, 2014</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td data-field="patientName">王耿萱</td>
+          <td data-field="AHI">0次/小时</td>
+          <td data-field="age">30</td>
+          <td data-field="N1Duration">6.3min</td>
+          <td data-field="N2Duration">19.1min</td>
+          <td data-field="N3Duration">51.2min</td>
+          <td data-field="REMDuration">8.7min</td>
+          <td data-field="LSpO2">87%</td>
+          <td data-field="heartRate">63次/分钟</td>
+          <td data-field="type">UWS</td>
+          <td data-field="lastDay">Jan 13, 2015</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td data-field="patientName">杨燕</td>
+          <td data-field="AHI">0次/小时</td>
+          <td data-field="age">36</td>
+          <td data-field="N1Duration">2.7min</td>
+          <td data-field="N2Duration">15.3min</td>
+          <td data-field="N3Duration">42.8min</td>
+          <td data-field="REMDuration">13.2min</td>
+          <td data-field="LSpO2">94%</td>
+          <td data-field="heartRate">70次/分钟</td>
+          <td data-field="type">MCS</td>
+          <td data-field="lastDay">Apr 01, 2016</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td data-field="patientName">严紫菀</td>
+          <td data-field="AHI">0次/小时</td>
+          <td data-field="age">43</td>
+          <td data-field="N1Duration">3.6min</td>
+          <td data-field="N2Duration">22.6min</td>
+          <td data-field="N3Duration">29.3min</td>
+          <td data-field="REMDuration">7.4min</td>
+          <td data-field="LSpO2">88%</td>
+          <td data-field="heartRate">72次/分钟</td>
+          <td data-field="type">MCS</td>
+          <td data-field="lastDay">Jan 21, 2015</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td data-field="patientName">周帆</td>
+          <td data-field="AHI">0次/小时</td>
+          <td data-field="age">48</td>
+          <td data-field="N1Duration">4.1min</td>
+          <td data-field="N2Duration">24.2min</td>
+          <td data-field="N3Duration">16.4min</td>
+          <td data-field="REMDuration">8.4min</td>
+          <td data-field="LSpO2">89%</td>
+          <td data-field="heartRate">68次/分钟</td>
+          <td data-field="type">MCS</td>
+          <td data-field="lastDay">Oct 13, 2015</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td data-field="patientName">余羽霖</td>
+          <td data-field="AHI">1次/小时</td>
+          <td data-field="age">37</td>
+          <td data-field="N1Duration">4.7min</td>
+          <td data-field="N2Duration">13.6min</td>
+          <td data-field="N3Duration">35.2min</td>
+          <td data-field="REMDuration">10.8min</td>
+          <td data-field="LSpO2">91%</td>
+          <td data-field="heartRate">69次/分钟</td>
+          <td data-field="type">VS</td>
+          <td data-field="lastDay">Jan 12, 2016</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td data-field="patientName">林潇</td>
+          <td data-field="AHI">0次/小时</td>
+          <td data-field="age">31</td>
+          <td data-field="N1Duration">3.8min</td>
+          <td data-field="N2Duration">16.2min</td>
+          <td data-field="N3Duration">41.9min</td>
+          <td data-field="REMDuration">10.9min</td>
+          <td data-field="LSpO2">92%</td>
+          <td data-field="heartRate">73次/分钟</td>
+          <td data-field="type">MCS</td>
+          <td data-field="lastDay">May 06, 2015</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td data-field="patientName">陈家鑫</td>
+          <td data-field="AHI">0次/小时</td>
+          <td data-field="age">29</td>
+          <td data-field="N1Duration">6.1min</td>
+          <td data-field="N2Duration">20.4min</td>
+          <td data-field="N3Duration">46.7min</td>
+          <td data-field="REMDuration">12.1min</td>
+          <td data-field="LSpO2">88%</td>
+          <td data-field="heartRate">70次/分钟</td>
+          <td data-field="type">UWS</td>
+          <td data-field="lastDay">Oct 09, 2015</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="operation-buttons">
+      <button class="transfer">转移</button>
+      <button class="close">结案</button>
+      <button class="modify" id="modifyButton">修改</button>
+      <button id="addButton">添加</button>
+      <button id="deleteAllButton">删除选中</button>
+    </div>
+  </div>
+
+  <script src="shujukuscript.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="echarts.min.js"></script>
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      background-image: linear-gradient(#7aade1,
+          #b5d2f0);
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+
+
+
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 40px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: rgb(127, 176, 253);
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+
+    /* 睡眠实时监测主体 */
+    li {
+      list-style: none;
+    }
+
+    .information {
+      width: 1100px;
+      height: 120px;
+      margin-left: 166px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .second {
+      margin-top: 10px;
+      width: 1100px;
+      height: 400px;
+      margin-left: 166px;
+      border-radius: 10px;
+    }
+
+    .final {
+      margin-top: 10px;
+      width: 1100px;
+      height: 120px;
+      margin-left: 166px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .information .tubiao {
+      display: inline-block;
+      vertical-align: top;
+      background-color: white;
+      width: 105px;
+      height: 100px;
+    }
+
+    .information .tubiao img {
+      width: 80px;
+      height: 60px;
+      margin-left: 14px;
+      margin-top: 9px;
+    }
+
+    .information .tubiao span {
+      margin-left: 5px;
+    }
+
+    .information .xinxi1 {
+      display: inline-block;
+      vertical-align: top;
+      width: 175px;
+      height: 100px;
+      margin-left: 50px;
+      background-color: white;
+    }
+
+    .information .xinxi1 ul {
+      margin-left: 31px;
+      margin-top: 2px;
+    }
+
+    .information .bingshi {
+      display: inline-block;
+      vertical-align: top;
+      width: 250px;
+      height: 100px;
+      margin-left: 50px;
+      background-color: white;
+    }
+
+    .information .bingshi ul {
+      margin-top: 24px;
+      margin-left: 20px;
+    }
+
+    .information .anniu {
+      display: inline-block;
+      vertical-align: top;
+      width: 250px;
+      height: 100px;
+      margin-left: 101px;
+      margin-top: 15px;
+      margin-right: 47px;
+      background-color: white;
+    }
+
+    .information .anniu ul {
+      margin-top: 20px;
+      margin-left: 60px;
+    }
+
+    .information .anniu ul li button {
+      width: 136px;
+      height: 30px;
+      border-radius: 10px;
+      border-style: none;
+      background-color: #7FB0FD;
+      color: white;
+    }
+
+    .information .anniu .stopbutton {
+      margin-top: 5px;
+    }
+
+    .second .naodian {
+      float: left;
+      width: 550px;
+      height: 400px;
+      background-color: white;
+      margin-left: 100px;
+      margin-right: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      /* 合并边框 */
+      width: 370px;
+      height: 400px;
+      background-color: white;
+      border-color: black;
+    }
+
+    th,
+    td {
+
+      text-align: center;
+      font-size: 15px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    canvas {
+      border: none;
+      width: 250px;
+      height: 66px;
+      margin-left: 15px;
+    }
+
+    .musicplayer {
+      display: inline-block;
+      vertical-align: top;
+      width: 280px;
+      height: 120px;
+      background-color: white;
+      margin-left: 100px;
+    }
+
+    .musicplayer button {
+      width: 56px;
+      height: 25px;
+      border-radius: 10px;
+      border-style: none;
+      background-color: #7FB0FD;
+      color: white;
+      margin-left: 55px;
+    }
+
+    .musicplayer span {
+      font-size: 15px;
+      margin-left: 85px;
+    }
+
+    .final .lasttime,
+    .final .baogao {
+      display: inline-block;
+      vertical-align: top;
+      width: 307px;
+      height: 120px;
+      background-color: white;
+      margin-left: 20px;
+    }
+
+
+
+    .jilutubiao,
+    .dianzibaogao {
+      display: inline-block;
+      vertical-align: top;
+      width: 85px;
+      height: 120px;
+    }
+
+    .lasttime img,
+    .dianzibaogao img {
+      width: 80px;
+      height: 60px;
+      margin-left: 10px;
+      margin-top: 15px;
+    }
+
+    .jilutubiao span,
+    .dianzibaogao span {
+      margin-left: 18px;
+    }
+
+    .last,
+    .rukou {
+      display: inline-block;
+      vertical-align: top;
+      width: 158px;
+      height: 120px;
+    }
+
+    .last .shijian {
+      margin-top: 20px;
+    }
+
+    .last div,
+    .rukou div {
+      margin-left: 20px;
+    }
+
+    .jiantou,
+    .jiantou2 {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 30px;
+      color: grey;
+      margin-top: 35px;
+      margin-left: 10px;
+    }
+
+    .top {
+      margin-bottom: 15px;
+      margin-top: 25px;
+      color: grey;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .middle {
+      display: inline-block;
+      vertical-align: top;
+      background-color: white;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="首页.html">首页</a></li>
+        <li><a href="登录注册界面.html">登录/注册</a></li>
+        <li><a href="设备链接检测界面.html">设备链接监测</a></li>
+        <li><a href="睡眠监测界面.html">睡眠实时监测</a></li>
+        <li><a href="可视化界面2.0.html">单日报告</a></li>
+        <li><a href="周次报告.html">本周报告</a></li>
+        <li><a href="kepu2.html">科普说明</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <!-- 个人基本信息  分为四个区域，分别是图标，姓名体重身高年龄栏，患病记录和用药记录栏目，最后一个是开始入睡和暂停睡眠按钮  -->
+  <div class="information">
+    <div class="anniu">
+      <ul>
+        <li><button class="starbutton" id="startButton">开始睡眠监测</button></li>
+        <li><button class="stopbutton" id="stopButton">暂停睡眠监测</button></li>
+      </ul>
+    </div>
+
+
+    <div class="middle">
+      <div class="tubiao">
+        <img src="images/认证-个人基本信息.svg" alt="个人基本信息">
+        <span>个人基本信息</span>
+      </div>
+      <div class="xinxi1">
+        <!-- 姓名，年龄，体重，身高 -->
+        <ul>
+          <li>用户名：Spark</li>
+          <li>年龄：21</li>
+          <li>体重：52kg</li>
+          <li>身高：162cm</li>
+        </ul>
+      </div>
+      <div class="bingshi">
+        <ul>
+          <li>既往病史：无反应觉醒综合征</li>
+          <li>用药记录：金刚烷胺，唑吡坦</li>
+        </ul>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <!-- 第二层盒子 -->
+  <div class="second">
+    <!-- 脑电波和眼动信号波形图 -->
+    <div class="naodian" id="naodian"></div>
+    <!-- 特征对应表格 -->
+    <table id="featureTable" border="1">
+      <thead>
+        <tr>
+          <th>时间</th>
+          <th>脑电图特征</th>
+          <th>眼动信号特征</th>
+          <th>患者睡眠状态</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 特征数据将动态插入到这里 -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 最后一层盒子 装音乐播放器和查看报告-->
+  <div class="final">
+    <div class="musicplayer">
+      <span>纺锤波调控音乐</span>
+      <canvas id="soundWaveCanvas"></canvas>
+      <audio id="audioPlayer" src="audios/安眠a脑波音乐.mp3"></audio>
+      <button class="musicplay" id="musicplay">播放</button>
+      <button class="musicpause" id="musicpause">暂停</button>
+
+    </div>
+    <!-- 上次监测记录 -->
+    <div class="lasttime">
+
+      <div class="jilutubiao">
+        <img src="images/我的分析表_FineDirect.svg" alt="监测记录">
+        <span>监测记录</span>
+      </div>
+
+      <!-- 上次记录时间 -->
+      <div class="last">
+        <div class="shijian">上一次记录时间：</div>
+        <div>2025.03.13</div>
+        <div>22:50-8:30</div>
+      </div>
+
+      <!-- 箭头 -->
+      <div class="jiantou">
+        >
+      </div>
+    </div>
+
+    <div class="baogao">
+      <div class="dianzibaogao">
+        <img src="images/icon_档案管理_档案材料复制.svg" alt="监测报告">
+        <span>监测报告</span>
+      </div>
+
+      <!-- 社区版入口and专业版入口 -->
+      <div class="rukou">
+        <div class="top"><a href="可视化界面2.0.html">社区版报告入口</a></div>
+        <div><a href="zhuanyeban/分析.html">专业版报告入口</a></div>
+      </div>
+
+      <!-- 箭头2 -->
+      <div class="jiantou2">
+        >
+      </div>
+    </div>
+  </div>
+  <script src="naodian.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: linear-gradient(#b5d2f0,
+          #f0f7ff);
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 110px;
+      margin-right: 40px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 180px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    nav {
+      /* background: #fff; */
+      background-color: rgb(127, 176, 253);
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .container1 {
+      width: 1200px;
+      height: 370px;
+      /* background-color: pink; */
+      margin: 25px auto;
+    }
+
+    /* 装置说明 */
+    .zhuangzhishuomingcontainer {
+      float: left;
+      width: 560px;
+      height: 350px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      margin-right: 40px;
+    }
+
+    h1 {
+      color: #333;
+      margin: 20px 10px;
+      font-size: 20px;
+
+    }
+
+    h2 {
+      color: #333;
+      text-align: left;
+      font-size: 18px;
+      padding-left: 10px;
+    }
+
+    p {
+      color: #777;
+      line-height: 2;
+    }
+
+    /* 稳定率评判标准,硬件监测标识 */
+    /* .yingjiang {
+      float: left;
+      width: 580px;
+      height: 370px;
+    } */
+
+    /* 稳定率评判标准 */
+    /* .wendinlupinpan {
+      width: 560px;
+      height: 157.5px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 15px;
+    } */
+
+    /* 硬件监测标识 */
+    /* .yinjianjiancebiaoshi {
+      width: 560px;
+      height: 157.5px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .status-group {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .status-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .high-voltage {
+      background-color: #ff9900;
+    }
+
+    .normal {
+      background-color: #00cc00;
+    }
+
+    .low-voltage {
+      background-color: #ff0000;
+    }
+
+    .status-text {
+      color: #333;
+      font-weight: 500;
+    }
+
+    .high-voltage-icon::before {
+      content: "";
+      width: 14px;
+      height: 18px;
+      border-top: 2px solid white;
+      border-right: 2px solid white;
+      transform: rotate(45deg);
+    }
+
+    .normal-icon::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border: 2px solid white;
+      border-radius: 50%;
+    }
+
+    .low-voltage-icon::before {
+      content: "";
+      width: 14px;
+      height: 18px;
+      border-bottom: 2px solid white;
+      border-right: 2px solid white;
+      transform: rotate(-45deg);
+    }
+
+    .status:hover {
+      transform: scale(1.05);
+    }
+
+    .status-icon:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    } */
+
+    /* 通道选择说明，初始设置使用说明 */
+    .container2 {
+      width: 1200px;
+      height: 450px;
+      /* background-color: pink; */
+      margin: 25px auto;
+    }
+
+    .tondaoxuanzheshuoming,
+    .chushishebeixuanzheshuoming1,
+    .chushishebeixuanzheshuoming2 {
+      float: left;
+      width: 353px;
+      height: 430px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      margin-right: 40px;
+    }
+
+    .chushishebeixuanzheshuoming2 {
+      margin-right: 0px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      /* margin-bottom: 10px; */
+      color: #666;
+      /* line-height: 2; */
+    }
+
+    .channel-list li,
+    .initial-list1 li,
+    .initial-list2 li {
+      margin-bottom: 10px;
+      line-height: 2;
+    }
+
+    .channel-list li::before {
+      content: "✔";
+      color: #00cc00;
+      margin-right: 5px;
+    }
+
+    .initial-list1 li::before {
+      content: "➤";
+      color: #0099ff;
+      margin-right: 5px;
+    }
+
+    .initial-list2 li::before {
+      content: "★";
+      color: #ff9900;
+      margin-right: 5px;
+    }
+
+    .settings-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #ff3366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* <!-- 温馨提示，address --> */
+    .container3 {
+      width: 1200px;
+      height: 370px;
+      /* background-color: pink; */
+      margin: 25px auto;
+    }
+
+    .wenxintishi,
+    .address1 {
+      float: left;
+      width: 560px;
+      height: 350px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      margin-right: 40px;
+    }
+
+    .address1 {
+      margin-right: 0px;
+    }
+
+    /* .tips-box {
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 18px;
+      margin-bottom: 50px;
+    }
+
+    .quote-box {
+      border: 1px solid #ff3366;
+      border-radius: 6px;
+      padding: 18px;
+      color: #666;
+    }
+
+    .quote-author {
+      color: #ff3366;
+      display: block;
+      text-align: right;
+      margin-top: 8px;
+    } */
+
+    .info-item {
+      margin-bottom: 20px;
+    }
+
+    .info-label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .info-value {
+      color: #666;
+    }
+
+
+
+    /* 分期与标签，分析结果参考，分析结果标准 */
+    .container4 {
+      width: 1200px;
+      height: 790px;
+      /* background-color: pink; */
+      margin: 25px auto;
+    }
+
+    .fenqiyubiaoqian,
+    .fenxijieguocangkao,
+    .fenxijieguobiaozun {
+      float: left;
+      width: 353px;
+      height: 770px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      margin-right: 40px;
+    }
+
+    .fenxijieguobiaozun {
+      margin-right: 0px;
+    }
+
+    .list-item1 {
+      display: flex;
+      margin-bottom: 10px;
+      color: #666;
+      line-height: 2;
+    }
+
+    .list-item1::before {
+      content: "✔";
+      color: #00cc00;
+      margin-right: 5px;
+    }
+
+    .list-item2 {
+      display: flex;
+      margin-bottom: 10px;
+      color: #666;
+      line-height: 2;
+    }
+
+    .list-item2::before {
+      content: "➤";
+      color: #0099ff;
+      margin-right: 5px;
+    }
+
+    .list-item3 {
+      display: flex;
+      margin-bottom: 10px;
+      color: #666;
+      line-height: 2;
+    }
+
+    .list-item3::before {
+      content: "★";
+      color: #ff9900;
+      margin-right: 5px;
+    }
+
+    /* 数据库相关介绍 */
+    .list-itemk {
+      display: flex;
+      margin-bottom: 5px;
+      color: #666;
+      line-height: 2;
+    }
+
+    .list-itemk::before {
+      content: "*";
+      color: rgba(255, 102, 102);
+      margin-right: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/资源3.png" alt="英文图标" class="english-icon">
+  </div>
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="初始.html">初始</a></li>
+        <!-- <li><a href="检测.html">检测</a></li> -->
+        <li><a href="实时监测.html">实时监测</a></li>
+        <li><a href="数据库.html">数据库</a></li>
+        <li><a href="分析.html">分析</a></li>
+        <li><a href="CRSR.html">CRS - R</a></li>
+        <li><a href="说明.html">说明</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container1">
+    <div class="zhuangzhishuomingcontainer">
+      <h2>介绍</h2>
+      <!-- <h1>装置说明</h1> -->
+      <p style="margin-top: 20px;">
+        在现代医学领域，睡眠问题与意识障碍的准确评估愈发关键。本系统是满足临床诊断、康复监测及科研探索等多场景需求而打造的专业工具。
+        系统依托先进的多模态监测技术，可全方位采集睡眠与意识相关数据。睡眠监测方面，借助高精度传感器与智能算法，能精准追踪睡眠时长、睡眠阶段转换，以及呼吸频率、体动情况等关键参数，清晰勾勒您的睡眠画像。
+        在意识障碍筛查上，整合脑电图（EEG）等前沿神经影像技术，结合专业的临床行为评估量表，深度剖析大脑功能状态，准确识别植物状态、微意识状态等不同程度的意识障碍。
+        系统具备强大的数据分析能力，对采集的数据进行深度挖掘与智能分析，以直观易懂的可视化图表与详尽报告呈现结果，并给予专业的筛查结论与建议。
+      </p>
+    </div>
+    <!-- <div class="yingjiang">
+      <div class="wendinlupinpan">
+        <h2>稳定率评判标准</h2>
+        <p style="margin-top: 30px;">电极信号滤波过滤后，经过ai多重比对并筛选信号，筛选之后的信号长度与原信号相比，失真为不稳定部分。</p>
+      </div>
+      <div class="yinjianjiancebiaoshi">
+        <h2>硬件监测标识</h2>
+        <div class="status-group">
+          <div class="status">
+            <div class="status-icon high-voltage high-voltage-icon"></div>
+            <span class="status-text">电压过高</span>
+          </div>
+          <div class="status">
+            <div class="status-icon normal normal-icon"></div>
+            <span class="status-text">正常</span>
+          </div>
+          <div class="status">
+            <div class="status-icon low-voltage low-voltage-icon"></div>
+            <span class="status-text">电压过低</span>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="zhuangzhishuomingcontainer" style="margin-right: 0px;">
+      <h2>实时监测</h2>
+      <!-- <h1>装置说明</h1> -->
+      <p style="margin-top: 20px;">
+        综合波形图：上方图表同时展示了脑电波（红色）、眼动波（蓝色）和纺锤波（绿色）。通过该图，可直观对比三种波形在同一时间段内的变化趋势和相互关系。不同波形的起伏和波动情况，能为判断睡眠状态和意识情况提供参考。
+      </p>
+      <p style="margin-top: 20px;">
+        单独波形图：下方依次展示了脑电波、眼动波和纺锤波的单独波形图。每个波形图都有清晰的标签，便于区分和查看。脑电波图反映大脑的电活动情况，其频率和幅度变化与睡眠阶段、意识状态密切相关；眼动波图记录眼球的运动情况，在快速眼动睡眠期会有明显特征；纺锤波图则呈现了睡眠过程中特定的脑电活动，对睡眠的稳定和记忆巩固等过程有重要意义。
+      </p>
+    </div>
+  </div>
+  <div class="container2">
+    <div class="tondaoxuanzheshuoming">
+      <h2 style="margin-bottom: 20px;">通道选择说明</h2>
+      <ul class="channel-list">
+        <li>系统默认提供四个通道，如需额外添加，请联系开发者进行操作。</li>
+        <li>这四个通道是经过 edf 基本筛选，对后续分析有重大影响的关键通道。</li>
+        <li>您可根据需求选择特定的日期与时间段进行监测。</li>
+        <li>平均频率代表所选时间段内的脑电脉冲每秒数量，可作为参考指标。</li>
+        <li>若出现电压峰值过低的情况，可通过相关装置进行调整</li>
+      </ul>
+    </div>
+    <div class="chushishebeixuanzheshuoming1">
+      <h2 style="margin-bottom: 20px;">患者基本信息录入</h2>
+      <ul class="initial-list1">
+        <li>在系统初始页面，找到 “患者基本信息” 板块。</li>
+        <li>准确输入患者的姓名。</li>
+        <li>准确输入患者的年龄。</li>
+        <li>从下拉菜单中选择患者性别。</li>
+        <li>填写患者的身高和体重信息，为后续监测与分析提供基础数据。</li>
+      </ul>
+    </div>
+    <div class="chushishebeixuanzheshuoming2">
+      <h2 style="margin-bottom: 20px;">睡眠环境参数设置&传感器校准</h2>
+      <ul class="initial-list2">
+        <li>可手动输入睡眠环境的温度、湿度、噪音水平、光照强度以及电磁辐射强度。</li>
+        <li>若想快速获取数据，点击各参数后的 “自动获取” 按钮，系统将通过连接设备实时采集环境数据。</li>
+        <li>在 “传感器校准模块” 中，分别对心率、血氧饱和度、呼吸频率、体动以及鼾声传感器进行校准操作。</li>
+        <li>点击各传感器对应的输入框，按照实际校准信息准确填写，确保传感器数据精准。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container2">
+    <div class="tondaoxuanzheshuoming">
+      <h2 style="margin-bottom: 20px;">多类型参数设置</h2>
+      <ul class="channel-list">
+        <li>睡眠监测参数</li>
+        <li>设置睡眠监测的采样频率（默认为 100Hz），并输入合适的电极阻抗阈值。</li>
+        <li>依据专业标准或研究需求，填写睡眠分期相关的判断阈值及时长标准，包括清醒（W）阶段和浅睡（N1）阶段等参数。</li>
+        <li>意识障碍筛查参数</li>
+        <li>输入滤波参数（如频率范围），选择 SVM 核函数类型（如 linear），并设置相应的 SVM 惩罚参数，以保证意识障碍评估模型的准确性。</li>
+      </ul>
+    </div>
+    <div class="chushishebeixuanzheshuoming1">
+      <h2 style="margin-bottom: 20px;">安装配置</h2>
+      <ul class="initial-list1">
+        <li>电极放大器选择：根据实际监测需求，从下拉菜单中选择合适的电极放大器选项，如 “低”。</li>
+        <li>文件自动保存位置：填入文件保存位置，支持网站网盘或本地地址。</li>
+        <li>滤波选择：系统默认采用低通滤波与下采样，可根据实际情况选择高通滤波或三频带滤波。</li>
+        <li>设备信息确认：仔细查看设备型号、序列号、固件版本、生产厂家和生产日期等信息。</li>
+        <li>电极校准：将电极正确放置在指定的头皮位置，点击 “开始校准” 按钮，等待校准过程完成。在校准期间，请保持静止。</li>
+      </ul>
+    </div>
+    <div class="chushishebeixuanzheshuoming2">
+      <h2 style="margin-bottom: 20px;">数据处理相关设置</h2>
+      <ul class="initial-list2">
+        <li>在 “数据处理相关设置” 板块，按需输入弹性时间窗口大小、步长、通带频率、阻带频率、信号放大倍数等参数。</li>
+        <li>选择傅里叶变换窗函数类型、滤波器类型、数据编码方式、数据精度等。</li>
+        <li>设置学习率、迭代次数、批量大小以及归一化方式，以优化数据处理和分析效果。</li>
+        <li>指定数据存储路径，设置自动备份时间间隔和备份方式（如全量备份），点击 “Submit” 提交所有设置。若需重新设置，点击 “Cancel” 或 “重置” 按钮即可。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 温馨提示，address -->
+  <div class="container3">
+    <div class="wenxintishi">
+      <h2 style="margin-bottom: 10px;">数据库管理</h2>
+      <!-- <div class="tips-box">
+        <p>单次实验结果存在不确定因素，请至少采集两天及以上的数据判断病情。</p>
+      </div>
+      <div class="quote-box">
+        <p>Tell you that I reach the goal of the mystery, I only power is my persistence spirit.</p>
+        <span class="quote-author">— Pasteur</span>
+      </div> -->
+      <div class="list-itemk">
+        <p>AHI：即睡眠呼吸暂停低通气指数，表示每小时睡眠中呼吸暂停和低通气的次数，可用于评估睡眠呼吸障碍的程度 。</p>
+      </div>
+      <div class="list-itemk">
+        <p>N1 持续时间、N2 持续时间、N3 持续时间：分别代表睡眠的浅睡初期、浅睡期、深睡期的持续时间</p>
+      </div>
+      <div class="list-itemk">
+        <p>REM 持续时间：REM 即快速眼动睡眠期，该列记录此睡眠阶段的持续时长，对分析睡眠周期很重要。</p>
+      </div>
+      <div class="list-itemk">
+        <p>LSpO₂：指最低血氧饱和度，反映测试者睡眠过程中血氧水平的情况。</p>
+      </div>
+      <div class="list-itemk">
+        <p>heart rate：记录测试者的心率，能辅助判断其身体状态。</p>
+      </div>
+      <div class="list-itemk">
+        <p>last day：记录数据对应的日期，方便追溯和管理不同时间的测试数据。</p>
+      </div>
+    </div>
+    <div class="address1">
+      <h2 style="margin-bottom: 30px;">Address</h2>
+      <div class="info-item">
+        <span class="info-label">XXX脑电研究小组</span><br>
+        <span class="info-value">制作名单</span><br>
+        <span class="info-value">组长：谢XX，组员：陈XX，翁XX，唐XX</span><br>
+        <span class="info-value">XXX</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">E - mail</span><br>
+        <span class="info-value">xxxxxxxxxxx</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Web Address</span><br>
+        <span class="info-value">xxxxxxxxxxx</span>
+      </div>
+      <div class="区别于社区版">
+        <p>专业版，直观显示数据情况，面向于医学专业人员诊断，添加了患者信息管理系统，以及电极监测等的数据。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container4">
+    <div class="fenqiyubiaoqian">
+      <h2 style="margin-bottom: 20px;">睡眠相关数据</h2>
+      <div class="list-item1">
+        <p>血氧饱和度变化：以折线图对比展示正常人与测试者的血氧饱和度变化情况，可直观观察测试者血氧波动是否异常，帮助判断其睡眠过程中的呼吸及氧合状态。</p>
+      </div>
+      <div class="list-item1">
+        <p>数据采集概况：列出数据采集时长、有效数据占比、监测中断次数、传感器工作时长、信号强度平均值等信息，反映数据采集过程的完整性和质量，为后续分析提供可靠性参考。</p>
+      </div>
+      <div class="list-item1">
+        <p>睡眠呼吸参数：用圆形图和列表展示呼吸频率、潮气量、分钟通气量、AHI（睡眠呼吸暂停低通气指数）、呼吸暂停次数等参数，用于评估测试者睡眠中的呼吸功能和是否存在呼吸障碍。</p>
+      </div>
+      <div class="list-item1">
+        <p>纺锤波频率与密度分布：以柱状图呈现不同频率区间内纺锤波的频率值和密度，有助于分析睡眠过程中特定脑电活动的特征，对判断睡眠深度和质量有重要意义 。</p>
+      </div>
+      <div class="list-item1">
+        <p>分期与标签：记录浅睡眠、深睡眠、纺锤波标签段的相关数据，下方的曲线可能展示了各睡眠阶段随时间的变化趋势，辅助了解测试者的睡眠结构和周期性。</p>
+      </div>
+    </div>
+    <div class="fenxijieguocangkao">
+      <h2 style="margin-bottom: 20px;">脑电相关数据&其他信息</h2>
+      <div class="list-item2">
+        <p>脑电特征波：展示 EEG（脑电图）以及 K-complexes 波、Delta 波、Theta 波、Alpha 波、Spindle 波、Beta1 波、Beta2
+          波等不同脑电特征波的波形图，通过这些波形特征可分析大脑在不同状态下的电活动情况。</p>
+      </div>
+      <div class="list-item2">
+        <p>各睡眠阶段脑电波示意图：分别呈现清醒（Awake）、N1、N2、N3、REM（快速眼动睡眠期）等睡眠阶段的脑电波示意图，帮助使用者直观了解不同睡眠期的脑电特点，用于睡眠分期判断和睡眠状态评估。</p>
+      </div>
+      <div class="list-item2">
+        <p>药物使用记录：以表格形式记录不同时间段使用的药物名称、剂量、给药途径、主治功效和副作用情况，结合睡眠和意识数据，可分析药物对测试者睡眠及意识状态的影响。</p>
+      </div>
+      <div class="list-item2">
+        <p>CRS - R 评估报告：对测试者的听觉、视觉、运动、言语、觉醒度、口面部运动及吞咽功能进行打分，得出总分并判断意识障碍类型（如 MCS），同时展示相关脑电地形图和波形图，全面评估测试者的意识水平 。</p>
+      </div>
+    </div>
+    <div class="fenxijieguobiaozun">
+      <h2 style="margin-bottom: 20px;">意识障碍相关数据</h2>
+      <div class="list-item3">
+        <p>意识障碍状态：用圆形图展示不同意识障碍状态（MCS 微意识状态、VS 植物状态、UWS 无反应觉醒综合征）的占比，快速呈现测试者群体或单个测试者在意识障碍状态上的分布情况。</p>
+      </div>
+      <div class="list-item3">
+        <p>不同意识障碍状态下 SWS 持续时间及 CRS - R 评分：以折线图展示不同意识障碍状态下慢波睡眠（SWS）持续时间和昏迷恢复量表修订版（CRS - R）评分的关系，为意识障碍程度评估和睡眠与意识关联研究提供数据支持
+          。</p>
+      </div>
+      <div class="list-item3">
+        <p>静息眼电位时间变化：对比 VS、UWS、MCS 三种意识障碍状态以及特定测试者（如张梓禹）的静息眼电位均值随时间的变化曲线，可作为意识障碍评估的辅助指标 。</p>
+      </div>
+      <div class="list-item3">
+        <p>根据 CRS - R 评分标准，判断处于哪种意识障碍状态。建议密切关注患者意识状态变化，定期进行 CRS - R 评估，并根据结果制定针对性康复治疗方案，促进意识恢复和功能改善。</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

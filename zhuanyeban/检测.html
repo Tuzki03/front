@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">
+  <link rel="stylesheet" href="jianche.css">
+  <title>DreamWave睡眠与OSA诊断系统</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/资源3.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="初始.html">初始</a></li>
+        <li><a href="检测.html">检测</a></li>
+        <li><a href="实时监测.html">实时监测</a></li>
+        <li><a href="数据库.html">数据库</a></li>
+        <li><a href="分析.html">分析</a></li>
+        <li><a href="CRSR.html">CRS - R</a></li>
+        <li><a href="说明.html">说明</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="button-group">
+      <button id="stopTest">停止阻抗测试</button>
+      <button id="startRetest">开始重测</button>
+      <button id="testImpedance">阻抗测试</button>
+      <button id="selectBadLead">坏导选择</button>
+    </div>
+    <div class="ip-display">192.168.31.40</div>
+    <canvas id="impedanceCanvas" width="400" height="400"></canvas>
+  </div>
+  <script src="jianche.js"></script>
+</body>
+
+</html>

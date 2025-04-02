@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #83B3E3;
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 200px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: #7FB0FD;
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .main {
+      width: 1000px;
+      background-color: white;
+      margin-left: 180px;
+    }
+
+    .fenge {
+      width: 100%;
+      height: 2px;
+      background-color: gray;
+    }
+
+    .hui {
+      color: gray;
+      font-size: 10px;
+    }
+
+    .tupian1,
+    .tupian2,
+    .tupian3 {
+      width: 550px;
+      height: 370px;
+      margin-left: 230px;
+    }
+
+    .zhujie1,
+    .zhujie2,
+    .zhujie3 {
+      font-size: 15px;
+      padding-left: 424px;
+    }
+  </style>
+  <title>DreamWave睡眠与OSA诊断系统</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="../可视化界面2.0.html">返回</a></li>
+        <li><a href="../kepu2.html#naodianbo">大众科普</a></li>
+        <li><a href="../kepu2.html#keyan">媒体聚焦</a></li>
+        <li><a href="../kepu2.html#linchuang">临床技术</a></li>
+        <li><a href="../关于我们.html">关于我们</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <!--
+    段落： <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <br> 
+    空格缩进：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+  -->
+
+  <!-- 文章主体 -->
+  <div class="main">
+    <br>
+    <h1 style="padding-left: 25px;">脑电波全解析</h1>
+    <br>
+    <p class="hui" style="padding-left: 25px;">时间：2021-10-20&nbsp;&nbsp;&nbsp;来源：百度百科</p>
+    <div class="fenge"></div>
+    <br>
+
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;脑电波是大脑神经元活动的一种表现，它们通过脑电图（EEG）被记录下来，用于研究大脑的功能状态。脑电波根据频率的不同可以分为几个主要类型，每种类型都与特定的大脑活动和意识状态相关联。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;α波，也称为阿尔法波，是当人们处于放松状态，特别是闭眼静坐时最常见的脑电波。它们的频率范围在8至13赫兹之间。α波与放松、清醒的休息状态相关，通常在人们不专注于任何特定任务时出现。它们有助于减少紧张感和焦虑，促进身心的放松，同时也被认为是创造力和直觉思维的源泉。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;β波，或贝塔波，通常与活跃的思考、集中注意力和解决问题的状态相关。它们的频率超过14赫兹，可以分为几个子类别，如低贝塔波（14-30赫兹）和高贝塔波（超过30赫兹）。低贝塔波与逻辑思维、分析和决策制定有关，而高贝塔波则与高度警觉和压力反应相关。当人们处于紧张、焦虑或过度兴奋的状态时，高贝塔波的活动会增加。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;θ波，西塔波，频率在4至8赫兹之间，通常在人们处于半睡半醒状态或深度放松时出现。θ波与记忆形成、情感处理和学习过程有关。在儿童和青少年中，θ波更为常见，因为这一时期的大脑发育需要更多的学习和记忆活动。θ波的增加也与某些冥想状态相关，表明它们在促进精神集中和内在反思方面发挥作用。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;δ波，德尔塔波，是频率最慢的脑电波，范围在0.5至3赫兹。δ波主要在深度睡眠阶段出现，与身体的恢复和再生过程密切相关。在这个阶段，大脑的活动减慢，身体得到休息和修复，这对于维持健康和认知功能至关重要。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;纺锤波是一种短暂出现的脑电波活动，频率在12至14赫兹之间，通常在非快速眼动（NREM）睡眠的第二期出现。纺锤波被认为是大脑在睡眠过程中自我调节和保护睡眠状态的一种机制，它们有助于阻止外界干扰，使睡眠更加稳定。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K复合波是一种在睡眠中出现的单一但较大的高电压尖峰，它可能具有保护大脑和睡眠状态免受外部刺激干扰的功能。当人们处于深度睡眠时，K复合波的出现有助于维持睡眠的连续性，防止被轻易唤醒。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;慢波，或慢波睡眠，是指在深度睡眠期间脑电波频率逐渐变慢，最终以δ波为主的状态。慢波睡眠对于身体和大脑的恢复至关重要，它有助于巩固记忆、恢复体力和调节情绪。
+    </p>
+    <br>
+    <br><br>
+
+
+
+  </div>
+
+
+</body>
+
+</html>

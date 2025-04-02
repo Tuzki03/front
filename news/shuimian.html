@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #83B3E3;
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 200px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: #7FB0FD;
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .main {
+      width: 1000px;
+      background-color: white;
+      margin-left: 180px;
+    }
+
+    .fenge {
+      width: 100%;
+      height: 2px;
+      background-color: gray;
+    }
+
+    .hui {
+      color: gray;
+      font-size: 10px;
+    }
+
+
+    .tupian2,
+    .tupian3 {
+      width: 550px;
+      height: 370px;
+      margin-left: 230px;
+    }
+
+    .tupian1 {
+      width: 595px;
+      height: 275px;
+      margin-left: 230px;
+    }
+
+    .zhujie1,
+    .zhujie2,
+    .zhujie3 {
+      font-size: 15px;
+      padding-left: 424px;
+    }
+  </style>
+  <title>DreamWave睡眠与OSA诊断系统</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="../可视化界面2.0.html">返回</a></li>
+        <li><a href="../kepu2.html#naodianbo">大众科普</a></li>
+        <li><a href="../kepu2.html#keyan">媒体聚焦</a></li>
+        <li><a href="../kepu2.html#linchuang">临床技术</a></li>
+        <li><a href="../关于我们.html">关于我们</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--
+    段落： <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <br> 
+    空格缩进：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+  -->
+
+  <!-- 文章主体 -->
+  <div class="main">
+    <br>
+    <h1 style="padding-left: 25px;">睡眠分期的奥秘：从入睡到苏醒，大脑如何度过每一个夜晚？</h1>
+    <br>
+    <p class="hui" style="padding-left: 25px;">时间：2021-10-20&nbsp;&nbsp;&nbsp;来源：百度百科</p>
+    <div class="fenge"></div>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;睡眠(sleep)时脑功能状态并非单一不变，而是呈现显着周期性变化，因此睡眠常被分为不同的睡眠周期(Sleep cycle)。
+    </p>
+    <br>
+    <h2 style="padding-left: 25px;">历史</h2>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对睡眠进行分析，主要依赖于脑电记录技术的发展[例如脑电图(electroencephalogram, EEG)]。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;德国精神病学家 Berger H
+      在1929年首次记录到了人类的脑电波(Brain waves)，并发现人类脑电波在睡眠和觉醒状态下存在显着差异，自此人们开始了客观认识睡眠的过程。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1953年，美国芝加哥大学的
+      Aserinsky 和 Kleitman 在研究婴儿睡眠时发现，婴儿在安静睡眠后出现周期性快速眼球运动。随之证明快速眼球运动时脑电波与觉醒时的类似，这一发现明确肯定了人类睡眠存在两种类型，非快速眼动睡眠(Non Rapid
+      Eye Movement sleep, NREM sleep)和快速眼动睡眠(Rapid Eye Movement sleep, REM sleep)，后者曾被称为快波睡眠(fast wave
+      sleep)或异相睡眠(paradoxical sleep, PS)。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目前，可以根据多导睡眠图(Polysomnography, PSG)、眼动图和肌电图(electromyogram,
+      EMG)手段明确区分NREM睡眠与REM睡眠。</p>
+    <br>
+    <h2 style="padding-left: 25px;">划分NREM睡眠阶段</h2>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;睡眠分为非快速眼动睡眠(Non
+      Rapid Eye Movement sleep, NREM sleep)和快速眼动睡眠(Rapid Eye Movement sleep, REM sleep)，根据睡眠深度的不同，又将 NREM
+      进行细分，根据不同的标准可以分为3期或者4期。2007年之前是划分为4期，此后美国睡眠医学学会(American Academy of Sleep Medicine,
+      AASM)经过反复研究与论证，制定了新的睡眠判读指南，新指南沿用了旧标准中有关睡眠分期的基本划分规则，但是将NREM睡眠中的3期与4期睡眠合称为第3期睡眠，不再对其进行进一步划分。</p>
+    <br>
+    <div><img src="../images/shuimian1.png" alt="" class="tupian1"></div>
+    <div><span style="padding-left: 350px;">图一&nbsp;&nbsp;&nbsp;健康成人觉醒与睡眠不同阶段的脑电图波形示意图 </span></div>
+    <br>
+
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NREM可以分为4期：</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.NREM第1阶段(NREM
+      stage 1)，α波(alpha wave)普遍降低，出现低幅θ波和β波，以θ波为主。人对周围环境的注意力丧失，处于意识不清醒状态。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.NREM第2阶段(NREM
+      stage 2)，在低幅脑电波基础上，出现100~300µV的纺锤波，也称双顶峰波、顶尖波或者中央尖波，这个时期全身肌张力降低，几乎没有眼球运动</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.NREM第3阶段(NREM
+      stage 3)，该期出现中或高幅δ波，但δ波的比例在50%以下，肌张力受到进一步抑制，睡眠程度加深，不易被唤醒</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NREM第4阶段(NREM
+      stage 4)，该波的δ波的波幅进一步加深，频率变慢且不规则，δ波所占比例超过50%，肌张力低下，人处于深睡眠(Deep sleep)状态，难以唤醒.</p>
+    <br>
+
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;人类的 NREM 睡眠 1~2
+      期是浅 NREM 睡眠；而 3~4 期则是深 NREM 睡眠，又被称为慢波睡眠(Slow wave sleep, SWS)或深睡眠(Deep sleep)。成年人绝大多数深度睡眠发生在上半夜，下半夜以浅度睡眠为主。</p>
+    <br>
+    <h2 style="padding-left: 25px;">睡眠结构</h2>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正常成人的整夜睡眠中非快速眼动睡眠(Non Rapid Eye Movement sleep, NREM
+      sleep)和快速眼动睡眠(Rapid Eye Movement sleep, REM sleep)交替发生。</p>
+    <br>
+    <div><img src="../images/shuimian2.png" alt="" class="tupian2"></div>
+    <div><span style="padding: 400px;">图二&nbsp;&nbsp;&nbsp;正常成人睡眠结构</span></div>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;睡眠是先从觉醒状态进入 NREM
+      睡眠，NREM第1阶段(NREM stage 1)持续3~7分钟，然后NREM第2阶段(NREM stage 2)持续10~25分钟，接着进入3~4阶段[深睡眠(Deep
+      sleep)]，这个时期从几分钟到一小时不等，然后再回到1~2阶段的浅睡眠(light sleep)时期，随后转入快速眼动睡眠(Rapid Eye Movement sleep, REM
+      sleep)，持续5~10分钟，从而完成第一个睡眠周期。之后重复该过程。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成人从一个 REM 到下一个
+      REM 的平均间隔约为90分钟，婴儿则约为 60 分钟。一般成年人每晚经历约4~6个睡眠周期(Sleep cycle)，在夜间睡眠的后半程深度 NREM 睡眠逐渐减少，而 REM 睡眠时间逐渐延长。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;睡眠(sleep)状态都是快速可逆的，因此，在睡眠的任何阶段都可以直接转化为觉醒阶段；但是健康成年人不会从觉醒阶段直接进入 REM
+      睡眠，必须先经过 NREM 睡眠期。</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+  </div>
+
+
+</body>
+
+</html>

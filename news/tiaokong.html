@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #83B3E3;
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 200px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: #7FB0FD;
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .main {
+      width: 1000px;
+      background-color: white;
+      margin-left: 180px;
+    }
+
+    .fenge {
+      width: 100%;
+      height: 2px;
+      background-color: gray;
+    }
+
+    .hui {
+      color: gray;
+      font-size: 10px;
+    }
+  </style>
+  <title>DreamWave睡眠与OSA诊断系统</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="../可视化界面2.0.html">返回</a></li>
+        <li><a href="../kepu2.html#naodianbo">大众科普</a></li>
+        <li><a href="../kepu2.html#keyan">媒体聚焦</a></li>
+        <li><a href="../kepu2.html#linchuang">临床技术</a></li>
+        <li><a href="../关于我们.html">关于我们</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--
+    段落： <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <br> 
+    空格缩进：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+  -->
+  <!-- 文章主体 -->
+  <div class="main">
+    <br>
+    <h1 style="padding-left: 25px;">神经调控在意识障碍治疗中的应用现状及进展</h1>
+    <br>
+    <p class="hui" style="padding-left: 25px;">时间：2021-03-05&nbsp;&nbsp;&nbsp;来源：中国神经科学学会意识与意识障碍分会</p>
+    <div class="fenge"></div>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;神经调控是通过植入或非植入的神经控制器．以人工电信号替代或补充脑的自然电信号，调控神经元或神经网络兴奋性．恢复受损神经功能的技术[l]。神经调控强调神经系统和人工系统的相互作用和结合，并使患者的功能恢复达到最大化。神经调控在神经细胞修复、有效控制并延缓疾病发展中有重要的治疗作用。神经调控非破坏性、可逆、可调节的特点．及在神经系统疾病中的良好治疗效果使得其治疗范围和适应证逐渐扩大。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意识障碍(disorders
+      ofconsciousness，DOC)分为持续性植物状态(persistent vegetative state，PVS)和微意识状态 (minimally consciousness
+      state，MCS)2个层次。PVS意识恢复较困难，而MCS具有较好意识恢复潜力。目前，对MCS应给予更积极治疗已成共识，但却无确切有效的治疗手段．使得原本就存在的医学、伦理及法律问题争论更加激烈。近年来，针对DOC，药物、神经康复等领域都进行了研究和尝试，其中神经调控技术最为突出，极有希望最先成为有效的治疗手段。本文围绕神经调控技术在DOC治疗中的现状及进展综述如下。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;神经调控治疗DOC分为2种策略，包括：(1)神经机能增强：通过对神经网络的关键节点施行刺激及补偿．提高脑网络机能及意识水平；(2)意识旁路输出：通过脑机接口技术
+      (brain—computer interface，BCI)，把大脑信息直接转换成能驱动外部设备的命令，代替肢体或语言器官实现人与外界的交流。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;神经调控治疗研究已近50年历史．从20世纪60年代外科治疗开始进行相关的尝试．调控方式经历了正中神经刺激、迷走神经刺激及巴氯芬泵。21世纪的脑深部电刺激(deep
+      brain stimulation，DBS)及上颈段脊髓电刺激(spinal cord
+      stimulation，scs)治疗的出现使得患者意识及行为学得到明显改善，证明了外源性电刺激能够改善患者的意识状态，但总体效果一般．并未成为肯定的治疗方式。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DBS治疗DOC的临床研究：第1阶段的早期研究证实了DBS对醒觉系统具有提高作用。1968年McLardy等：第1次对1名19岁脑外伤后8个月的植物状态患者实施了:左侧板内侧核和中脑网状结构DBS治疗：随后的研究使用板内核和延髓腹丘脑核作为DBS靶点。这些研究都是持续数周的短期刺激。没有明确证据证明刺激靶点在结构上符合觉醒系统。但是这些研究都注意到了刺激能产生行为反应，提高脑电图(EEG)去同步活动。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第2阶段是寻找符合生理基础的靶点和适应证。20世纪80年代一项由法国、日本和美国参与的多中心研究，对病程超过3个月的25名植物状态患者进行队列研究．以丘脑束旁板内核和丘脑中央中核为靶点实施DBS治疗，13例在治疗1～3周后出现显著的交流和意识水平改善。Yamamoto等2002年对8名患病2～3个月的植物状态患者通过行为和电生理检查(脑电图，脑干听觉诱发电位和体感诱发电位)进行了评估。3例出现行为改善(响应命令和发声／言语表达)，1
+      例部分行为学改善(恢复经口进食和表达情感)。2010年Yamamoto等报道对21例PVS患者实施DBS手术．苏醒8例(38．1％)。2013年Yamamoto等再次报道对36例PVS和
+      MCS患者进行DBS或SCS手术，其中DBS组意识恢复15例(15／26)。Katayama等也报道了类似改善。何江弘等[12]曾报道DBS治疗PVS和MCS患者，促醒率30％,-40％，提示神经电刺激能够明显改善患者的意识状态。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第3阶段是探索符合生理学机制的DBS程控方案。2007年Nature报道了Schiff等发表的一篇论文，其通过对1名外伤后6年的MCS患者应用丘脑板内核DBS治疗，证明神经刺激器植入后症状确有改善，表现为早期参数滴定阶段即出现的可理解语言表达和物品正确使用。随后是遵嘱活动、肢体自主运动及经口进食，特别是与外界的功能性交流能力得以恢复。丘脑板内核持续DBS可产生持续的行为影响，即使在DBS刺激关闭期行为提高仍得以保持。同样，动物研究也有类似结果。这说明治疗的持续作用可能涉及神经重塑现象．在治疗的全过程中间需要不断的实施程控调整。尽管该研究严格遵循了上述原则，并证明了DBS治疗的确切疗效．但个案报道结果尚不足以推断其有效的结论。因此，在DBS这种治疗方式成为DOC临床治疗手段前，进行大样本个体化程控研究是必要的。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DBS治疗DOC的机制：丘脑DBS旨在通过激活植物
+      状态相应的神经网络来增强醒觉和意识水平，若这个大网络内部或丘脑和该网络间的连接被破坏，DBS就不太可能通过丘脑对该网络产生明显作用。丘脑板内核可能是与高级皮层区特异连接的核团．当前部和中线部核团损伤时．功能保留程度较高：若叠加板内核区损害则常导致严重残疾，甚至植物状态。因此，丘脑中央核群(特别是板内核)在DOC病理机制中可能发挥着核心作用。外伤性病灶常多且散在，从而使更多的神经连接得以保留，所以DBS对外伤患者可能会更有效。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCS治疗DOC的临床研究：SCS即通过手术放置刺激电极在颈髓C2-4水平硬膜外正中部，电刺激经高颈部脊髓上行达脑干．通过上行性网状结构激活系统及丘脑下部激活系统传达到大脑皮层。上世纪80年代初Funahashi等首次报道SCS治疗PVS，之后Kanno等[17]评价SCS对DOC
+      患者的脑葡萄糖代谢和脑血流变化，证实刺激前后脑局部葡萄糖代谢率及脑血流均明显增加，研究发现130例PVS中， 56例(占43％)意识恢复。2012年Yamamoto对10例MCS
+      患者施行SCS手术，7例意识明显提高。2013年Yamamoto等[10]再次报道对10例MCS患者进行SCS手术，其中意识恢复5例。目前认为SCS疗效确切，总的有效率为20％--40％，而对于脑外伤后的PVS促醒率和有效率更高。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;国内2001年王培东等报道6例PVS患者施行SCS手术，2例获得清醒。2011年董月青等报道1例外伤性
+      PVS患者，SCS手术后获得意识恢复。2013年何江弘等【12】报道22例PVS患者行SCS治疗，其中DBS 5例，SCS
+      17例，使用了fMRI对患者进行病情判断及筛选，并使用昏迷恢复量表评分．在获得随访的20例患者中7例获得意识恢复，促醒率35％。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCS治疗DOC的机制：
+      SCS在上行网状激活系统起 始部的脉冲刺激，可增强意识冲动的活动，改善神经传导状态，使脑电活动增加。调节颈部交感神经节的活动可增强脑血流(cerebralbloodflow，CBF)，提高脑糖代谢水平，并促进神
+      经递质儿茶酚胺DA和NE的释放，并激活部分蛋白酶增强生物信号调制。</p>
+    <br>
+
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经颅磁刺激检测DOC：经颅磁刺激(transcranial magnetic
+      stimulation，TMS)是指通过放置在头部表面的“8”字线圈来非侵人性刺激，通过调制大脑皮层神经元的膜电位来影响和改变大脑功能，目前广泛应用在神经、精神、心理等领域。TMS在DOC的研究尚处于起步阶段。2009年Lapitskaya
+      等报道．其可调节神经兴奋性，激活皮层网络处于休眠状态
+      的神经元，刺激脑干网状激活系统，促进重度脑损伤DOC患者的意识恢复。2014年Gosseries等利用TMS．EEG耦合技术．发现TMS作为可能的促进意识恢复的治疗方法。目前在国内主要应用于脑功能检测。查天兰等报道TMS治疗10
+      例PVS患者，4例获得意识恢复；周景升报道15例，效果显著。TMS是检测残余意识和进行治疗的一项主要临床神经调控手段。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BCl检测DOC：
+      BCI系统可代替正常外围神经和肌肉组织，实现人与计算机或人与外部环境间的通信。BCI是一种涉及神经科学、信号检测、信号处理、模式识别等多学科的交叉技术，近年成为生物医学工程、计算机技术、通信等领域一个新的研究热点。2010年NEMJ报道，借助fMRI使1名临床无交流能力的VS患者正确回答出关于他家人名字的6个简单问题中的5个。2013年Lule等通过基于EEG的
+      BCI技术成功地与1名MCS患者进行了交流。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOC神经调控治疗需要解决的问题：尽管初步研究显示出良好治疗效果，但国内外均处于实
+      验性研究阶段．缺乏大样本系统性研究，在关键科学问题上存在瓶颈，亟待解决。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意识状态客观评定方法的标准化：选取治疗人群缺乏客观指标及标准，治疗结果不稳定．缺乏可比性及重复性；基于多模态神经影像及EEG的脑网络研究是目前最为可靠的评定意识状态客观方法，但其特异性和灵敏度仍然存在问题。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;准确有效的临床实施方案：(1)神经调控的靶点选择：无论是DBS、SCS、TMS均需选取治疗的干涉部位，但目前尚无经大量样本验证后确切、有效的靶点。BCI目前尚不能对全脑信号进行捕捉及分析，现阶段仅能提取功能区皮层特征脑电信号。
+    </p>
+    <br>
+
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)准确定位及有效实施：尚无精确植入所需的目标靶点细胞电生理特征及定位手段，治疗效果无法保证。 </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)正确的电、磁脉冲参数：目前基本以经验调整为主，缺乏科学性证据，需要建立符合循证医学要求的客观指标检测依据及调整方式。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(4)脑电信号提取及模式识别：BCI技术的关键步骤是DOC患者EEG特征提取及准确识别，加之合适的信号处理与转换算法。使神经电信号实时、快速、准确地通过BCI系统，转换成可被计算机识别的命令或操作信号。但是其针对DOC的研究极度缺乏，限制了多种新型治疗技术的使用。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备的集成及小型化：BCI技术的核心是把脑电信号转换成输出控制信号或命令的转换算法。在初步建立基于EEG人机交互意识交流后，需要完成设备的集成及小型化，逐渐发展为可穿戴或便携式设备，以适应患者重返正常生活环境，长期使用的要求。
+    </p>
+    <br>
+
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目前在WH0公布的DOC神经调控临床研究多达8项，都来自欧美等治疗中心。我国2014年国家高技术研究发展计划(863计划)将DOC的电磁刺激促醒治疗作为重点资助的研究内容，说明神经调控是DOC治疗的主要研究热点及方向之一，已是国内外的共识，但目前均处于前期、小样本的试验研究，作为DOC临床治疗方式前仍需进行系统性、大样本、多中心的研究。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;展望：脑网络是用以深入理解脑功能的工作机制和脑疾病的唯一途径。2010年美国、欧洲、日本启动了人脑神经网络组计划，2010年我国也将脑网络研究确定为研究重点。因此，真正全面、科学、深入的DOC研究应该是建立在脑网络分析的基础上，基于多模态神经影像及EEG两种方式的结合，提高神经调控对DOC疾病诊治中的认识和作用。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;神经调控治疗在我国开展具有人口优势，不存在病例积累困难、研究进度缓慢的不足。这都将有利于率先突破神经调控治疗技术的瓶颈，推动该技术在临床的应用，培养该领域具有国际领先水平的人才和科研队伍。
+    </p>
+    <br>
+
+  </div>
+
+
+</body>
+
+</html>

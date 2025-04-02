@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      background-image: linear-gradient(#7aade1,
+          #b5d2f0);
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 40px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      margin: 0;
+      padding: 0;
+      /* background: #fff; */
+      background-color: rgb(127, 176, 253);
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    /* 首页主体 */
+    .container {
+      width: 1200px;
+      height: 500px;
+      /* background-color: pink; */
+      margin: 50px auto;
+      background-color: white;
+    }
+
+    .ima {
+      float: left;
+      width: 560px;
+      /* 根据需要调整图片宽度 */
+      height: 500px;
+    }
+
+    .shouye {
+      float: left;
+      width: 600px;
+      height: 500px;
+
+    }
+
+    .shouye h1 {
+      font-size: 33px;
+      font-weight: 700;
+      font-family: '思源黑体 CN';
+      color: #7FB0FD;
+      margin-top: 30px;
+      margin-bottom: 27px;
+      margin-left: 96px;
+
+
+    }
+
+    .shouye p {
+      width: 575px;
+      height: 240px;
+      font-size: 20px;
+      text-indent: 2em;
+      margin: 20px 30px;
+      color: #202f39;
+      /* color: #666; */
+      line-height: 2;
+      letter-spacing: 0.5px;
+      /* 增加字符间距 */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      /* 添加文字阴影 */
+    }
+
+    .shouye a {
+      position: relative;
+      display: inline-block;
+      padding: 12px 36px;
+      margin: 20px 86px;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 18px;
+      letter-spacing: 2px;
+      border-radius: 40px;
+      background-color: #7aade1;
+      overflow: hidden;
+    }
+
+    .shouye .last {
+      margin: 20px 80px;
+    }
+
+    span {
+      position: absolute;
+      background: #fff;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      border-radius: 50%;
+      animation: animate 1s linear infinite;
+
+    }
+
+    @keyframes animate {
+      0% {
+        width: 0px;
+        height: 0px;
+        opacity: 0.5;
+      }
+
+      100% {
+        width: 500px;
+        height: 500px;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="首页.html">首页</a></li>
+        <li><a href="登录注册界面.html">登录/注册</a></li>
+        <li><a href="设备链接检测界面.html">设备链接监测</a></li>
+        <li><a href="睡眠监测界面.html">睡眠实时监测</a></li>
+        <li><a href="可视化界面2.0.html">单日报告</a></li>
+        <li><a href="周次报告.html">本周报告</a></li>
+        <li><a href="kepu2.html">科普说明</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- 首页主体图 -->
+  <div class="container">
+    <img src=images/睡眠首页.png alt="睡眠相关图标" class="ima"> <!-- 替换为实际图片路径 -->
+    <div class="shouye">
+      <h1>睡眠监测与意识障碍跟踪评估系统</h1>
+      <p>
+        意识障碍是临床上常见的神经系统功能紊乱状态，
+        具有潜在的致残性和致死性，对患者的生活质量和社会功能可能造成严重影响。
+        本系统通过对睡眠过程进行实时监测，结合多模态睡眠分期和纺锤波检测技术，开展针对意识障碍跟踪监测的算法研究，
+        旨在实现对意识障碍的预后随访与辅助诊断，为临床干预提供科学依据，从而降低意识障碍对人类健康的威胁。
+      </p>
+      <a href="登录注册界面.html">社区版</a>
+      <a class="last" href="登录注册界面.html">专业版</a>
+    </div>
+  </div>
+
+
+  <script>
+    var button = document.querySelector('.shouye a')
+    button.forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        let x = e.clientX - e.target.offsetLeft
+        let y = e.clientY - e.target.offsetTop
+
+        let ripples = document.createElement('span')
+        ripples.style.left = x + 'px'
+        ripples.style.top = y + 'px'
+        this.appendChild(ripples)
+
+        setTimeOut(() => {
+          ripples.remove()
+        }, 1000)
+      })
+    })
+  </script>
+</body>
+
+</html>

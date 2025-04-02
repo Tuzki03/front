@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <script src="echarts.js"></script>
+  <link rel="stylesheet" href="fenxi.css">
+  <!-- 引入 Font Awesome 图标库 -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/资源3.png" alt="英文图标" class="english-icon">
+  </div>
+
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="初始.html">初始</a></li>
+        <!-- <li><a href="检测.html">检测</a></li> -->
+        <li><a href="实时监测.html">实时监测</a></li>
+        <li><a href="数据库.html">数据库</a></li>
+        <li><a href="分析.html">分析</a></li>
+        <li><a href="CRSR.html">CRS - R</a></li>
+        <li><a href="说明.html">说明</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container1">
+    <!-- 稳定率图 -->
+    <!-- <div class="wendincontainer">
+      <h2>稳定率</h2>
+      <div class="left-div">
+        <div id="wendinluecharts - chart" style="width: 100%; height: 130px;"></div>
+      </div>
+      <div class="right-div">
+        <div class="data-item">
+          <span>fpz - Cz</span>
+          <span style="right: 0px;">25(90%)</span>
+        </div>
+        <div class="data-item">
+          <span>fz - Oz</span>
+          <span>25(100%)</span>
+        </div>
+        <div class="data-item">
+          <span>horizontal</span>
+          <span>25(100%)</span>
+        </div>
+        <div class="data-item">
+          <span>resp oro - nasal</span>
+          <span>25(100%)</span>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- 睡眠呼吸参数图 -->
+    <!-- <div class="huxicancontainer">
+      <h2>睡眠呼吸参数</h2>
+      <div class="left-div">
+        <div id="huxicancharts - chart" style="width: 100%; height: 130px;"></div>
+      </div>
+      <div class="right-div">
+        <div class="data-item">
+          <span>呼吸频率</span>
+          <span>16次/分钟</span>
+        </div>
+        <div class="data-item">
+          <span>潮气量</span>
+          <span>350毫升</span>
+        </div>
+        <div class="data-item">
+          <span>分钟通气量</span>
+          <span>6升/分钟</span>
+        </div>
+        <div class="data-item">
+          <span>呼吸暂停低通气指数（AHI）</span>
+          <span>3次/小时</span>
+        </div>
+      </div>
+    </div> -->
+
+
+
+
+
+
+    <!-- 事件图 -->
+    <!-- <div class="shijiancontainer">
+      <h2>Events</h2>
+      <div class="legend">
+        <span style="color: #00008b;padding-left: 18%;">Critical</span>
+        <span style="color: #ff0000;padding-left: 5%;">Error</span>
+        <span style="color: #ff8c00;padding-left: 5%;">Warning</span>
+      </div>
+      <div id="shijianchart"></div>
+    </div> -->
+
+    <!-- 血氧饱和度变化图 -->
+    <!-- <div class="oxygen-container">
+      <h2>血氧饱和度变化</h2>
+      <div id="oxygenchart"></div>
+    </div> -->
+    <!-- 血氧饱和度变化图 -->
+    <div class="oxygen-container">
+      <h2>血氧饱和度变化</h2>
+      <div class="legend">
+        <span style="color: #0099ff;">正常人</span>
+        <span style="color: #ff6666;">测试者</span>
+      </div>
+      <div id="oxygenchart"></div>
+    </div>
+
+    <!-- 装置测试时间 -->
+    <!-- <div class="ceshishijiancontainer">
+      <h2>装置测试时间</h2>
+      <div class="info-item">
+        <label>Uptime</label>
+        <span>195 Days, 8 hours</span>
+      </div>
+      <div class="info-item">
+        <label>First Seen</label>
+        <span>23 Sep 2019, 2.04PM</span>
+      </div>
+      <div class="info-item">
+        <label>Collected time</label>
+        <span>23 Sep 2019, 2.04PM</span>
+      </div>
+      <div class="info-item">
+        <label>Memory space</label>
+        <span>168.3GB</span>
+      </div>
+      <div class="progress-bar">
+        <div class="fill"></div>
+      </div>
+    </div> -->
+
+    <!-- 数据采集概况 -->
+    <div class="caigaiqingkuangcontainer">
+      <h2>数据采集概况</h2>
+      <div class="info-item">
+        <label>数据采集时长</label>
+        <span>7小时20分钟</span>
+      </div>
+      <div class="info-item">
+        <label>有效数据占比</label>
+        <span>85%</span>
+      </div>
+      <div class="info-item">
+        <label>监测中断次数</label>
+        <span>3次</span>
+      </div>
+      <div class="info-item">
+        <label>传感器工作时长</label>
+        <span>7小时15分钟</span>
+      </div>
+      <div class="info-item">
+        <label>信号强度平均值</label>
+        <span>-50dBm</span>
+      </div>
+    </div>
+
+    <div class="respiratory-parameters-container">
+      <h2 style="margin-bottom: 10px;">睡眠呼吸参数</h2>
+      <div class="left-chart-container">
+        <div id="main-chart" style="width: 150px; height: 150px;"></div>
+      </div>
+      <div class="right-parameters-container">
+        <div class="parameter-item">
+          <span class="parameter-name">呼吸频率</span>
+          <span class="parameter-value">16次/分钟</span>
+        </div>
+        <div class="parameter-item">
+          <span class="parameter-name">潮气量</span>
+          <span class="parameter-value">350毫升</span>
+        </div>
+        <div class="parameter-item">
+          <span class="parameter-name">分钟通气量</span>
+          <span class="parameter-value">6升/分钟</span>
+        </div>
+        <div class="parameter-item">
+          <span class="parameter-name">AHI</span>
+          <span class="parameter-value">3次/小时</span>
+        </div>
+        <div class="parameter-item">
+          <span class="parameter-name">呼吸暂停次数</span>
+          <span class="parameter-value">1次/小时</span>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="container2">
+    <!-- 纺锤波频率分布 -->
+    <div class="fangcuibopinlu">
+      <h2>纺锤波频率与密度分布</h2>
+      <div id="fpinluchart"></div>
+    </div>
+    <!-- 睡眠评分 -->
+    <div class="pinfen">
+      <h2>意识障碍状态</h2>
+      <div id="shuimianpinfen"></div>
+    </div>
+    <!-- 纺锤波发生率 -->
+    <div class="fangcuibofashenglu">
+      <h2>不同意识障碍状态下SWS持续时间及CRS - R评分</h2>
+      <div id="swsCRSchart"></div>
+    </div>
+
+  </div>
+
+
+  <div class="container3">
+    <!-- 患者记录 -->
+    <div class="record-container">
+      <h2>Record</h2>
+      <div class="data-list">
+        <div class="data-item">
+          <span class="data-label">AHI</span>
+          <span class="data-value">0次/小时</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">年龄</span>
+          <span class="data-value">45岁</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">N1持续时间</span>
+          <span class="data-value">5min</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">N2持续时间</span>
+          <span class="data-value">13min</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">N3持续时间</span>
+          <span class="data-value">36.1min</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">REM持续时间</span>
+          <span class="data-value">9.2</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">LSpO2</span>
+          <span class="data-value">92%</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">heart rate</span>
+          <span class="data-value">70次/分钟</span>
+        </div>
+      </div>
+    </div>
+    <!-- 分期与标签 -->
+    <div class="fenqicontainer">
+      <h2>分期与标签</h2>
+      <div class="info-section">
+        <div class="legend-group">
+          <span class="legend-text">浅睡眠</span>
+          <span class="number" style="color: #ff4500;">23,342</span>
+        </div>
+        <div class="legend-group">
+          <span class="legend-text">深睡眠</span>
+          <span class="number" style="color: #007bff;">13,221</span>
+        </div>
+        <div class="legend-group">
+          <span class="legend-text">纺锤波标签段</span>
+          <span class="number" style="color: #ffb800;">1,542</span>
+        </div>
+        <button class="change-patient">更换患者</button>
+      </div>
+      <div id="fenqichart"></div>
+    </div>
+
+    <!-- 分析结果 -->
+    <!-- <div class="resultcontainer">
+      <h2>分析结果</h2>
+      <p><span class="diagnosis">睡眠不足诊断</span></p>
+      <p><span class="result">轻度不足</span></p>
+      <p style="padding-left: 10px;color: rgb(104, 111, 119);">24%概率患有其他病症</p>
+      <p style="margin-top: 30px;"><span class="diagnosis">OSA诊断</span></p>
+      <p><span class="result">轻度</span></p>
+      <p style="padding-left: 10px;color: rgb(104, 111, 119);">OSA占比率 (灰)</p>
+      <div id="resultchart"></div>
+    </div> -->
+  </div>
+
+  <!-- EDF图像对比 -->
+  <!-- <div class="edfcontainer">
+    <h2>EDF图像对比</h2>
+    <div class="main-content">
+      <div class="top-date">
+        <div class="top-section">
+          <div class="date-selector-button-group">
+            <div class="date-selector">
+              <select id="dateSelector">
+                <option value="Mon,1 Oct 2019 - Tue,2 Oct 2019">Mon,1 Oct 2019 - Tue,2 Oct 2019</option>
+                <option value="Mon,17 Oct 2019 - Tue,25 Oct 2019">Mon,17 Oct 2019 - Tue,25 Oct 2019</option>
+                <option value="Tue,18 Oct 2019 - Wed,26 Oct 2019">Tue,18 Oct 2019 - Wed,26 Oct 2019</option>
+                <option value="Wed,19 Oct 2019 - Thu,26 Oct 2019">Wed,19 Oct 2019 - Thu,26 Oct 2019</option>
+              </select>
+            </div>
+            <div class="button-group">
+              <button>fpz - Cz</button>
+              <button>fz - Oz</button>
+              <button>resp oro - nasal</button>
+              <button>horizontal</button>
+            </div>
+          </div>
+        </div>
+        <div id="edfchart"></div>
+      </div>
+      <div class="info-table">
+        <table>
+          <tr>
+            <th colspan="2" style="color: green;">day1</th>
+          </tr>
+          <tr>
+            <td>截取时间</td>
+            <td>22:54:03~22:54:05</td>
+          </tr>
+          <tr>
+            <td>平均频率</td>
+            <td>68.0Hz</td>
+          </tr>
+          <tr>
+            <td>电压峰值</td>
+            <td>203.81uv</td>
+          </tr>
+          <tr>
+            <td>OSA相似度</td>
+            <td>18.31%</td>
+          </tr>
+          <tr>
+
+            <th colspan="2" style="color: green;">day2</th>
+          </tr>
+          <tr>
+            <td>截取时间</td>
+            <td>22:54:03~22:54:05</td>
+          </tr>
+          <tr>
+            <td>平均频率</td>
+            <td>73.2Hz</td>
+          </tr>
+          <tr>
+            <td>电压峰值</td>
+            <td>205.33uv</td>
+          </tr>
+          <tr>
+            <td>OSA相似度</td>
+            <td>18.31%</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div> -->
+
+
+  <div class="container6">
+    <div class="tezhenbo">
+      <h2>脑电特征波</h2>
+      <div class="tezhenbo1">
+        <img src="images/脑电特征波图.png" alt="示例图片">
+      </div>
+    </div>
+    <div class="shuimianjieduannaodianboshiyitu">
+      <h2>各睡眠阶段脑电波示意图</h2>
+      <div class="shuimianjieduantu">
+        <img src="images/睡眠阶段脑电波示意图.png" alt="示例图片">
+      </div>
+    </div>
+  </div>
+
+  <div class="container4">
+    <!-- 静息电位时间变化 -->
+
+    <div class="jinxidianweicontainer">
+      <h2>静息眼电位时间变化</h2>
+      <div class="info-section">
+        <div class="legend-group">
+          <span class="legend-text">VS</span>
+          <span class="number" style="color: #ff4500;">均值: 0.2mV</span>
+        </div>
+        <div class="legend-group">
+          <span class="legend-text">UWS</span>
+          <span class="number" style="color: #007bff;">均值: 0.4mV</span>
+        </div>
+        <div class="legend-group">
+          <span class="legend-text">MCS</span>
+          <span class="number" style="color: #ffb800;">均值: 0.6mV</span>
+        </div>
+        <div class="legend-group">
+          <span class="legend-text">张梓禹</span>
+          <span class="number" style="color: #9932CC;">均值: 0.52mV</span>
+        </div>
+        <!-- <button class="change-patient">更换患者</button> -->
+      </div>
+      <div id="jinxichart"></div>
+    </div>
+
+
+
+    <div class="drug-container">
+      <h2>药物使用记录</h2>
+      <table class="drug-table">
+        <thead>
+          <tr>
+            <th>时间段</th>
+            <th>药物名称</th>
+            <th>剂量</th>
+            <th>给药途径</th>
+            <th>主治功效</th>
+            <th>副作用情况</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2015-09-01 - 2015-09-05</td>
+            <td>溴隐亭</td>
+            <td>2.5mg</td>
+            <td>口服</td>
+            <td>提升觉醒水平</td>
+            <td>暂无明显副作用</td>
+          </tr>
+          <tr>
+            <td>2015-09-05 - 2015-09-10</td>
+            <td>多奈哌齐</td>
+            <td>5mg</td>
+            <td>口服</td>
+            <td>改善认知功能</td>
+            <td>轻微恶心</td>
+          </tr>
+          <tr>
+            <td>2015-09-10 - 2015-09-15</td>
+            <td>神经节苷脂</td>
+            <td>20mg</td>
+            <td>静脉注射</td>
+            <td>促进神经修复</td>
+            <td>注射部位轻微疼痛</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="container5">
+    <!-- （CRS - R）评估报告 -->
+    <div class="crs-container">
+      <h2>CRS - R评估报告</h2>
+      <div class="info-item" data-href="CRSR.html">
+        <label>听觉功能</label>
+        <span>1 分</span>
+      </div>
+      <div class="info-item" data-href="CRSR.html">
+        <label>视觉功能</label>
+        <span>2 分</span>
+      </div>
+      <div class="info-item" data-href="CRSR.html">
+        <label>运动功能</label>
+        <span>4 分</span>
+      </div>
+      <div class="info-item" data-href="CRSR.html">
+        <label>言语功能</label>
+        <span>1 分</span>
+      </div>
+      <div class="info-item" data-href="CRSR.html">
+        <label>觉醒度</label>
+        <span>1 分</span>
+      </div>
+      <div class="info-item" data-href="CRSR.html">
+        <label>口面部运动及吞咽功能</label>
+        <span>3 分</span>
+      </div>
+      <div class="info-item" data-href="CRSR.html">
+        <label>总分</label>
+        <span>12 分</span>
+      </div>
+      <div class="info-item" data-href="CRSR.html">
+        <label>类型</label>
+        <span>MCS</span>
+      </div>
+    </div>
+
+    <div class="maodianbotuxin">
+      <div class="naodiandixintu">
+        <img src="images/地形图.jpg" alt="示例图片">
+      </div>
+      <div class="yangdiantezhengbotu">
+        <img src="images/眼电特征波图.jpg" alt="示例图片">
+      </div>
+    </div>
+  </div>
+  <script src="fenxiscript.js"></script>
+
+</body>
+
+</html>

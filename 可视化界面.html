@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <script src="echarts.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      background-image: linear-gradient(#7aade1,
+          #b5d2f0);
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+
+
+
+    }
+
+    li {
+      list-style: none;
+    }
+
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 40px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: rgb(127, 176, 253);
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .shuimianshuju {
+      margin: 20px auto;
+      /* background-color: pink; */
+      width: 1200px;
+      height: 130px;
+    }
+
+    .shuimianpinfen {
+      float: left;
+      margin-right: 12.5px;
+      width: 230px;
+      height: 130px;
+      border-radius: 10px;
+      background-color: white;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .shuimianshichang {
+      float: left;
+      margin-right: 12.5px;
+      width: 230px;
+      height: 130px;
+      border-radius: 10px;
+      background-color: white;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .shuimianxiaolu {
+      float: left;
+      margin-right: 12.5px;
+      width: 230px;
+      height: 130px;
+      border-radius: 10px;
+      background-color: white;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .shengshui {
+      float: left;
+      margin-right: 12.5px;
+      width: 230px;
+      height: 130px;
+      border-radius: 10px;
+      background-color: white;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .qianshui {
+      float: left;
+      /* margin-right: 12.5px; */
+      width: 230px;
+      height: 130px;
+      border-radius: 10px;
+      background-color: white;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .shuimianshuju h1 {
+      font-size: 32px;
+      font-weight: 700;
+      font-family: '思源黑体 CN';
+      background-image:
+        linear-gradient(90feg,
+          #673ab7,
+          #e91e63);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      background-image: linear-gradient(rgb(255, 167, 69),
+          rgb(254, 134, 159),
+          rgb(239, 122, 200),
+          rgb(160, 131, 237),
+          rgb(67, 174, 255));
+      margin-bottom: 20px;
+      margin-top: 10px;
+    }
+
+    .shuimianshuju .shuimianshichang span,
+    .shuimianshuju .shengshui span,
+    .shuimianshuju .qianshui span {
+      font-size: 27px;
+      background-image:
+        linear-gradient(90feg,
+          #673ab7,
+          #e91e63);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      background-image: linear-gradient(rgb(255, 167, 69),
+          rgb(254, 134, 159),
+          rgb(239, 122, 200),
+          rgb(160, 131, 237),
+          rgb(67, 174, 255));
+    }
+
+    .shuimianshuju span {
+      font-size: 27px;
+      background-image:
+        linear-gradient(90feg,
+          #673ab7,
+          #e91e63);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      background-image: linear-gradient(rgb(255, 167, 69),
+          rgb(254, 134, 159),
+          rgb(239, 122, 200),
+          rgb(160, 131, 237),
+          rgb(67, 174, 255));
+    }
+
+    /* 鼠标悬停效果 */
+    .shuimianpinfen:hover,
+    .shuimianshichang:hover,
+    .shuimianxiaolu:hover,
+    .shengshui:hover,
+    .qianshui:hover {
+      transform: translateY(-5px);
+      /* 向上轻微移动 */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      /* 加深阴影 */
+    }
+
+    /* 纺锤波密度数量 */
+    .fangcuibo {
+      margin: 20px auto;
+      width: 1200px;
+      height: 380px;
+      border-radius: 10px;
+      background: rgba(31, 211, 231, 0.866);
+      /* box-shadow: 20px 20px 60px rgba(31, 211, 231, 0.866),
+        -10px -10px 50px #ffffff; */
+      background-color: #fff;
+    }
+
+    /* 各种波幅度和睡眠分期 */
+    .bofudushuimianfenqi {
+      margin: 20px auto;
+      width: 1200px;
+      height: 350px;
+      /* background-color: pink; */
+    }
+
+    /* 各种波幅度图 */
+    .bofudushuimianfenqi .bofudu {
+      float: left;
+      width: 770px;
+      height: 350px;
+      border-radius: 10px;
+      background: rgba(31, 211, 231, 0.866);
+      /* box-shadow: 20px 20px 60px rgba(31, 211, 231, 0.866),
+        -10px -10px 50px #ffffff; */
+      background-color: #fff;
+      margin-right: 20px;
+      /* box-shadow: 20px 20px 60px rgba(31, 211, 231, 0.866),
+        -10px -10px 50px #ffffff; */
+    }
+
+    .bofudushuimianfenqi .shuimianfenqi {
+      float: left;
+      width: 410px;
+      height: 350px;
+      background: #fff;
+      /* position: relative;
+      display: flex; */
+      place-content: center;
+      place-items: center;
+      /* overflow: hidden; */
+      border-radius: 10px;
+      /* box-shadow: 20px 20px 60px rgba(31, 211, 231, 0.866),
+        -10px -10px 50px #ffffff; */
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="首页.html">首页</a></li>
+        <li><a href="登录注册界面.html">登录/注册</a></li>
+        <li><a href="设备链接检测界面.html">设备链接监测</a></li>
+        <li><a href="睡眠监测界面.html">睡眠实时监测</a></li>
+        <li><a href="可视化界面.html">可视化</a></li>
+        <li><a href="分析界面.html">分析</a></li>
+        <li><a href="">科普说明</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- 监测报告主体 -->
+  <!-- 睡眠评分，睡眠时长，睡眠效率，深睡，浅睡 -->
+  <div class="shuimianshuju">
+    <div class="shuimianpinfen">
+      <ul>
+        <li>
+          <h1>睡眠评分</h1>
+        </li>
+        <li><span id="shuimianpinfen1">98</span></li>
+      </ul>
+    </div>
+    <div class="shuimianshichang">
+      <ul>
+        <li>
+          <h1>睡眠时长</h1>
+        </li>
+        <li><span id="shuimianshichang1">14h49m</span></li>
+      </ul>
+    </div>
+    <div class="shuimianxiaolu">
+      <ul>
+        <li>
+          <h1>睡眠效率</h1>
+        </li>
+        <li><span id="shuimianxiaolu1">84%</span></li>
+      </ul>
+    </div>
+    <div class="shengshui">
+      <ul>
+        <li>
+          <h1>深睡时长</h1>
+        </li>
+        <li><span id="shengshui1">5h32m</span></li>
+      </ul>
+    </div>
+    <div class="qianshui">
+      <ul>
+        <li>
+          <h1>浅睡时长</h1>
+        </li>
+        <li><span id="qianshui">9h17m</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 纺锤波密度，数量 -->
+  <div class="fangcuibo"></div>
+
+
+  <div class="bofudushuimianfenqi">
+    <!-- 各种波幅度图 -->
+    <div class="bofudu"></div>
+    <!-- 睡眠分期 -->
+    <div class="shuimianfenqi"></div>
+  </div>
+
+
+  <script>
+    // 纺锤波密度、数量
+    function generateData() {
+      var now = new Date(); // 获取当前时间
+      var data = [];
+      for (var i = 0; i < 8 * 60 / 5; i++) { // 8小时 * 60分钟 / 5分钟 = 48个数据点
+        var time = new Date(now.getTime() + i * 5 * 60 * 1000); // 每5分钟增加
+        var value = Math.random() * 100; // 生成0到100之间的随机数
+        data.push([time, value]); // 将时间戳和随机值作为数据点推入数组
+      }
+      return data;
+    }
+
+    var midu = generateData()
+    var fudu = generateData()
+
+    var myChart = echarts.init(document.querySelector('.fangcuibo'))
+    var option;
+
+    option = {
+      title: {
+        text: '纺锤波',
+        textStyle: {
+          color: 'rgba(119, 119, 119)' // 将标题颜色设置为深灰色，可替换为你想要的颜色值，如'#FF0000'（红色）
+        },
+        left: 20
+      },
+      tooltip: {
+        trigger: 'axis',
+        order: 'valueDesc'
+
+      },
+      legend: {
+        show: true,
+        // 每次只显示一条折线
+        // selectedMode: 'single',
+        data: ['密度', '幅度'],   //注意：图例的名字必须跟下面series数组里面的name一致
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      // toolbox: {
+      //   feature: {
+      //     saveAsImage: {}
+      //   }
+      // },
+
+      xAxis: {
+        type: 'time',
+        boundaryGap: false,
+        name: '时间',
+        nameGap: 10,
+        // nameGap: 30, // 名称与轴的距离
+        nameTextStyle: {
+          color: 'black', // 设置名称文本的颜色
+          fontSize: 14, // 设置名称文本的字体大小
+          fontFamily: 'Arial' // 设置名称文本的字体
+        },
+        axisLabel: {
+
+          // margin: 10, // 增加标签与轴的距离
+          textStyle: {
+            color: 'black',
+            fontSize: 14
+          }
+        },
+        axisLine: { // 设置轴线的样式
+          lineStyle: {
+            color: 'black',
+            width: 2
+          }
+        }
+
+      },
+      yAxis: [
+        {
+          nameGap: 10,
+          type: 'value',//数值轴数据可在series中的data
+          name: '密度',// 设置纵坐标名称
+          nameTextStyle: {
+            color: 'black', // 设置名称文本的颜色
+            fontSize: 14, // 设置名称文本的字体大小
+            fontFamily: 'Arial' // 设置名称文本的字体
+          },
+
+          axisLabel: {
+
+            // margin: 10, // 增加标签与轴的距离
+            textStyle: {
+              color: 'black',
+              fontSize: 14
+            }
+          },
+          axisLine: { // 设置轴线的样式
+            show: true,
+            lineStyle: {
+              color: 'black',
+              width: 2
+            }
+          }
+        },
+        {
+          nameGap: 10,
+          type: 'value',//数值轴数据可在series中的data
+          name: '幅度',// 设置纵坐标名称
+          nameTextStyle: {
+            color: 'black', // 设置名称文本的颜色
+            fontSize: 14, // 设置名称文本的字体大小
+            fontFamily: 'Arial' // 设置名称文本的字体
+          },
+          axisLabel: {
+
+            // margin: 10, // 增加标签与轴的距离
+            textStyle: {
+              color: 'black',
+              fontSize: 14
+            }
+          },
+          axisLine: { // 设置轴线的样式
+            show: true,
+            lineStyle: {
+              color: 'black',
+              width: 2
+            }
+          }
+        }
+      ],
+
+      series: [
+
+        {
+          name: '密度',
+          type: 'bar',
+          data: midu,
+          itemStyle: { // 图形样式
+            // echarts.graphic.LinearGradient(echarts内置的渐变色生成器)
+            // 4个参数用于配置渐变色的起止位置,这4个参数依次对应右 下 左 上
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              // 这里 offset: 0 1 ,表示从下往上的渐变色
+              {
+                offset: 0, // 0%处的颜色
+                color: "rgba(31,155,255,1)"
+              },
+              {
+                offset: 1, // 100%处的颜色
+                color: "rgba(0,229,255,1)"
+              }
+            ])
+          },  //柱状颜色
+          emphasis: {
+            // 鼠标悬浮时，只显示当前系列
+            // focus: 'self',
+            focus: 'series',
+            // scale: true, // 只显示当前项的刻度线
+            // itemStyle: {
+            //   color: 'red' // 突出显示的颜色
+            // }
+
+          },
+
+
+        },
+        {
+          name: '幅度',
+          type: 'line',
+          itemStyle: { // 图形样式
+            // echarts.graphic.LinearGradient(echarts内置的渐变色生成器)
+            // 4个参数用于配置渐变色的起止位置,这4个参数依次对应右 下 左 上
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              // 这里 offset: 0 1 ,表示从下往上的渐变色
+              {
+                offset: 0, // 0%处的颜色
+                color: "rgba(64,54,229,1)"
+              },
+              {
+                offset: 1, // 100%处的颜色
+                color: "rgba(192,101,294,0.5)"
+              }
+            ])
+          },  //柱状颜色
+          data: fudu,
+          emphasis: {
+            // 鼠标悬浮时，只显示当前系列
+            // focus: 'self',
+            focus: 'series',
+            // scale: true, // 只显示当前项的刻度线
+            // itemStyle: {
+            //   color: 'red' // 突出显示的颜色
+            // }
+          }
+        }
+
+      ]
+    };
+
+    myChart.setOption(option);
+
+
+    // 各种波幅度图 
+    // α波
+    function generateData1() {
+      var now = new Date(); // 获取当前时间
+      var data = [];
+      for (var i = 0; i < 8 * 60 / 3; i++) { // 8小时 * 60分钟 / 5分钟 = 48个数据点
+        var time = new Date(now.getTime() + i * 5 * 60 * 1000); // 每5分钟增加
+        var value = 20 + Math.random() * 80; // 生成20到100之间的随机数
+        data.push([time, value]); // 将时间戳和随机值作为数据点推入数组
+      }
+      return data;
+    }
+    var bo1 = generateData1()
+
+    // δ 波
+    function generateData2() {
+      var now = new Date(); // 获取当前时间
+      var data = [];
+      for (var i = 0; i < 8 * 60 / 3; i++) { // 8小时 * 60分钟 / 5分钟 = 48个数据点
+        var time = new Date(now.getTime() + i * 5 * 60 * 1000); // 每5分钟增加
+        var value = 20 + Math.random() * 180; // 生成20到200之间的随机数
+        data.push([time, value]); // 将时间戳和随机值作为数据点推入数组
+      }
+      return data;
+    }
+    var bo2 = generateData2()
+
+    // θ 波
+    function generateData3() {
+      var now = new Date(); // 获取当前时间
+      var data = [];
+      for (var i = 0; i < 8 * 60 / 3; i++) { // 8小时 * 60分钟 / 5分钟 = 48个数据点
+        var time = new Date(now.getTime() + i * 5 * 60 * 1000); // 每5分钟增加
+        var value = 100 + Math.random() * 50; // 生成100到150之间的随机数
+        data.push([time, value]); // 将时间戳和随机值作为数据点推入数组
+      }
+      return data;
+    }
+    var bo3 = generateData3()
+
+    // β 波
+    function generateData4() {
+      var now = new Date(); // 获取当前时间
+      var data = [];
+      for (var i = 0; i < 8 * 60 / 3; i++) { // 8小时 * 60分钟 / 5分钟 = 48个数据点
+        var time = new Date(now.getTime() + i * 5 * 60 * 1000); // 每5分钟增加
+        var value = 5 + Math.random() * 15; // 生成5到20之间的随机数
+        data.push([time, value]); // 将时间戳和随机值作为数据点推入数组
+      }
+      return data;
+    }
+    var bo4 = generateData4()
+
+    // 纺锤波
+    function generateData5() {
+      var now = new Date(); // 获取当前时间
+      var data = [];
+      for (var i = 0; i < 8 * 60 / 3; i++) { // 8小时 * 60分钟 / 5分钟 = 48个数据点
+        var time = new Date(now.getTime() + i * 5 * 60 * 1000); // 每5分钟增加
+        var value = 20 + Math.random() * 180; // 生成20到200之间的随机数
+        data.push([time, value]); // 将时间戳和随机值作为数据点推入数组
+      }
+      return data;
+    }
+    var bo5 = generateData5()
+
+    // 锯齿波
+    function generateData6() {
+      var now = new Date(); // 获取当前时间
+      var data = [];
+      for (var i = 0; i < 8 * 60 / 3; i++) { // 8小时 * 60分钟 / 5分钟 = 48个数据点
+        var time = new Date(now.getTime() + i * 5 * 60 * 1000); // 每5分钟增加
+        var value = 0.5 + Math.random() * 1; // 生成0.5到1.5之间的随机数
+        data.push([time, value]); // 将时间戳和随机值作为数据点推入数组
+      }
+      return data;
+    }
+    var bo6 = generateData6()
+
+    // K 复合波
+    function generateData7() {
+      var now = new Date(); // 获取当前时间
+      var data = [];
+      for (var i = 0; i < 8 * 60 / 3; i++) { // 8小时 * 60分钟 / 5分钟 = 48个数据点
+        var time = new Date(now.getTime() + i * 5 * 60 * 1000); // 每5分钟增加
+        var value = 100 + Math.random() * 300; // 生成100到400之间的随机数
+        data.push([time, value]); // 将时间戳和随机值作为数据点推入数组
+      }
+      return data;
+    }
+    var bo7 = generateData7()
+
+    var myChartfudu = echarts.init(document.querySelector('.bofudu'))
+    var optionfudu;
+
+    optionfudu = {
+      title: {
+        text: '各种波形图',
+        textStyle: {
+          color: 'rgba(119, 119, 119)' // 将标题颜色设置为深灰色，可替换为你想要的颜色值，如'#FF0000'（红色）
+        },
+        left: 20
+      },
+      tooltip: {
+        trigger: 'axis',
+        order: 'valueDesc'
+
+      },
+      legend: {
+        show: true,
+        // // 每次只显示一条折线
+        // selectedMode: 'single'
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      // toolbox: {
+      //   feature: {
+      //     saveAsImage: {}
+      //   }
+      // },
+
+      xAxis: {
+        type: 'time',
+        boundaryGap: false,
+        name: '时间',
+        nameGap: 10,
+        // nameGap: 30, // 名称与轴的距离
+        nameTextStyle: {
+          color: 'black', // 设置名称文本的颜色
+          fontSize: 14, // 设置名称文本的字体大小
+          fontFamily: 'Arial' // 设置名称文本的字体
+        },
+        axisLabel: {
+
+          // margin: 10, // 增加标签与轴的距离
+          textStyle: {
+            color: 'black',
+            fontSize: 14
+          }
+        },
+        axisLine: { // 设置轴线的样式
+          lineStyle: {
+            color: 'black',
+            width: 2
+          }
+        }
+
+      },
+      yAxis: {
+        nameGap: 10,
+        type: 'value',//数值轴数据可在series中的data
+        name: '幅度',// 设置纵坐标名称
+        nameTextStyle: {
+          color: 'black', // 设置名称文本的颜色
+          fontSize: 14, // 设置名称文本的字体大小
+          fontFamily: 'Arial' // 设置名称文本的字体
+        },
+        axisLabel: {
+
+          // margin: 10, // 增加标签与轴的距离
+          textStyle: {
+            color: 'black',
+            fontSize: 14
+          }
+        },
+        axisLine: { // 设置轴线的样式
+          show: true,
+          lineStyle: {
+            color: 'black',
+            width: 2
+          }
+        }
+      },
+      series: [
+        {
+          name: 'α 波',
+          type: 'line',
+
+          data: bo1,
+          emphasis: {
+            // 鼠标悬浮时，只显示当前系列
+            // focus: 'self',
+            focus: 'series',
+            scale: true, // 只显示当前项的刻度线
+            itemStyle: {
+              color: 'red' // 突出显示的颜色
+            }
+          }
+
+        },
+        {
+          name: 'δ 波',
+          type: 'line',
+          data: bo2,
+          emphasis: {
+            // 鼠标悬浮时，只显示当前系列
+            // focus: 'self',
+            focus: 'series',
+            // scale: true, // 只显示当前项的刻度线
+            // itemStyle: {
+            //   color: 'red' // 突出显示的颜色
+            // }
+          }
+        },
+        {
+          name: 'θ 波',
+          type: 'line',
+          data: bo3,
+          emphasis: {
+            // 鼠标悬浮时，只显示当前系列
+            // focus: 'self',
+            focus: 'series',
+            scale: true, // 只显示当前项的刻度线
+            itemStyle: {
+              color: 'red' // 突出显示的颜色
+            }
+          }
+        },
+        {
+          name: 'β 波',
+          type: 'line',
+          data: bo4,
+          emphasis: {
+            // 鼠标悬浮时，只显示当前系列
+            // focus: 'self',
+            focus: 'series',
+            scale: true, // 只显示当前项的刻度线
+            itemStyle: {
+              color: 'red' // 突出显示的颜色
+            }
+          }
+        },
+        {
+          name: '纺锤波',
+          type: 'line',
+          data: bo5,
+          emphasis: {
+            // 鼠标悬浮时，只显示当前系列
+            // focus: 'self',
+            focus: 'series',
+            scale: true, // 只显示当前项的刻度线
+            itemStyle: {
+              color: 'red' // 突出显示的颜色
+            }
+          }
+        },
+        {
+          name: '锯齿波',
+          type: 'line',
+          data: bo6,
+          emphasis: {
+            // 鼠标悬浮时，只显示当前系列
+            // focus: 'self',
+            focus: 'series',
+            scale: true, // 只显示当前项的刻度线
+            itemStyle: {
+              color: 'red' // 突出显示的颜色
+            }
+          }
+        },
+        {
+          name: 'K 复合波',
+          type: 'line',
+          data: bo7,
+          emphasis: {
+            // 鼠标悬浮时，只显示当前系列
+            // focus: 'self',
+            focus: 'series',
+            scale: true, // 只显示当前项的刻度线
+            itemStyle: {
+              color: 'red' // 突出显示的颜色
+            }
+          }
+        }
+
+
+      ]
+    };
+
+    myChartfudu.setOption(optionfudu);
+
+
+
+    //睡眠分期百分比
+    // 生成0~100随机整数
+    function getRandomIntExclusive(min, max) {
+      min = min + 1;
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    var random5 = getRandomIntExclusive(0, 100);
+    var random6 = getRandomIntExclusive(0, 100);
+    var random7 = getRandomIntExclusive(0, 100);
+    var random8 = getRandomIntExclusive(0, 100);
+    var random9 = getRandomIntExclusive(0, 100);
+    var random10 = getRandomIntExclusive(0, 100);
+    var mChartsfenqi = echarts.init(document.querySelector('.shuimianfenqi'))
+
+    var optionfenqi;
+
+    optionfenqi = {
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        top: 0,
+        left: 'center'
+      },
+      color: ['#78b4e2', '#90d2e7', '#edaecd', '#7e6fb1', '#c15676', '#3f51b5'], // 添加颜色数组
+      series: [
+        {
+          name: '睡眠分期百分比',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 10,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: false,//不显示文字
+            // formatteer:'hehe',决定文字显示的内容
+            position: 'center'
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: 40,
+              fontWeight: 'bold'
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: [
+            { value: random5, name: '清醒期(Wake 期)' },
+            { value: random6, name: 'N1 期' },
+            { value: random7, name: 'N2 期' },
+            { value: random8, name: 'N3 期' },
+            { value: random9, name: 'N4 期' },
+            { value: random10, name: 'REM 期' }
+          ]
+        }
+      ]
+    };
+
+
+    mChartsfenqi.setOption(optionfenqi)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #83B3E3;
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 200px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: #7FB0FD;
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .main {
+      width: 1000px;
+      background-color: white;
+      margin-left: 180px;
+    }
+
+    .fenge {
+      width: 100%;
+      height: 2px;
+      background-color: gray;
+    }
+
+    .hui {
+      color: gray;
+      font-size: 10px;
+    }
+
+    .tupian1,
+    .tupian2,
+    .tupian3 {
+      width: 550px;
+      height: 370px;
+      margin-left: 230px;
+    }
+
+    .zhujie1,
+    .zhujie2,
+    .zhujie3 {
+      font-size: 15px;
+      padding-left: 424px;
+    }
+  </style>
+  <title>DreamWave睡眠与OSA诊断系统</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="../可视化界面2.0.html">返回</a></li>
+        <li><a href="../kepu2.html#naodianbo">大众科普</a></li>
+        <li><a href="../kepu2.html#keyan">媒体聚焦</a></li>
+        <li><a href="../kepu2.html#linchuang">临床技术</a></li>
+        <li><a href="../关于我们.html">关于我们</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <!--
+    段落： <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <br> 
+    空格缩进：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+  -->
+  <!-- 文章主体 -->
+  <div class="main">
+    <br>
+    <h1 style="padding-left: 25px;">持续性植物状态的神经调控治疗之临床经验</h1>
+    <br>
+    <p class="hui" style="padding-left: 25px;">时间：2021-03-24&nbsp;&nbsp;&nbsp;来源：中国神经科学学会意识与意识障碍分会</p>
+    <div class="fenge"></div>
+    <br>
+    <h2 style="padding-left: 25px;">目的与方法</h2>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;探讨脑深部电刺激(DBS)和脊髓电刺激(Scs)神经调控治疗对持续性植物状态患者的促醒作用。 </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自2011年7月至2012年12月北京军区总医院共收治持续性植物状态患者53例，筛选后入组42例。其中男27例，女15例；平均(42.9±5.47)岁。按照患者病情及家属意愿将其分为对照组20例，手术组22例。其中手术组采用DBS治疗5例，SCS治疗17例；对照组接受手术外的常规康复治疗。采用改良的昏迷恢复量表(CRS-R)作为评估手段，部分患者接受功能磁共振做进一步评估。
+    </p>
+    <br>
+    <h2 style="padding-left: 25px;">结果与结论</h2>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入组时2组患者性别、年龄、患病时间及意识评定差异无统计学意义(P>0.05)。获得随访37例(对照组17例，手术组20例)，平均随访11.2月。手术组患者7例获得意识恢复，促醒率为35％；
+      对照组1例患者获得意识恢复，促醒率为5.9％，差异有统计学意义(P<0.05)。且手术组患者CRS-R量表评定结果明显优于对照组，差异有统计学意义(P<0.05)；DBS与SCS
+        治疗患者间CRS-R评分差异无统计学意义(P>0.05)。结果提示，静息态默认网络中关键脑区激活及功能连接程度与临床评定具有较好的一致性。神经调控治疗能有效促进PVS患者的意识恢复，DBS与SCS之间未发现疗效差异。</p>
+    <br>
+    <div><img src="../images/jinyan2.png" alt="" class="tupian1"></div>
+    <div><span style="padding-left: 450px;">图一</span></div>
+    <br>
+    <br>
+    <div><img src="../images/jinyan1.png" alt="" class="tupian2"></div>
+    <div><span style="padding-left: 450px;">图二</span></div>
+    <br><br>
+  </div>
+
+
+</body>
+
+</html>

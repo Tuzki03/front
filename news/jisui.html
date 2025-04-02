@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #83B3E3;
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 200px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: #7FB0FD;
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .main {
+      width: 1000px;
+      background-color: white;
+      margin-left: 180px;
+    }
+
+    .fenge {
+      width: 100%;
+      height: 2px;
+      background-color: gray;
+    }
+
+    .hui {
+      color: gray;
+      font-size: 10px;
+    }
+
+    .tupian1,
+    .tupian2,
+    .tupian4,
+    .tupian5,
+    .tupian6,
+    .tupian7,
+    .tupian8,
+    .tupian3 {
+      width: 550px;
+      height: 370px;
+      margin-left: 230px;
+    }
+
+
+
+    .zhujie1,
+    .zhujie2,
+    .zhujie3,
+    .zhujie4,
+    .zhujie5,
+    .zhujie6,
+    .zhujie7,
+    .zhujie8 {
+      font-size: 15px;
+      padding-left: 350px;
+    }
+
+    .main {
+      width: 1000px;
+      background-color: white;
+      margin-left: 180px;
+    }
+
+    .fenge {
+      width: 100%;
+      height: 2px;
+      background-color: gray;
+    }
+
+    .hui {
+      color: gray;
+      font-size: 10px;
+    }
+  </style>
+  <title>DreamWave睡眠与OSA诊断系统</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="../可视化界面2.0.html">返回</a></li>
+        <li><a href="../kepu2.html#naodianbo">大众科普</a></li>
+        <li><a href="../kepu2.html#keyan">媒体聚焦</a></li>
+        <li><a href="../kepu2.html#linchuang">临床技术</a></li>
+        <li><a href="../关于我们.html">关于我们</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <!--
+    段落： <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <br> 
+    空格缩进：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+  -->
+  <!-- 文章主体 -->
+  <div class="main">
+    <br>
+    <h1 style="padding-left: 25px;">意识障碍患者促醒治疗的个体化选择 ——从重症到康复</h1>
+    <br>
+    <p class="hui" style="padding-left: 25px;">时间：2021-08-11&nbsp;&nbsp;&nbsp;来源：中国神经科学学会意识与意识障碍分会</p>
+    <div class="fenge"></div>
+    <br>
+
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;科研工作一直是我科发展的先行力量，我们一直坚持临床导向的医学研究，医学前沿技术的转化与应用一直是我科的重中之重。早在2010我科就开展对于包括脑深部电刺激（Deep
+      Brain Stimulation，DBS）、脊髓电刺激（Spinal Cord Stimulation，SCS）、迷走神经电刺激（Vagus Nerve
+      Stimulation,VNS）在内的促醒手术的研究。近5年来取得不菲的成果，在国内外众多高水平期刊发表成果。以下着重展示我科针对慢性意识障碍人群的脊髓电刺激相关的研究。</p>
+    <br>
+
+    <div><img src="../images/jisui1.png" alt="" class="tupian1"></div>
+    <div><span style="padding-left: 450px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图一</span></div>
+    <br>
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一、脊髓电刺激可改变微意识患者额叶δ与γ频段脑电活动</h2>
+    <br>
+    <div><img src="../images/jisui2.png" alt="" class="tupian2"></div>
+    <div><span style="padding-left: 450px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图二</span></div>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在此项研究中，我们纳入11例正在接受慢性SCS治疗的微意识患者。每位患者总共接受了六次实验，治疗间隔至少为两天。刺激参数为电压3V，脉宽210
+      us的电脉冲。在整个实验中，五次使用频率为5 Hz，20 Hz，50 Hz，70 Hz和100 Hz的真实刺激，而一次使用假刺激在关闭刺激器的情况下进行。对于每个患者，使用的频率顺序是随机的。</p>
+    <br>
+    <div><img src="../images/jisui3.png" alt="" class="tupian3"></div>
+    <div><span style="padding-left: 450px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图三</span></div>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每位患者的六次实验均会记录的脑电包括刺激前 10 分钟，开机状态 20 分钟以及刺激后 10
+      分钟。计算相对谱能量，相干性，相干性矩阵SI 值和双谱相干性以评估脑电图的变化。计算中划分了五个频带（δ，θ，α，β和γ）和三个区域（前部，中央和后部）。 </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结果表明，在 5Hz 和 70Hz
+      的 SCS 刺激下，额叶区域 Gamma 频段的相对谱能量增加了而 delta 的相对谱能量减少了。此外，通过对相干性以及 S 估计值的计算，发现额叶的 delta 以及 Gamma 频段的同步性也显著改变了。但是 delta
+      同步性的降低只发生在 70Hz 的 SCS 刺激时，而 Gamma 同步性的降低出现在 5Hz，70Hz 以及 100Hz刺激下。在这之后探索了每个频段间的双谱相干性。结果发现在 5Hz 和100Hz 的
+      SCS刺激后，delta 与 Gamma 频段之间的耦合性降低了，而 delta 与 delta 频段耦合的变化只出现在 70Hz 调控后。</p>
+    <br>
+
+    <div><img src="../images/jisuipng2.png" alt="" class="tupian4"></div>
+    <div><span style="padding-left: 280px;">图四&nbsp;&nbsp;&nbsp;刺激前后额叶的Delta、Gamma相对相对谱能量变化</span></div>
+    <br>
+    <br>
+    <div><img src="../images/jisui5.png" alt="" class="tupian5"></div>
+    <div><span style="padding-left: 280px;">图五&nbsp;&nbsp;&nbsp;不同刺激频率前后额叶的Delta-Delta以及Delta-Gamma双谱相干性</span></div>
+    <br><br>
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二、接受脊髓电刺激的微意识患者额叶γ频段（30–45 Hz）连接性变化</h2>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;脊髓电刺激作为一种有效的意识促醒手段已经在临床上得到了较为广泛的应用, 但是其内在机制仍不完全明确.
+      本研究在前一项研究后进一步探究脊髓电刺激对微意识状态患者脑网络的影响。 </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们将刺激电极插入颈椎硬膜外腔，并置于C2-C4水平。刺激参数是电压3V、脉宽210μs、频率70HZ，每次刺激持续20分钟。患者接受了包括真实刺激和假刺激在内的两次实验，每次实验之间至少要洗脱2天，在刺激器关闭的情况下进行假刺激。在刺激前10分钟，真或假刺激期间以及刺激后10分钟采集静息状态的32通道的脑电图。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;研究结果直接表明，SCS可以有效干预皮质γ的活动，干预措施包括直接的整体效应（额-顶叶、额-枕叶的连通性变化和脑网络特性改变）和持久的局部效应（额叶皮层内部连通性持续改变）。以上结果提供了进一步的证据，支持额叶皮层在SCS效应中的关键作用。其他使用疼痛相关的P250的研究也提供了证明额叶皮质在SCS中的作用的证据。这些研究证明了SCS直接影响额叶皮层的能力。因此，在顶叶和枕叶皮层中发生的SCS刺激引起的整体效应可能是由它们与额叶皮层的相互作用引起的，并且这种相互作用可以用γ频段同步化活动来解释。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;额叶区域在改变与SCS刺激的连通性中的关键作用促使我们提出额叶皮层作为SCS调制途径中的中继站。SCS通过丘脑-皮层连接改变额叶皮层，然后通过与大脑皮层的连接传播到其他区域来影响大脑皮层。
+    </p>
+    <br>
+    <div>
+      <img src="../images/jisui6.png" alt="" style="width: 550px;height: 600px;margin-left: 230px;">
+    </div>
+    <div><span style="padding-left: 450px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图六</span></div>
+    <br>
+    <br>
+
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（A）在SCS刺激之前，刺激期间和刺激之后，患者γ频段的功能连通性。 </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（B）使用配对t检验比较患者不同阶段功能连接性（On-SCS与Pre-SCS，Post-SCS与On-SCS以及Post-SCS与Pre-SCS）。粗红色箭头表示显着增加，细红色箭头表示没有显着增加，蓝色箭头表示显着减少。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（C）上图显示了连接性显着改变的电极，下图显示了t检验中连接性显着改变的关键电极（至少有三个连通性显着变化的电极定义为关键电极）。红线表示连通性显着提高，蓝线表示连通性显着下降。红色点表示连通性显着增加的电极，蓝色点表示连通性显着降低的电极。
+    </p>
+    <br>
+    <div><img src="../images/jisui7.png" alt="" class="tupian7"></div>
+    <div><span style="padding-left: 450px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图七</span></div>
+    <br>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;刺激间期（ISI）是每个刺激周期后的保持静止状态时长，该参数是为了防止过度疲劳和连续过度刺激对神经元造成损害。实际上，Huettel等在2004年已经发现连续刺激之间的间隔时间长度会极大地影响神经元的反应性和持久性。因此本研究旨在研究SCS刺激间隔对于意识障碍患者的影响。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（B）使用配对t检验比较患者不同阶段功能连接性（On-SCS与Pre-SCS，Post-SCS与On-SCS以及Post-SCS与Pre-SCS）。粗红色箭头表示显着增加，细红色箭头表示没有显着增加，蓝色箭头表示显着减少。
+
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据三个不同的设置为三个实验，每一个实验开关交替，重复四次。刺激间隔ISI分别是2min（短时间）、3min（中等时间）和5min（长时间）。三种不同的ISI以伪随机顺序显示。在每次实验之间，为患者提供30分钟的休息时间，以免产生叠加效应。
+    </p>
+    <br>
+    <div><img src="../images/jisui8.png" alt="" class="tupian8"></div>
+    <div><span style="padding-left: 450px;">图八 &nbsp;&nbsp;实验范式</span></div>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结果表明，在刺激期间和刺激后30s，总血红蛋白（HbT）在前额叶皮质中明显升高；而在刺激关闭30s后，HbT回到基线水平；但是在枕叶皮质中未观察到该现象。因此认为，短刺激（30s）引起显著的脑血容量变化，特别是在前额叶皮质，这是意识系统的重要区域。通过比较每个阶段中第一个和最后一个间期反应的平均值，发现较短的ISI能够改善前额皮质中的血容量，而且在预后良好的患者中更为显著。研究结果提示，ISI可能是影响SCS预后的重要因素，为进一步定量评估神经调节的疗效打下基础。
+
+    </p>
+    <br>
+    <br>
+    <br>
+  </div>
+
+</body>
+
+</html>

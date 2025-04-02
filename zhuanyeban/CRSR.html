@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>昏迷恢复量表修订版（CRS - R）评估报告</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: linear-gradient(#b5d2f0,
+          #f0f7ff);
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 110px;
+      margin-right: 40px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 180px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: rgb(127, 176, 253);
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+
+    .report-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      margin: 30px auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: #007BFF;
+      color: rgb(49, 80, 152);
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #007BFF;
+      color: rgb(49, 80, 152);
+      margin-top: 40px;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    h3 {
+      color: #555;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .info-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .report-container ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .report-container ul li {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .report-container ul li::before {
+      content: '•';
+      color: rgb(49, 80, 152);
+      position: absolute;
+      left: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: #555;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/资源3.png" alt="英文图标" class="english-icon">
+  </div>
+
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="初始.html">初始</a></li>
+        <!-- <li><a href="检测.html">检测</a></li> -->
+        <li><a href="实时监测.html">实时监测</a></li>
+        <li><a href="数据库.html">数据库</a></li>
+        <li><a href="分析.html">分析</a></li>
+        <li><a href="CRSR.html">CRS - R</a></li>
+        <li><a href="说明.html">说明</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <div class="report-container">
+    <header>
+      <h1>昏迷恢复量表修订版（CRS - R）评估报告</h1>
+    </header>
+    <!-- 患者基本信息 -->
+    <div class="section">
+      <h2>一、患者基本信息</h2>
+      <div class="info-group">
+        <p><strong>姓名：</strong>张梓禹</p>
+        <p><strong>性别：</strong>男</p>
+        <p><strong>年龄：</strong>45 岁</p>
+        <p><strong>住院号：</strong>20150801001</p>
+        <p><strong>评估日期：</strong>2015 年 8 月 15 日</p>
+      </div>
+    </div>
+    <!-- 评估目的 -->
+    <div class="section">
+      <h2>二、评估目的</h2>
+      <p>运用昏迷恢复量表修订版（CRS - R），对患者的意识状态进行全面评估，为临床诊断、治疗方案制定及预后判断提供依据。</p>
+    </div>
+    <!-- 评估方法 -->
+    <div class="section">
+      <h2>三、评估方法</h2>
+      <p>由经过专业培训的神经内科医生和康复治疗师，依据 CRS - R 量表的标准评估流程，对患者进行逐项测试和观察。在安静、光线适宜的病房环境中，使用标准的听觉、视觉、触觉刺激材料及方法，确保评估结果的准确性和可靠性。</p>
+    </div>
+    <!-- 评估结果 -->
+    <div class="section">
+      <h2>四、评估结果</h2>
+      <!-- 听觉功能 -->
+      <h3>（一）听觉功能</h3>
+      <ul>
+        <li><strong>听觉惊跳反射：</strong>给予患者突然的大声刺激（如拍手），患者出现短暂的全身肌肉收缩反应，得 1 分。</li>
+        <li><strong>听觉定向反应：</strong>在患者双侧耳边分别呼唤其姓名，患者头和眼睛均无朝向声音来源的运动，得 0 分。</li>
+        <li><strong>听觉命令执行：</strong>向患者发出简单指令，如“握拳”“闭眼”，患者无任何反应，得 0 分。</li>
+      </ul>
+      <!-- 视觉功能 -->
+      <h3>（二）视觉功能</h3>
+      <ul>
+        <li><strong>视觉注视：</strong>将一个色彩鲜艳的物体置于患者眼前约 30 厘米处，患者眼睛能够注视该物体，持续时间超过 3 秒，得 1 分。</li>
+        <li><strong>视觉追踪：</strong>缓慢移动上述物体，患者眼睛能够跟随物体移动，但追踪过程不够平稳，有明显停顿，得 1 分。</li>
+      </ul>
+      <!-- 运动功能 -->
+      <h3>（三）运动功能</h3>
+      <ul>
+        <li><strong>运动反射：</strong>对患者进行疼痛刺激（如按压甲床），患者上肢出现回缩动作，得 1 分。</li>
+        <li><strong>局部运动反应：</strong>再次给予疼痛刺激，患者面部出现痛苦表情，得 1 分。</li>
+        <li><strong>可定位运动反应：</strong>当疼痛刺激源为患者右侧上肢时，患者左侧上肢能够向刺激源方向移动，试图推开刺激，得 2 分。</li>
+        <li><strong>手势或言语交流：</strong>尝试与患者进行简单交流，如问“你能听到我说话吗”，患者无任何手势或言语回应，得 0 分。</li>
+      </ul>
+      <!-- 言语功能 -->
+      <h3>（四）言语功能</h3>
+      <ul>
+        <li><strong>发声：</strong>在观察期间，患者偶尔发出无意义的声音，得 1 分。</li>
+        <li><strong>言语理解：</strong>向患者提出简单问题，如“你叫什么名字”，患者无任何理解和回应的迹象，得 0 分。</li>
+        <li><strong>言语表达：</strong>患者未出现任何有意义的言语表达，得 0 分。</li>
+      </ul>
+      <!-- 觉醒度 -->
+      <h3>（五）觉醒度</h3>
+      <ul>
+        <li><strong>觉醒状态：</strong>患者在评估期间，眼睛大部分时间处于睁开状态，得 1 分。</li>
+        <li><strong>睡眠 - 觉醒周期：</strong>根据护理记录及家属描述，患者近一周内睡眠 - 觉醒周期不规律，夜间觉醒次数较多，得 0 分。</li>
+      </ul>
+      <!-- 口面部运动及吞咽功能 -->
+      <h3>（六）口面部运动及吞咽功能</h3>
+      <ul>
+        <li><strong>面部表情运动：</strong>当患者看到喜欢的食物图片时，面部出现轻微的愉悦表情，得 1 分。</li>
+        <li><strong>咀嚼、吞咽动作：</strong>给患者喂食少量糊状食物，患者能够完成咀嚼和吞咽动作，无呛咳，得 2 分。</li>
+      </ul>
+    </div>
+    <!-- 量表得分汇总 -->
+    <div class="section">
+      <h2>五、量表得分汇总</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>功能领域</th>
+            <th>得分</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>听觉功能</td>
+            <td>1 分</td>
+          </tr>
+          <tr>
+            <td>视觉功能</td>
+            <td>2 分</td>
+          </tr>
+          <tr>
+            <td>运动功能</td>
+            <td>4 分</td>
+          </tr>
+          <tr>
+            <td>言语功能</td>
+            <td>1 分</td>
+          </tr>
+          <tr>
+            <td>觉醒度</td>
+            <td>1 分</td>
+          </tr>
+          <tr>
+            <td>口面部运动及吞咽功能</td>
+            <td>3 分</td>
+          </tr>
+          <tr>
+            <td>总分</td>
+            <td>12 分</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- 评估结论 -->
+    <div class="section">
+      <h2>六、评估结论</h2>
+      <p>根据昏迷恢复量表修订版（CRS - R）的评分标准，患者目前总分为 12
+        分，提示患者处于微小意识状态。在视觉、运动、口面部运动及吞咽等功能方面有一定程度的反应，但在听觉命令执行、言语理解和表达等方面仍存在严重障碍。建议密切关注患者意识状态变化，定期进行 CRS - R
+        评估，并根据评估结果制定针对性的康复治疗方案，以促进患者意识恢复和功能改善。</p>
+      <p>评估医生签名：李希晨</p>
+      <p>康复治疗师签名：王恺</p>
+    </div>
+    <footer>
+      <p>&copy; 睡眠与意识障碍诊断系统</p>
+    </footer>
+  </div>
+</body>
+
+</html>

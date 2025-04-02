@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <script src="echarts.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      background-image: linear-gradient(#7aade1,
+          #b5d2f0);
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+
+
+    }
+
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 40px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: rgb(127, 176, 253);
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    /* <!-- 呼吸暂停指数，呼吸努力觉醒事件 --> */
+    /* 呼吸暂停指数 */
+    .huxi {
+      width: 1330px;
+      height: 350px;
+      /* background-color: pink; */
+      margin: 20px auto;
+    }
+
+    .ahimyChart {
+      float: left;
+      width: 650px;
+      height: 350px;
+      border-radius: 10px;
+      background: rgba(31, 211, 231, 0.866);
+      /* box-shadow: 10px 10px 35px rgba(31, 211, 231, 0.866),
+        -5px -5px 5px #ffffff; */
+      background-color: #fff;
+      margin-right: 30px;
+    }
+
+    .reramyChart {
+      float: left;
+      width: 650px;
+      height: 350px;
+      border-radius: 10px;
+      background: rgba(31, 211, 231, 0.866);
+      /* box-shadow: 20px 20px 60px rgba(31, 211, 231, 0.866),
+        -10px -10px 50px #ffffff; */
+      background-color: #fff;
+    }
+
+    /* osa数据 */
+    .osashuju {
+      width: 1330px;
+      /* width: 1500px; */
+      height: 400px;
+      /* background-color: pink; */
+      margin: 20px auto;
+    }
+
+    .osaqinxiang {
+      float: left;
+      /* margin-top: 70px; */
+      width: 300px;
+      height: 300px;
+      border-radius: 10px;
+      background: rgba(31, 211, 231, 0.866);
+      /* box-shadow: 10px 10px 60px rgba(31, 211, 231, 0.866),
+        -10px -10px 50px #ffffff; */
+      background-color: #fff;
+      margin-right: 20px;
+    }
+
+    /* osa风险因素分析 */
+    .osafenxiangfenxi {
+      float: left;
+      /* margin-top: 70px; */
+      width: 500px;
+      height: 300px;
+      border-radius: 10px;
+      background: rgba(31, 211, 231, 0.866);
+      /* box-shadow: 10px 10px 60px rgba(31, 211, 231, 0.866),
+        -10px -10px 50px #ffffff; */
+      background-color: #fff;
+      margin-right: 20px;
+    }
+
+    /* 睡眠与健康 */
+    .shuimianyujiankan {
+      /* margin-top: 20px; */
+      float: left;
+      width: 490px;
+      /* height: 500px; */
+      border-radius: 10px;
+      background: rgba(31, 211, 231, 0.866);
+      /* box-shadow: 10px 10px 60px rgba(31, 211, 231, 0.866),
+        -10px -10px 50px #ffffff; */
+      background-color: #fff;
+    }
+
+    .shuimianyujiankan .biaoti {
+      height: 15px;
+      width: 490px;
+      /* background-color: pink; */
+      font-size: 14px;
+      padding-top: 8px;
+      padding-left: 12px;
+      color: rgba(119, 119, 119);
+    }
+
+    .shuimianyujiankan .tu {
+      float: left;
+      height: 222px;
+      width: 280px;
+      /* background-color: blue; */
+    }
+
+    .shuimianyujiankan .tu img {
+      margin: auto;
+    }
+
+    .shuimianyujiankan .xinxi {
+      width: 490px;
+      height: 222px;
+      /* background-color: yellow; */
+      margin-bottom: 20px;
+    }
+
+    .shuimianyujiankan .xinxi .shuimianpinfenmokuai {
+      float: left;
+      width: 200px;
+      height: 222px;
+      /* background-color: greenyellow; */
+    }
+
+    .shuimianyujiankan .xinxi .shuimianpinfen {
+      /* float: left; */
+      width: 200px;
+      height: 202px;
+      /* background-color: cadetblue; */
+    }
+
+    .shuimianyujiankan .xinxi .shuimianpinfenmokuai h1 {
+      height: 22px;
+      padding-left: 66px;
+      padding-top: 0;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: '思源黑体 CN';
+      background-image:
+        linear-gradient(90feg,
+          #673ab7,
+          #e91e63);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      background-image: linear-gradient(rgb(255, 167, 69),
+          rgb(254, 134, 159),
+          rgb(239, 122, 200),
+          rgb(160, 131, 237),
+          rgb(67, 174, 255));
+      /* margin-bottom: 20px; */
+      margin-top: 0;
+    }
+
+    .shuimianyujiankan .wenan {
+      width: 490px;
+      height: 280px;
+      margin-left: 5px;
+      /* background-color: gray; */
+    }
+
+    .shuimianyujiankan .wenan li {
+      list-style: none;
+      color: #777;
+      margin-bottom: 5px;
+      /* text-indent: 2em; */
+    }
+
+    /* <!-- 判断是否为osa患者 --> */
+    .shuimianjiankanxiaotieshi {
+      margin-top: 30px;
+      overflow: hidden;
+      width: 820px;
+      height: 200px;
+      /* margin-left: 45px; */
+      /* margin-top: 150px; */
+      /* background-color: pink; */
+      border-radius: 10px;
+      background: rgba(31, 211, 231, 0.866);
+      /* box-shadow: 10px 10px 60px rgba(31, 211, 231, 0.866),
+        -10px -10px 50px #ffffff; */
+      background-color: #fff;
+    }
+
+    .shuimianjiankanxiaotieshi .tu {
+      float: left;
+      width: 200px;
+      height: 200px;
+      /* background-color: yellow; */
+    }
+
+    .shuimianjiankanxiaotieshi .tu img {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+    }
+
+    .shuimianjiankanxiaotieshi .wenan {
+      /* float: left; */
+      width: 620px;
+      height: 200px;
+      /* background-color: pink; */
+    }
+
+
+    .shuimianjiankanxiaotieshi .wenan span,
+    .shuimianjiankanxiaotieshi .wenan h4 {
+      height: 22px;
+      padding-left: 5px;
+      padding-top: 0;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: '思源黑体 CN';
+      background-image:
+        linear-gradient(90feg,
+          #673ab7,
+          #e91e63);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      background-image: linear-gradient(
+          /* rgb(255, 167, 69),
+          rgb(254, 134, 159),
+          rgb(239, 122, 200), */
+          rgb(160, 131, 237),
+          rgb(67, 174, 255));
+      /* margin-bottom: 20px; */
+      margin-top: 0;
+      margin-left: 8px;
+    }
+
+    .shuimianjiankanxiaotieshi .wenan span {
+      display: block;
+      margin-bottom: 8px;
+      margin-left: 8px;
+    }
+
+    .shuimianjiankanxiaotieshi .wenan li {
+      list-style: none;
+      color: #777;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+      /* text-indent: 2em; */
+    }
+
+    .big {
+      /* background-color: pink; */
+      float: left;
+    }
+
+    .small {
+      /* background-color: blue; */
+      /* float: left; */
+      height: 300px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="首页.html">首页</a></li>
+        <li><a href="登录注册界面.html">登录/注册</a></li>
+        <li><a href="设备链接检测界面.html">设备链接监测</a></li>
+        <li><a href="睡眠监测界面.html">睡眠实时监测</a></li>
+        <li><a href="可视化界面2.0.html">单日报告</a></li>
+        <li><a href="周次报告.html">本周报告</a></li>
+        <li><a href="kepu2.html">科普说明</a></li>
+      </ul>
+    </nav>
+
+  </div>
+  <!-- 呼吸暂停指数，呼吸努力觉醒事件 -->
+  <div class="huxi">
+    <div class="ahimyChart"></div>
+    <div class="reramyChart"></div>
+  </div>
+
+  <!-- osa疾病倾向程度预测，风险因素分析，睡眠与健康 -->
+  <div class="osashuju">
+    <div class="big">
+      <div class="small">
+        <div class="osaqinxiang"></div>
+        <div class="osafenxiangfenxi"></div>
+      </div>
+      <!-- 判断是否为osa患者 -->
+      <div class="shuimianjiankanxiaotieshi">
+        <div class="tu"><img src="images/睡眠健康小贴士.jpg" alt=""></div>
+        <div class="wenan">
+          <span>您的睡眠质量高，经判定，您不是osa患者。</span>
+          <h4>健康睡眠小贴士</h4>
+          <ul>
+            <li>规律作息：每天尽量在相同的时间上床睡觉和起床。</li>
+            <li>健康饮食：避免晚餐过重，减少咖啡因和酒精的摄入。</li>
+            <li>适量运动：定期进行适量的体育活动，但避免在睡前进行剧烈运动。</li>
+            <li>放松技巧：尝试冥想、深呼吸或其他放松技巧来减轻压力。</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="shuimianyujiankan">
+      <h1 class="biaoti">睡眠与健康</h1>
+      <div class="xinxi">
+        <div class="shuimianpinfenmokuai">
+          <div class="shuimianpinfen"></div>
+          <h1>睡眠评分</h1>
+        </div>
+
+        <div class="tu"><img src="images/睡眠与健康图.jpg" alt=""></div>
+      </div>
+      <div class="wenan">
+        <ul>
+          <li>高质量睡眠有利于</li>
+          <li> 1.身体恢复：睡眠期间，身体会修复受损的细胞和组织，这对于肌肉恢复和免疫系统的正常运作至关重要。</li>
+          <li> 2.情绪调节：睡眠有助于情绪稳定。睡眠不足的人更容易感到焦虑、抑郁和情绪波动。</li>
+          <li> 3.认知功能：良好的睡眠有助于提高记忆力、注意力和决策能力。缺乏睡眠会导致认知功能下降，影响学习和工作效率。</li>
+          <li> 4.生活质量：良好的睡眠可以提高整体的生活质量，包括工作表现、社交活动和日常活动。</li>
+          <li> 5.免疫系统：睡眠有助于增强免疫系统，缺乏睡眠的人更容易感染病毒和细菌。</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <script>
+    //  <!-- 呼吸暂停指数，呼吸努力觉醒事件 -->
+    // 呼吸暂停指数
+    var myChartahi = echarts.init(document.querySelector('.ahimyChart'))
+    var optionahi;
+
+    function generateData1() {
+      var now = new Date(); // 获取当前时间
+      var data = [];
+      for (var i = 0; i < 24; i++) { // 24小时，每小时一个数据点
+        var time = new Date(now.getTime() + i * 60 * 60 * 1000); // 每小时增加
+        var value = Math.random() * 40; // 生成0到40之间的随机数
+        data.push([time, value]); // 将时间戳和随机值作为数据点推入数组
+      }
+      return data;
+    }
+    var ahi = generateData1()
+
+
+    optionahi = {
+      title: {
+        text: '每小时睡眠呼吸暂停指数（AHI）',
+        textStyle: {
+          color: 'rgba(119, 119, 119)' // 将标题颜色设置为深灰色，可替换为你想要的颜色值，如'#FF0000'（红色）
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          label: {
+            backgroundColor: '#6a7985'
+          },
+        }
+      },
+      legend: {
+        data: ['AHI指数'],
+        x: 'left',
+      },
+      color: ["#0080ff"],
+      // toolbox: {
+      //   feature: {
+      //     saveAsImage: {}
+      //   }
+      // },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: [
+        {
+          type: 'time',
+          nameGap: 0,
+          boundaryGap: false,
+          name: "时间",
+          axisLine: { // 设置轴线的样式
+            lineStyle: {
+              color: 'black',
+              // width: 2
+            }
+          },
+          nameTextStyle: {
+            color: 'black', // 设置名称文本的颜色
+            fontSize: 14, // 设置名称文本的字体大小
+            fontFamily: 'Arial' // 设置名称文本的字体
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          name: '指数',// 设置纵坐标名称
+          nameTextStyle: {
+            color: 'black', // 设置名称文本的颜色
+            fontSize: 14, // 设置名称文本的字体大小
+            fontFamily: 'Arial' // 设置名称文本的字体
+          },
+          axisLine: { // 设置轴线的样式
+            show: true,
+            lineStyle: {
+              color: 'black',
+              // width: 2
+            }
+          }
+        },
+
+      ],
+      series: [
+
+        {
+          name: '每小时睡眠呼吸暂停指数（AHI）',
+
+          type: 'line',
+          // stack: '总量',
+          itemStyle: {
+            normal: {   //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0, color: '#d7f4f8' // 0% 处的颜色
+              }, {
+                offset: 0.5, color: '#eefcfd' // 100% 处的颜色
+              }, {
+                offset: 1, color: '#fff' // 100% 处的颜色
+              }]
+              ),  //背景渐变色 
+              lineStyle: {        // 系列级个性化折线样式  
+                width: 3,
+                type: 'solid',
+                color: "#4fd6d2"
+              }
+            },
+            emphasis: {
+              color: '#4fd6d2',
+              lineStyle: {        // 系列级个性化折线样式  
+                width: 2,
+                type: 'dotted',
+                color: "#4fd6d2" //折线的颜色
+              }
+            }
+          },//线条样式  
+          symbolSize: 5, //折线点的大小
+          areaStyle: { normal: {} },
+
+          data: ahi
+        },
+
+      ]
+    };
+
+    myChartahi.setOption(optionahi);
+
+    // 呼吸努力觉醒事件
+    var myChartrera = echarts.init(document.querySelector('.reramyChart'))
+    var optionrera;
+
+    function generateData2() {
+      var now = new Date(); // 获取当前时间
+      var data = [];
+      for (var i = 0; i < 24; i++) { // 24小时，每小时一个数据点
+        var time = new Date(now.getTime() + i * 60 * 60 * 1000); // 每小时增加
+        var value = Math.floor(Math.random() * 7) + 1; // 生成1到7之间的随机整数
+        data.push([time, value]); // 将时间戳和随机值作为数据点推入数组
+      }
+      return data;
+    }
+    var rera = generateData2()
+
+    optionrera = {
+      title: {
+        text: '与呼吸努力相关的觉醒（RERA）事件',
+        textStyle: {
+          color: 'rgba(119, 119, 119)' // 将标题颜色设置为深灰色，可替换为你想要的颜色值，如'#FF0000'（红色）
+        }
+
+      },
+      tooltip: {
+        trigger: 'axis',
+        order: 'valueDesc'
+
+      },
+      // legend: {
+      //   show: true,
+      //   // 每次只显示一条折线
+      //   // selectedMode: 'single',
+      //   data: ['事件数量'],   //注意：图例的名字必须跟下面series数组里面的name一致
+      // },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      // toolbox: {
+      //   feature: {
+      //     saveAsImage: {}
+      //   }
+      // },
+
+      xAxis: {
+        type: 'time',
+        boundaryGap: false,
+        name: '时间',
+        nameGap: 1, // 名称与轴的距离
+        nameTextStyle: {
+          color: 'black', // 设置名称文本的颜色
+          fontSize: 14, // 设置名称文本的字体大小
+          fontFamily: 'Arial' // 设置名称文本的字体
+        },
+        axisLabel: {
+
+          // margin: 10, // 增加标签与轴的距离
+          textStyle: {
+            color: 'black',
+            fontSize: 14
+          }
+        },
+        axisLine: { // 设置轴线的样式
+          lineStyle: {
+            color: 'black',
+            width: 2
+          }
+        }
+
+      },
+      yAxis: [
+        {
+          nameGap: 10,
+          type: 'value',//数值轴数据可在series中的data
+          name: '事件数量',// 设置纵坐标名称
+          nameTextStyle: {
+            color: 'black', // 设置名称文本的颜色
+            fontSize: 14, // 设置名称文本的字体大小
+            fontFamily: 'Arial' // 设置名称文本的字体
+          },
+
+          axisLabel: {
+
+            // margin: 10, // 增加标签与轴的距离
+            textStyle: {
+              color: 'black',
+              fontSize: 14
+            }
+          },
+          axisLine: { // 设置轴线的样式
+            show: true,
+            lineStyle: {
+              color: 'black',
+              width: 2
+            }
+          }
+        },
+      ],
+
+      series: [
+
+        {
+          name: '事件数量',
+          type: 'bar',
+          data: rera,
+          itemStyle: { // 图形样式
+            // echarts.graphic.LinearGradient(echarts内置的渐变色生成器)
+            // 4个参数用于配置渐变色的起止位置,这4个参数依次对应右 下 左 上
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              // 这里 offset: 0 1 ,表示从下往上的渐变色
+              {
+                offset: 0, // 0%处的颜色
+                color: "rgba(31,155,255,1)"
+              },
+              {
+                offset: 1, // 100%处的颜色
+                color: "rgba(0,229,255,1)"
+              }
+            ])
+          },  //柱状颜色
+          emphasis: {
+            // 鼠标悬浮时，只显示当前系列
+            // focus: 'self',
+            focus: 'series',
+            // scale: true, // 只显示当前项的刻度线
+            // itemStyle: {
+            //   color: 'red' // 突出显示的颜色
+            // }
+
+          },
+
+
+        }
+
+      ]
+    };
+
+    myChartrera.setOption(optionrera)
+
+
+    // osa疾病倾向程度预测
+    function getRandomIntExclusive(min, max) {
+      min = min + 1;
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    var random1 = getRandomIntExclusive(0, 100);
+    var random2 = getRandomIntExclusive(0, 100);
+    var random3 = getRandomIntExclusive(0, 100);
+    var random4 = getRandomIntExclusive(0, 100);
+
+    var mChartosaqinxiang = echarts.init(document.querySelector('.osaqinxiang'))
+
+    var optionosaqinxiang;
+
+    optionosaqinxiang = {
+      title: {
+        text: '预测OSA疾病倾向程度',
+        textStyle: {
+          color: 'rgba(119, 119, 119)' // 将标题颜色设置为深灰色，可替换为你想要的颜色值，如'#FF0000'（红色）
+        }
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        bottom: 0,
+        left: 'center'
+      },
+      series: [
+        {
+          name: '预测OSA疾病倾向程度',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 10,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: false,//不显示文字
+            // formatteer:'hehe',决定文字显示的内容
+            position: 'center'
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: 40,
+              fontWeight: 'bold'
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: [
+            { value: random1, name: '不患病' },
+            { value: random2, name: '轻度osa' },
+            { value: random3, name: '中度osa' },
+            { value: random4, name: '重度osa' },
+          ]
+        }
+      ]
+    };
+
+    mChartosaqinxiang.setOption(optionosaqinxiang)
+
+
+    // OSA风险因素分析
+    var mChartosafenxiangfenxi = echarts.init(document.querySelector('.osafenxiangfenxi'))
+
+    var optionosafenxiangfenxi;
+
+    // var random5 = getRandomIntExclusive(0, 100);
+    // var random6 = getRandomIntExclusive(0, 100);
+    // var random7 = getRandomIntExclusive(0, 100);
+    // var random8 = getRandomIntExclusive(0, 100);
+
+    // optionosafenxiangfenxi = {
+    //   title: {
+    //     text: 'OSA风险因素分析',
+    //     textStyle: {
+    //       color: 'rgba(119, 119, 119)' // 将标题颜色设置为深灰色，可替换为你想要的颜色值，如'#FF0000'（红色）
+    //     }
+    //   },
+    //   xAxis: {
+    //     name: '影响因素',
+    //     nameGap: 1, // 名称与轴的距离
+    //     type: 'category',
+    //     data: ['年龄', '性别', 'BMI', '家族史']
+    //   },
+    //   yAxis: {
+    //     name: '受影响人数(百分比)',
+    //     type: 'value'
+    //   },
+    //   series: [
+    //     {
+    //       data: [random5, random6, random7, random8],
+    //       type: 'bar',
+    //       color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
+    //         {
+    //           offset: 0,
+    //           color: '#11d56d'
+    //         },
+    //         {
+    //           offset: 1,
+    //           color: '#83bff6'
+    //         }
+    //       ])
+    //     }
+    //   ]
+    // };
+    var optionosafenxiangfenxi = {
+      title: {
+        text: 'OSA风险因素分析',
+        textStyle: {
+          color: 'rgba(119, 119, 119)' // 将标题颜色设置为深灰色，可替换为你想要的颜色值，如'#FF0000'（红色）
+        }
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      xAxis: {
+        type: 'category',
+        data: ['年龄', '性别', 'BMI', '家族史', '吸烟', '内分泌因素'],// 添加新的影响因素
+        axisLabel: {
+          rotate: 45, // 文字旋转45度，可根据实际情况调整角度
+          margin: 10 // 文字与坐标轴的距离，防止被遮挡
+        }
+      },
+      yAxis: {
+        type: 'value',
+        name: '受影响人数(百分比)'
+      },
+      series: [
+        {
+          name: '受影响人数',
+          type: 'scatter',
+          // 更新数据，对应新的xAxis.data顺序添加数据
+          data: [[0, 30], [1, 10], [2, 50], [3, 15], [4, 20], [5, 23]],
+          // 为每个散点设置颜色，这里简单示例，可根据需求调整
+          itemStyle: {
+            color: function (params) {
+              var colors = ['#FF5733', '#33FF57', '#5733FF', '#FF33E7', '#33E7FF', '#E7FF33'];
+              return colors[params.dataIndex];
+            }
+          },
+          // 让散点大小与数据关联，这里简单乘以一个系数，可优化逻辑
+          symbolSize: function (data) {
+            return data[1] * 1.5;
+          },
+        }
+      ]
+    };
+
+    mChartosafenxiangfenxi.setOption(optionosafenxiangfenxi)
+
+
+    // 睡眠监测与健康
+    // 睡眠评分图
+    var mChartshuimianpinfen = echarts.init(document.querySelector('.shuimianpinfen'))
+    var optionshuimianpinfen
+
+    optionshuimianpinfen = {
+      title: {
+        text: '80',
+        x: 'center',
+        y: 'center',
+        textStyle: {
+          fontWeight: 'normal',
+          color: '#0580f2',
+          fontSize: '40'
+        }
+      },
+      color: ['rgba(176, 212, 251, 1)'],
+      // legend: {
+      //   show: true,
+      //   itemGap: 12,
+      //   data: ['yes', 'no']
+      // },
+
+      series: [{
+        name: 'Line 1',
+        type: 'pie',
+        clockWise: true,
+        radius: ['50%', '66%'],
+        itemStyle: {
+          normal: {
+            label: {
+              show: false
+            },
+            labelLine: {
+              show: false
+            }
+          }
+        },
+        hoverAnimation: false,
+        data: [{
+          value: 80,
+          name: 'yes',
+          itemStyle: {
+            normal: {
+              color: { // 完成的圆环的颜色
+                colorStops: [{
+                  offset: 0,
+                  color: '#00cefc' // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: '#367bec' // 100% 处的颜色
+                }]
+              },
+              label: {
+                show: false
+              },
+              labelLine: {
+                show: false
+              }
+            }
+          }
+        }, {
+          name: 'no',
+          value: 20
+        }]
+      }]
+    }
+
+    mChartshuimianpinfen.setOption(optionshuimianpinfen)
+  </script>
+</body>
+
+</html>

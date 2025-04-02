@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      background-image: linear-gradient(#7aade1,
+          #b5d2f0);
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 40px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: rgb(127, 176, 253);
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+
+    /* 登录 */
+
+    .Container22 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      margin: 0;
+
+    }
+
+    .Container2 {
+      position: relative;
+      display: flex;
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+
+    .div-description img {
+      /* width: 75%;
+      margin-bottom: 15px; */
+
+      width: 80%;
+      /* 从75%增大到80% */
+      margin-bottom: 15px;
+    }
+
+
+    .div-description {
+      /* width: 300px;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #fff;
+      border-radius: 5px 0 0 5px; */
+
+
+      width: 350px;
+      /* 从300px增大到350px */
+      height: 450px;
+      /* 从400px增大到450px */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #fff;
+      border-radius: 5px 0 0 5px;
+    }
+
+
+    .div-description:nth-last-child(1) {
+      border-radius: 0 5px 5px 0;
+
+    }
+
+    .div-form {
+      /* width: 300px;
+      height: 400px;
+      position: absolute;
+      left: 0;
+      transition: .5s;
+      transform-origin: right; */
+
+
+      width: 350px;
+      /* 从300px增大到350px */
+      height: 450px;
+      /* 从400px增大到450px */
+      position: absolute;
+      left: 0;
+      transition: .5s;
+      transform-origin: right;
+    }
+
+
+    .div-form .form-login {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: linear-gradient(to right, #48c6ef 0%, #6f86ef 200%);
+      border-radius: 5px 0 0 5px;
+    }
+
+    .div-form .form-register {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: linear-gradient(to right, #48c6ef -100%, #6f86ef 100%);
+      border-radius: 0 5px 5px 0;
+      transform: rotateY(180deg);
+    }
+
+    .div-form form.disappear {
+      display: none;
+    }
+
+    .div-form h1 {
+      margin: 50px 0 25px 0;
+      /* 大写 */
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: 5px;
+    }
+
+    .div-form input {
+      /* background-color: transparent;
+      width: 70%;
+      color: #fff;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+      padding: 5px 0;
+      margin: 8px 0;
+      text-indent: 5px;
+      font-size: 14px;
+      letter-spacing: 1px; */
+
+
+      background-color: transparent;
+      width: 80%;
+      /* 从70%增大到80% */
+      height: 35px;
+      /* 添加高度属性 */
+      color: #fff;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+      padding: 5px 0;
+      margin: 8px 0;
+      text-indent: 5px;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .div-form input::placeholder {
+      color: #fff;
+      font-size: 16px;
+      /* 从14px增大到16px */
+    }
+
+    .div-form button[type="submit"] {
+      /* width: 70%;
+      height: 32px;
+      margin: 30px auto 10px;
+      font-size: 14px;
+      color: #fff;
+      border-radius: 16px;
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: .4s; */
+
+
+      width: 80%;
+      /* 从70%增大到80% */
+      height: 40px;
+      /* 从32px增大到40px */
+      margin: 30px auto 10px;
+      font-size: 14px;
+      color: #fff;
+      border-radius: 16px;
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: .4s;
+    }
+
+    .div-form button[type="submit"]:hover {
+      letter-spacing: 3px;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .div-form .control {
+      color: #fff;
+      margin: 5px;
+      font-size: 13px;
+    }
+
+    .div-form .control a {
+      color: #fff;
+      margin: 0 5px;
+      letter-spacing: 1px;
+    }
+
+    .div-form .control a:hover {
+      color: #000;
+    }
+
+
+
+
+
+
+
+    .version-radio {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .version-radio input[type="radio"] {
+      display: none;
+    }
+
+    .version-radio input[type="radio"]+label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 40px;
+      border: none;
+      border-radius: 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      color: white;
+    }
+
+    .version-radio input[type="radio"]:checked+label {
+      background-color: #007bff;
+      color: white;
+    }
+
+    #loginBtn {
+      width: 80%;
+      height: 35px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 16px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.4s;
+    }
+
+    #loginBtn:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .control {
+      color: white;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .control a {
+      color: white;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="首页.html">首页</a></li>
+        <li><a href="登录注册界面.html">登录/注册</a></li>
+        <li><a href="设备链接检测界面.html">设备链接监测</a></li>
+        <li><a href="睡眠监测界面.html">睡眠实时监测</a></li>
+        <li><a href="可视化界面2.0.html">单日报告</a></li>
+        <li><a href="周次报告.html">本周报告</a></li>
+        <li><a href="kepu2.html">科普说明</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- 登录注册 -->
+  <div class="Container22">
+    <div class="Container2">
+      <div class="div-description">
+        <img src="images/月亮.jpg" alt="">
+      </div>
+      <div class="div-form">
+        <form action="" class="form-login">
+          <h1>login</h1>
+          <input type="text" placeholder="账号">
+          <input type="password" placeholder="密码">
+          <!-- 新增多选框部分 -->
+          <div class="version-radio">
+            <input type="radio" id="community" name="version" value="community">
+            <label for="community">社区版</label>
+            <input type="radio" id="professional" name="version" value="professional">
+            <label for="professional">专业版</label>
+          </div>
+
+          <button type="submit" id="loginBtn">Login</button>
+          <div class="control">
+            <span>没有账号？<a href="#">Register</a></span>
+          </div>
+
+        </form>
+
+        <form action="" class="form-register disappear">
+          <h1>Register</h1>
+          <input type="text" placeholder="账号">
+          <input type="password" placeholder="密码">
+          <button type="submit" id="loginBtn">Register</button>
+          <div class="control">
+            <span>已有账号？<a href="#">Login</a></span>
+          </div>
+        </form>
+      </div>
+
+      <div class="div-description">
+        <img src="images/月亮.jpg" alt="">
+      </div>
+    </div>
+
+  </div>
+
+
+  <script>
+    var btn = document.querySelectorAll('.control a')
+    var formContainer = document.querySelector('.div-form')
+    var form = document.querySelectorAll('.div-form form')
+
+    // 切换注册
+    btn[0].addEventListener('click', function (e) {
+      form[0].classList.add('disappear')
+      form[1].classList.remove('disappear')
+      formContainer.style.transform = 'rotateY(180deg)'
+    })
+
+    // 切换登录
+    btn[1].addEventListener('click', function (e) {
+      form[1].classList.add('disappear')
+      form[0].classList.remove('disappear')
+      formContainer.style.transform = 'none'
+    })
+
+
+
+    const loginBtn = document.getElementById('loginBtn');
+    const communityRadio = document.getElementById('community');
+    const professionalRadio = document.getElementById('professional');
+
+    loginBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (communityRadio.checked) {
+        window.location.href = '设备链接检测界面.html'; // 替换为实际社区版页面路径
+      } else if (professionalRadio.checked) {
+        window.location.href = 'zhuanyeban/初始.html'; // 替换为实际专业版页面路径
+      } else {
+        alert('请先选择版本');
+      }
+    });
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #83B3E3;
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 200px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: #7FB0FD;
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .main {
+      width: 1000px;
+      background-color: white;
+      margin-left: 180px;
+    }
+
+    .fenge {
+      width: 100%;
+      height: 2px;
+      background-color: gray;
+    }
+
+    .hui {
+      color: gray;
+      font-size: 10px;
+    }
+
+    .tupian1,
+    .tupian2,
+    .tupian4,
+    .tupian5,
+    .tupian6,
+    .tupian7,
+    .tupian8 {
+      width: 550px;
+      height: 370px;
+      margin-left: 230px;
+    }
+
+    .tupian3 {
+      width: 650px;
+      height: 130px;
+      margin-left: 170px;
+    }
+
+    .zhujie1,
+    .zhujie2,
+    .zhujie3,
+    .zhujie4,
+    .zhujie5,
+    .zhujie6,
+    .zhujie7,
+    .zhujie8 {
+      font-size: 15px;
+      padding-left: 424px;
+    }
+  </style>
+  <title>DreamWave睡眠与OSA诊断系统</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="../images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="../images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="../可视化界面2.0.html">返回</a></li>
+        <li><a href="../kepu2.html#naodianbo">大众科普</a></li>
+        <li><a href="../kepu2.html#keyan">媒体聚焦</a></li>
+        <li><a href="../kepu2.html#linchuang">临床技术</a></li>
+        <li><a href="../关于我们.html">关于我们</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <!--
+    段落： <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <br> 
+    空格缩进：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+  -->
+  <!-- 文章主体 -->
+  <div class="main">
+    <br>
+    <h1 style="padding-left: 25px;">意识障碍患者促醒治疗的个体化选择 ——从重症到康复</h1>
+    <br>
+    <p class="hui" style="padding-left: 25px;">时间：2021-08-11&nbsp;&nbsp;&nbsp;来源：中国神经科学学会意识与意识障碍分会</p>
+    <div class="fenge"></div>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “There are a thousand Hamlets in a thousand people's eyes“.
+      正如莎士比亚所言，"一千个观众眼中有一千个哈姆雷特"。作为最为复杂、异质性最高的一类神经系统疾病，一千个所谓“植物人”，就有一千种不同的情况。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      明确一下概念，意识障碍（disorders of
+      consciousness，DOC）是指各种严重脑损伤导致的意识丧失状态，如昏迷、植物状态（vegetative state，VS）和微意识状态（minimally
+      conscious state，MCS）。慢性意识障碍（prolonged
+      DOC，pDOC）是指意识丧失超过28天的意识障碍。脑外伤是pDOC的首位病因，非外伤病因主要包括脑卒中和缺氧性脑病(如心肺复苏后、中毒等)。面对意识障碍的患者，怎样选择正确的昏迷促醒方法至关重要，需要根据每个患者的不同情况做出个性化的选择。
+    </p>
+
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      临床上有一些严重的脑损伤患者，在生命体征平稳，颅内结构逐渐稳定的情况下，依然没有恢复意识。这此阶段，重症科医生往往觉得自己的治疗阶段已经结束，剩下的就是意识恢复的“漫漫长路”。此时就需要天坛意识障碍中心介入，对患者进行意识水平评估和制定个体化促醒方案。并非所有的患者都需要促醒神经调控手术，重症后期的个体化评估及药物、康复等综合治疗同样重要。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      下面举例说明，前些日子病区收治了兄弟科室的一个脑外伤重症患者。一个70多岁的本地大爷，遛弯儿的时候不幸发生车祸伤。多发脑挫裂伤；脑疝形成。就诊于首都医科大学附属北京天坛医院急诊，兄弟们连夜做了急诊手术。开颅血肿清楚+去骨瓣减压。术后1月余，意识水平仍为昏迷状态，转入天坛意识障碍诊疗病房。做了个磁共振，下面这样的，可以看到典型的多发脑挫裂伤后表现，脑室略扩张；
+    </p>
+    <br>
+    <div><img src="../images/cuxing1.png" alt="" class="tupian1"></div>
+    <div><span class="zhujie1">图一</span></div>
+    <br>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;住院以后，家属多次表达促醒手术的强烈意愿，表示虽然大爷年龄大了，但是外伤之前身体杠杠的，仍然希望用“最积极”、“最激进”的治疗方案促醒，不惜一切代价。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这种情况下，作为专业促醒治疗的团队如何做呢？根据家属意愿，直接安排电刺激植入手术吗？答案当然是：No！</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先我们要做的是患者意识状态的细致评估。总体而言，微意识状态患者好于植物状态，年轻的患者要好于年老的患者，脑外伤的因素要好于其他的因素，然后天坛意识障碍诊疗中心再根据患者的个体化评估结果，最终决定应用正确的促醒治疗手段。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;天坛意识障碍诊疗中心采用临床上最经典的CRS-R评估量表（图2），多次评估。</p>
+    <br>
+
+    <div><img src="../images/cuxing2.png" alt="" class="tupian2"></div>
+    <div><span class="zhujie2">&nbsp;&nbsp;&nbsp;图二</span></div>
+    <br>
+    <br>
+    <div><img src="../images/cuxing3.png" alt="" class="tupian3"></div>
+    <div><span class="zhujie3">图三&nbsp;&nbsp;&nbsp;临床多次评分结果</span></div>
+    <br>
+    <div><img src="../images/cuxing4.png" alt="" class="tupian4"></div>
+    <div><span class="zhujie4">&nbsp;&nbsp;&nbsp;图四</span></div>
+    <br>
+    <div>
+      <img src="../images/cuxing5.png" alt="" class="tupian5">
+    </div>
+    <div><span class="zhujie5">图五&nbsp;&nbsp;&nbsp;高压氧治疗下的脑电反应</span></div>
+    <br>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初步看了一下结果，临床多次CRS-R评分，有上下波动，“飘忽不定”。脑电图反应不错。因此组内讨论后决定：先做基础治疗+药物+康复+无创神经调控，给老爷子一个“非手术治疗苏醒”的机会。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然，重症后期的内科治疗不能闲着。入科诊断：1.植物状态；2.脑外伤恢复期；3.手术后颅骨缺失；4.下肢深静脉血栓形成；5.贫血；6.低钠血症；7.低氯血症；8.凝血功能异常。内科方面：加强营养，DVT低分子抗凝，纠正低钠、低氯血症，改善贫血等等综合治疗用上。在内科情况逐渐好转的同时，我们也安排了康复治疗：坐位训练、手法治疗、高压氧促醒。以及无创调控治疗：重复经颅磁刺激（rTMS）、经颅直流电刺激（tDCS）、正中神经电刺激（MNS）。
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过2周的治疗，发现，患者的意识水平发生了“跳跃式”的恢复。（图6）
+
+    </p>
+    <br>
+    <div><img src="../images/cuxing6.png" alt="" class="tupian6"></div>
+    <div><span class="zhujie6">图六</span></div>
+    <br><br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最终，不到4周的促醒治疗周期，患者脱离微意识状态，如期出院。天坛意识障碍病区数据库中又多了一名植物人苏醒的成功病例。</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从这个临床病例，我们能够学到些什么呢？</p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;敲黑板，关于意识障碍，目前临床上的误诊问题严重。慢性意识障碍由于临床表现多样，缺乏较为客观的检测指标，加之医生理念的问题，导致了高达43%（2006年的统计）的植物人误判率。意识障碍发病机制目前尚不十分清楚，一般认为丘脑-皮层和皮层-皮层连接的破坏是主要原因。中央环路假说提出丘脑-额叶-顶、枕、颞叶感觉皮质的连接是意识的基本环路，该环路完整性的破坏将导致慢性意识障碍。DOC患者存活时间一般为2~5年，其中VS患者意识恢复较困难，MCS患者有较好恢复潜力[4]。近年来，对于DOC残存意识的检测、病理机制特征、临床诊断、预后判断及治疗等领域均出现了较多进展。（慢性意识障碍诊断与治疗中国专家共识，中国医师协会神经修复专业委员会意识障碍与促醒学组，中华神经医学杂志，2020）
+    </p>
+    <br>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然而，意识机制作为“宇宙级”难题，我们对于意识障碍的整体了解，仍然知之甚少。意识研究尽管取得了很大的进展，昏迷与DOC的研究却仍远远落后于相关的麻醉、睡眠研究。其背后的脑网络机制和调控关键节点，我们现在仍仅仅是认知了冰山一角。（图七）。
+    </p>
+    <br>
+    <div><img src="../images/cuxing7.png" alt="" class="tupian7"></div>
+    <div><span class="zhujie7">图七</span></div>
+    <p style="padding-left: 20px;padding-right: 20px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这种情况下，作为临床医生，DOC患者的治疗就是一个复杂的体系工程。我们意识障碍病区在收治患者时候，深刻体会到，从重症过渡至康复的规范化治疗极其重要。包括全身内科情况的治疗、积极的康复治疗、高压氧治疗的适当介入等等。只有在这个做好这个体系工程的每个细节工作，患者才能获得最好的疗效。总之，DOC患者需要长期、序贯、规范化、精细化、个体化的治疗和管理。（图八）
+    </p>
+    <br>
+    <div><img src="../images/cuxing8.png" alt="" class="tupian8"></div>
+    <div><span class="zhujie8">&nbsp;&nbsp;&nbsp;图八</span></div>
+    <br><br><br>
+  </div>
+
+</body>
+
+</html>

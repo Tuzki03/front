@@ -1,0 +1,915 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border - box;
+}
+
+body {
+  font-family: Arial, sans - serif;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: linear-gradient(#b5d2f0,
+      #f0f7ff);
+  min-height: 100vh;
+  /* 改为min - height */
+  min-width: 100vw;
+  /* 改为min - width */
+}
+
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  height: 50px;
+  /* background-color: pink; */
+  margin-left: 110px;
+  margin-right: 40px;
+}
+
+.moon-icon {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+  /* 月亮图标和英文图片之间的间距 */
+}
+
+.english-icon {
+  height: 60%;
+  max-width: 180px;
+  /* 根据英文图片实际调整合适宽度，避免过大 */
+}
+
+
+
+/* 导航栏 */
+.Container1 {
+  display: inline-flex;
+  /* background-color: #ffbdc9; */
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  /* background: #fff; */
+  background-color: rgb(127, 176, 253);
+  border-radius: 50px;
+  /* padding: 2px; */
+  box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+}
+
+nav ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 5px 20px;
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #f9f7f7;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.5s;
+}
+
+nav ul li::after {
+  content: '';
+  background: rgb(4, 106, 250);
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+  transform: top 0.5s, opacity 0.5s;
+}
+
+nav ul li:hover {
+  color: #fff;
+}
+
+nav ul li:hover::after {
+  top: 50%;
+  opacity: 1;
+}
+
+nav ul li a {
+  color: inherit;
+  /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+  text-decoration: none;
+  /* 去掉下划线 */
+}
+
+.container1 {
+  width: 1200px;
+  height: 290px;
+  /* background-color: pink; */
+  margin: 25px auto;
+}
+
+/* 稳定率图 */
+/* .wendincontainer {
+  float: left;
+  width: 400px;
+  height: 270px;
+
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-right: 40px;
+}
+
+h2 {
+  color: #333;
+  text-align: left;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.left-div {
+  float: left;
+  width: 40%;
+  padding: 10px;
+  padding-top: 40px;
+}
+
+.right-div {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  padding-top: 40px;
+}
+
+.data-item {
+  margin-bottom: 15px;
+} */
+
+
+
+h2 {
+  color: #333;
+  text-align: left;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.respiratory-parameters-container {
+  float: left;
+  width: 400px;
+  height: 270px;
+  flex-direction: column;
+  /* 垂直排列子元素 */
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  /* margin-right: 40px; */
+}
+
+.left-chart-container {
+  height: 250px;
+  float: left;
+  width: 40%;
+  margin-top: 15px;
+}
+
+.right-parameters-container {
+  /* flex: 1; */
+  float: left;
+  width: 47%;
+  padding: 10px;
+}
+
+.right-parameters-container .parameter-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+}
+
+.right-parameters-container .parameter-name {
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+  /* 适当减小字体大小 */
+}
+
+.right-parameters-container .parameter-value {
+  color: #666;
+  font-size: 14px;
+  /* 适当减小字体大小 */
+}
+
+/* 事件图 */
+/* .shijiancontainer {
+  float: left;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 370px;
+  height: 270px;
+  margin-right: 40px;
+}
+
+
+.legend {
+  margin-top: 10px;
+}
+
+.legend span {
+  display: inline - block;
+  width: 10px;
+  height: 10px;
+  margin-right: 15px;
+}
+
+
+#shijianchart {
+  width: 100%;
+  height: 250px;
+} */
+
+/* 血氧饱和度变化图 */
+/* .oxygen-container {
+  float: left;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+  width: 370px;
+  height: 270px;
+  margin-right: 40px;
+}
+
+.legend {
+  margin-top: 10px;
+}
+
+.legend span {
+  display: inline - block;
+  width: 10px;
+  height: 10px;
+  margin-right: 15px;
+}
+
+#oxygenchart {
+  width: 100%;
+  height: 250px;
+} */
+
+/* 血氧饱和度变化图 */
+.oxygen-container {
+  float: left;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  width: 370px;
+  height: 270px;
+  margin-right: 40px;
+}
+
+.legend {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.legend span {
+  margin-left: 90px;
+  width: 12px;
+  height: 12px;
+  /* margin-right: 18px; */
+  border-radius: 50%;
+}
+
+#oxygenchart {
+  width: 352px;
+  height: 190px;
+}
+
+/* 装置测试时间 */
+/* .ceshishijiancontainer {
+  float: left;
+  background-color: white;
+  padding: 0 20px;
+  padding-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 270px;
+  height: 280px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px auto;
+}
+
+.info-item label {
+  color: #555;
+  font-size: 14px;
+}
+
+.info-item span {
+  color: #777;
+  font-size: 14px;
+  text-align: right;
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: #eaeaea;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar .fill {
+  height: 100%;
+  background: linear-gradient(to right, #00c853, #00e676);
+  width: 60%;
+} */
+
+/* 数据采集概况 */
+.caigaiqingkuangcontainer {
+  float: left;
+  background-color: white;
+  padding: 0 20px;
+  padding-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+  width: 270px;
+  height: 280px;
+  margin-right: 40px;
+}
+
+.caigaiqingkuangcontainer .info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px auto;
+}
+
+.caigaiqingkuangcontainer .info-item label {
+  color: #555;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.caigaiqingkuangcontainer .info-item span {
+  color: #777;
+  font-size: 14px;
+  text-align: right;
+}
+
+
+
+/* 纺锤波频率分布 */
+.container2 {
+  width: 1200px;
+  height: 290px;
+  /* background-color: pink; */
+  margin: 25px auto;
+}
+
+.fangcuibopinlu {
+  float: left;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 270px;
+  margin-right: 40px;
+}
+
+
+#fpinluchart {
+  width: 100%;
+  height: 250px;
+}
+
+/* 纺锤波发生率 */
+.fangcuibofashenglu {
+  float: left;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 450px;
+  height: 270px;
+  margin-right: 0px;
+}
+
+#swsCRSchart {
+  width: 475px;
+  height: 280px;
+}
+
+/* 睡眠评分 */
+.pinfen {
+  float: left;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 210px;
+  height: 270px;
+  margin-right: 40px;
+}
+
+#shuimianpinfen {
+  width: 100%;
+  height: 250px;
+}
+
+.container3 {
+  width: 1200px;
+  height: 390px;
+  /* background-color: pink; */
+  margin: 25px auto;
+}
+
+/* 患者记录 */
+.record-container {
+  float: left;
+  width: 240px;
+  height: 370px;
+
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-right: 40px;
+}
+
+.record-container h2 {
+  margin-bottom: 10px;
+}
+
+.record-container .data-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.record-container .data-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  transition: all 0.3s ease;
+}
+
+.record-container .data-item:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.record-container .data-label {
+  /* color: #1c8ddb; */
+  color: rgba(53, 88, 167);
+  font-weight: 500;
+  font-size: 16px;
+  /* 增大字体大小 */
+}
+
+.record-container .data-value {
+  /* color: #3f87d1; */
+  color: rgba(53, 88, 167);
+  font-size: 16px;
+  /* 增大字体大小 */
+}
+
+
+
+/* 分期与标签 */
+.fenqicontainer {
+  float: left;
+  width: 880px;
+  height: 370px;
+
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  /* margin-right: 40px; */
+}
+
+
+
+.fenqicontainer .info-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px 1px;
+  margin-left: 30px;
+}
+
+.fenqicontainer .legend-group {
+  display: flex;
+  align-items: center;
+}
+
+.fenqicontainer .legend-text {
+  margin-left: 12px;
+  margin-right: 5px;
+  font-size: 16px;
+  color: #586069;
+}
+
+
+.fenqicontainer .number {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fenqicontainer .change-patient {
+  padding: 8px 16px;
+  border: 1px solid #d1d5da;
+  border-radius: 6px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  color: #24292e;
+}
+
+.fenqicontainer #fenqichart {
+  width: 100%;
+  height: 325px;
+}
+
+/* 分析结果 */
+/* .resultcontainer {
+  float: left;
+  width: 270px;
+  height: 370px;
+
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-right: 0px;
+}
+
+p {
+  margin: 5px 0;
+}
+
+.diagnosis {
+  color: #007bff;
+  font-size: small;
+  padding-left: 10px;
+}
+
+.result {
+  font-size: 20px;
+  font-weight: 50px;
+  padding-left: 10px;
+}
+
+#resultchart {
+  width: 100%;
+  height: 175px;
+} */
+
+/* edf图像对比 */
+/* .edfcontainer {
+
+  width: 1180px;
+  height: 500px;
+
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin: 25px auto;
+}
+
+.top-section {
+  display: flex;
+  
+  margin-left: 50px;
+}
+
+.date-selector-button-group {
+  display: flex;
+  align-items: center;
+}
+
+.date-selector {
+  margin-right: 15px;
+}
+
+.date-selector select {
+  border: none;
+
+  outline: none;
+  padding: 6px 12px;
+}
+
+.button-group {
+  display: flex;
+
+}
+
+button {
+  padding: 6px 12px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+#edfchart {
+  width: 100%;
+  height: 440px;
+}
+
+.info-table {
+  float: right;
+  width: 30%;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.top-date {
+  float: left;
+  width: 70%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.info-table th,
+.info-table td {
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.info-table th {
+  color: #333;
+}
+
+.info-table td {
+  color: #666;
+} */
+
+
+.container5 {
+  width: 1200px;
+  /* height: 290px; */
+  /* background-color: pink; */
+  margin: 25px auto;
+  height: 390px;
+}
+
+/* （CRS - R）评估报告 */
+.crs-container {
+  float: left;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 240px;
+
+
+  height: 370px;
+  background-color: white;
+  margin-right: 40px;
+}
+
+
+
+
+.crs-container .info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  transition: background-color 0.3s ease;
+  /* 添加过渡效果 */
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.crs-container .info-item span {
+  font-size: 14px;
+}
+
+.crs-container .info-item:hover {
+  background-color: #e8f0fe;
+  /* 鼠标悬浮时的背景颜色 */
+}
+
+.maodianbotuxin {
+  float: left;
+  width: 880px;
+  height: 370px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.naodiandixintu img,
+.yangdiantezhengbotu img {
+  display: inline-block;
+  width: 100% !important;
+  height: 100% !important;
+  /* 确保图片按比例缩放适应高度 */
+}
+
+.naodiandixintu {
+  width: 390px;
+  height: 380px;
+  float: left;
+  /* background-color: pink; */
+}
+
+.yangdiantezhengbotu {
+  width: 480px;
+  height: 380px;
+  float: left;
+}
+
+
+.container4 {
+  width: 1200px;
+  /* height: 290px; */
+  /* background-color: pink; */
+  margin: 25px auto;
+  height: 390px;
+}
+
+
+
+
+/* <!-- 静息电位时间变化 --> */
+.jinxidianweicontainer {
+  float: left;
+  width: 650px;
+  height: 370px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-right: 40px;
+}
+
+.jinxidianweicontainer .info-section {
+  display: flex;
+  justify-content: space-around;
+  /* 调整元素之间的分布 */
+  align-items: center;
+  padding: 0 10px 1px;
+  margin-left: 10px;
+}
+
+.jinxidianweicontainer .legend-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.jinxidianweicontainer .legend-text {
+  margin-left: 5px;
+  margin-right: 3px;
+  font-size: 14px;
+  color: #586069;
+}
+
+.jinxidianweicontainer .number {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  /* 数值颜色改为深灰色，与背景和其他文字颜色搭配 */
+}
+
+.jinxidianweicontainer .legend-group+.legend-group {
+  margin-left: 15px;
+  /* 在每个数据组间添加左边距作为间隔 */
+}
+
+.jinxidianweicontainer .change-patient {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  /* 浅灰色边框，看起来更柔和 */
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  /* 浅灰色背景 */
+  cursor: pointer;
+  font-size: 12px;
+  color: #666;
+  /* 文字颜色改为稍浅的灰色 */
+}
+
+.jinxidianweicontainer #jinxichart {
+  width: 100%;
+  height: 325px;
+}
+
+
+
+
+
+/* 药物使用记录 */
+.drug-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 450px;
+  height: 350px;
+  float: left;
+}
+
+
+.drug-container .drug-table {
+  margin-top: 10px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.drug-container .drug-table th,
+.drug-container .drug-table td {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.drug-container .drug-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.drug-container .drug-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.container6 {
+  width: 1180px;
+  /* background-color: pink; */
+  margin: 25px auto;
+  height: 514px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.tezhenbo1 img {
+  display: inline-block;
+  width: 100% !important;
+  height: 100% !important;
+  /* 确保图片按比例缩放适应高度 */
+}
+
+.tezhenbo1 {
+  width: 570px;
+  height: 500px;
+  /* background-color: pink; */
+}
+
+.tezhenbo {
+  float: left;
+  margin-right: 40px;
+
+  width: 570px;
+  height: 500px;
+  background-color: white;
+  /* padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+
+}
+
+
+.shuimianjieduannaodianboshiyitu {
+  float: left;
+  width: 570px;
+  height: 500px;
+  background-color: white;
+  /* padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+}
+
+.shuimianjieduantu {
+  width: 570px;
+  height: 500px;
+  /* background-color: pink; */
+}
+
+.shuimianjieduantu img {
+  display: inline-block;
+  width: 100% !important;
+  height: 100% !important;
+  /* 确保图片按比例缩放适应高度 */
+}

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+  <meta charset="UTF - 8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>DreamWave睡眠与OSA诊断系统</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border - box;
+    }
+
+    body {
+      font-family: Arial, sans - serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #83B3E3;
+      min-height: 100vh;
+      /* 改为min - height */
+      min-width: 100vw;
+      /* 改为min - width */
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      /* background-color: pink; */
+      margin-left: 200px;
+      margin-right: 20px;
+    }
+
+    .moon-icon {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+      /* 月亮图标和英文图片之间的间距 */
+    }
+
+    .english-icon {
+      height: 60%;
+      max-width: 150px;
+      /* 根据英文图片实际调整合适宽度，避免过大 */
+    }
+
+
+
+    /* 导航栏 */
+    .Container1 {
+      display: inline-flex;
+      /* background-color: #ffbdc9; */
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      /* background: #fff; */
+      background-color: #7FB0FD;
+      border-radius: 50px;
+      /* padding: 2px; */
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    nav ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f9f7f7;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 0.5s;
+    }
+
+    nav ul li::after {
+      content: '';
+      background: rgb(4, 106, 250);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0;
+      transform: top 0.5s, opacity 0.5s;
+    }
+
+    nav ul li:hover {
+      color: #fff;
+    }
+
+    nav ul li:hover::after {
+      top: 50%;
+      opacity: 1;
+    }
+
+    nav ul li a {
+      color: inherit;
+      /* 继承父元素的颜色，可根据实际需求换成具体颜色值，如 #333 */
+      text-decoration: none;
+      /* 去掉下划线 */
+    }
+
+    .naodianbo img {
+      width: 500px;
+      height: 300px;
+      margin-left: 100px;
+      margin-bottom: 50px;
+      margin-top: 10px;
+    }
+
+    .tupian2 img {
+      width: 500px;
+      height: 300px;
+      margin-left: 100px;
+      margin-bottom: 50px;
+      margin-top: 10px;
+    }
+
+    .naodianbo {
+      width: 100%;
+      height: 500px;
+    }
+
+    .naodianbo .tupian h1 {
+      color: white;
+      display: inline-block;
+      margin-top: 50px;
+      margin-left: 100px;
+    }
+
+    .naodianbo .tupian {
+      display: inline-block;
+      vertical-align: top;
+      width: 640px;
+    }
+
+    .naodianbo .right {
+      display: inline-block;
+      vertical-align: top;
+      width: 707px;
+      margin-top: 100px;
+    }
+
+    .naodianbo .right ul {
+      height: 400px;
+      width: 707px;
+      margin-top: 50px;
+      color: white;
+    }
+
+    .naodianbo .right ul li {
+      width: 100%;
+      height: 16.6%
+    }
+
+    .naodianbo .right ul li a,
+    .keyan .right2 ul li a {
+      font-size: 20px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .naodianbo .right ul li a:hover {
+      color: black;
+    }
+
+    .keyan .right2 ul li a:hover {
+      color: black;
+    }
+
+    .keyan .right2 {
+      display: inline-block;
+      vertical-align: top;
+      width: 640px;
+      height: 400px;
+    }
+
+    .keyan .right2 ul {
+      width: 600px;
+      height: 400px;
+      color: white;
+      list-style: disc;
+      /* 显示圆点项目符号 */
+      padding-left: 20px;
+      /* 为项目符号留出空间 */
+      margin-left: 98px;
+      margin-top: 86px;
+    }
+
+    .keyan .tupian2 {
+      display: inline-block;
+      vertical-align: top;
+      width: 500px;
+      height: 400px;
+      margin-left: 80px;
+    }
+
+    .keyan .right2 ul li {
+      width: 100%;
+      height: 16.6%;
+    }
+
+    .keyan .tupian2 h1 {
+      display: inline-block;
+      margin-left: 100px;
+      color: white;
+    }
+
+    .linchuang .tupian3 img {
+      width: 500px;
+      height: 300px;
+      margin-left: 100px;
+      margin-bottom: 50px;
+      margin-top: 10px;
+    }
+
+    .linchuang .tupian3 {
+      display: inline-block;
+      vertical-align: top;
+      width: 640px;
+    }
+
+    .linchuang .right3 ul {
+      list-style: disc;
+      /* 显示圆点项目符号 */
+      padding-left: 35px;
+      /* 为项目符号留出空间 */
+      color: white;
+    }
+
+    .linchuang .tupian3 h1 {
+      padding-left: 100px;
+      color: white;
+    }
+
+    .linchuang .right3 ul li a {
+      font-size: 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .linchuang .right3 ul li a:hover {
+      color: black;
+    }
+
+    .linchuang .right3 {
+      display: inline-block;
+      vertical-align: top;
+      width: 707px;
+      margin-top: 100px;
+    }
+
+    .linchuang .tupian3 {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+
+    .linchuang {
+      width: 100%;
+      height: 500px;
+      margin-top: 60px;
+    }
+
+    .linchuang .right3 li {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="images/资源 2.png" alt="月亮图标" class="moon-icon">
+    <img src="images/图标.png" alt="英文图标" class="english-icon">
+  </div>
+  <!-- 导航栏 -->
+  <div class="Container1">
+    <nav>
+      <ul>
+        <li><a href="可视化界面2.0.html">返回</a></li>
+        <li><a href="#naodianbo">大众科普</a></li>
+        <li><a href="#keyan">媒体聚焦</a></li>
+        <li><a href="#linchuang">临床技术</a></li>
+        <li><a href="关于我们.html">关于我们</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- 大众科普一栏 -->
+  <div class="naodianbo" id="naodianbo">
+    <!-- 左半部分图片区域 -->
+    <div class="tupian">
+      <h1 id="dazhongkepu">大众科普</h1>
+      <img src="images/顶图3.jpg" alt="">
+    </div>
+
+    <!-- 右半部分 -->
+    <div class="right">
+      <ul>
+        <li><a href="news/jibing.html">意识障碍：当大脑“失联”，科学家如何重启生命的“开关”？——从神经科学的前沿研究到临床实践的突破，意识障碍的未来在哪里？</a></li>
+        <li><a href="news/naobo.html">脑电波全解析：α波、β波、θ波、δ波、纺锤波、K复合波、慢波,大脑的“频率密码”如何影响我们的生活？</a></li>
+        <li><a href="news/shuimian.html">睡眠分期的奥秘：从入睡到苏醒，大脑如何度过每一个夜晚？</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- 科研成果一栏 -->
+  <div class="keyan" id="keyan">
+    <!-- 左半部分区域 -->
+    <div class="right2">
+      <ul>
+        <li><a href="news/5G.html">5G网络技术在医疗领域的革命性应用：机器人如何助力DBS手术，实现对植物状态患者的高效“唤醒”</a></li>
+        <li><a href="news/cuxing.html">意识障碍患者的全方位促醒治疗方案：个性化选择的重要性与从重症监护到全面康复的完整路径</a></li>
+        <li><a href="news/jisui.html">脊髓电刺激技术在意识障碍促醒治疗中的机制与应用：探索神经调控如何激活大脑的觉醒系统</a></li>
+        <li><a href="news/tiaokong.html">神经调控技术在意识障碍治疗中的前沿应用：从现状评估到未来发展趋势的全面解读</a></li>
+      </ul>
+    </div>
+
+    <!-- 右半部分图片区域 -->
+    <div class="tupian2">
+      <h1 id="keyanchengguo">媒体聚焦</h1>
+      <img src="images/媒体聚焦.jpg" alt="">
+    </div>
+
+  </div>
+
+
+  <!-- 临床技术 -->
+  <div class="linchuang" id="linchuang">
+    <!-- 左半部分图片区域 -->
+    <div class="tupian3">
+      <h1 id="linchuangjishu">临床技术</h1>
+      <img src="images/临床.jpg" alt="">
+    </div>
+
+    <!-- 右半部分 -->
+    <div class="right3">
+      <ul>
+        <li><a href="news/yao.html">深入解析植物人治疗中的经典药物：从药理机制到临床应用，全面了解药物如何促进患者意识的恢复</a></li>
+        <li><a href="news/jinyan.html">持续性植物状态患者的神经调控治疗策略：基于临床经验的全面总结，探索神经调控技术在意识恢复中的创新应用</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
